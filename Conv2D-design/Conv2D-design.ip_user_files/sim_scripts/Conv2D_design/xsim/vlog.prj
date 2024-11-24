@@ -1,0 +1,8 @@
+verilog xil_defaultlib --include "C:/Xilinx/Vivado/2024.2/data/xilinx_vip/include" --include "../../../../Conv2D-design.gen/sources_1/bd/Conv2D_design/ipshared/ec67/hdl" --include "../../../../Conv2D-design.gen/sources_1/bd/Conv2D_design/ipshared/86fe/hdl" \
+"../../../bd/Conv2D_design/ip/Conv2D_design_processing_system7_0_0/sim/Conv2D_design_processing_system7_0_0.v" \
+"../../../bd/Conv2D_design/sim/Conv2D_design.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
