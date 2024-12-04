@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vivadoHLSLog:LogRoot xmlns:vivadoHLSLog="www.xilinx.com/vivadoHLSLog">
+  <errorLogs>
+    <logs>
+      <synLog>
+        <logs message="ERROR: [HLS 200-70] Synthesizability check failed.&#xD;&#xA;command 'ap_source' returned error code&#xD;&#xA;    while executing&#xD;&#xA;&quot;source F:/Workspace/Convolution2D/Convolution2D/solution1/csynth.tcl&quot;&#xD;&#xA;    invoked from within&#xD;&#xA;&quot;hls::main F:/Workspace/Convolution2D/Convolution2D/solution1/csynth.tcl&quot;&#xD;&#xA;    (&quot;uplevel&quot; body line 1)&#xD;&#xA;    invoked from within&#xD;&#xA;&quot;uplevel 1 hls::main {*}$args&quot;&#xD;&#xA;    (procedure &quot;hls_proc&quot; line 5)&#xD;&#xA;    invoked from within&#xD;&#xA;&quot;hls_proc $argv&quot;&#xD;&#xA;" projectName="Convolution2D" solutionName="solution1" date="2024-11-29T21:03:05.758+0700"/>
+        <logs message="ERROR: [SYNCHK 200-61] Convolution2D/convolution2D.c:10: unsupported memory access on variable 'input' which is (or contains) an array with unknown size at compile time." projectName="Convolution2D" solutionName="solution1" date="2024-11-29T21:03:05.521+0700"/>
+      </synLog>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </errorLogs>
+  <warningLogs>
+    <logs>
+      <synLog/>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </warningLogs>
+</vivadoHLSLog:LogRoot>
