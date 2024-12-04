@@ -1,0 +1,33 @@
+#-----------------------------------------------------------
+# xsim v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Wed Dec  4 15:51:07 2024
+# Process ID: 4748
+# Current directory: F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog
+# Command line: xsim.exe -mode tcl -source {xsim.dir/convolution2D/xsim_script.tcl}
+# Log file: F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/xsim.log
+# Journal file: F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/convolution2D/xsim_script.tcl
+# xsim {convolution2D} -autoloadwcfg -tclbatch {convolution2D.tcl}
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+source convolution2D.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 5 [0.00%] @ "125000"
+// RTL Simulation : 1 / 5 [100.00%] @ "435000"
+// RTL Simulation : 2 / 5 [100.00%] @ "735000"
+// RTL Simulation : 3 / 5 [100.00%] @ "1035000"
+// RTL Simulation : 4 / 5 [100.00%] @ "1335000"
+// RTL Simulation : 5 / 5 [100.00%] @ "1635000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 1675 ns : File "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/convolution2D.autotb.v" Line 337
+## quit
+INFO: [Common 17-206] Exiting xsim at Wed Dec  4 15:51:15 2024...

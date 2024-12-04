@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
   <source>
-    <originFiles name="convolution2D.c" path="F:\Workspace\Convolution2D\Convolution2D\convolution2D.c"/>
-    <originFiles name="convolution2D.h" path="F:\Workspace\Convolution2D\Convolution2D\convolution2D.h"/>
+    <originFiles name="convolution2D.c" path="F:\Workspace\Design-Conv2D-using-HLS\Convolution2D\Convolution2D\convolution2D.c"/>
+    <originFiles name="convolution2D.h" path="F:\Workspace\Design-Conv2D-using-HLS\Convolution2D\Convolution2D\convolution2D.h"/>
   </source>
   <testbench>
-    <originFiles name="testbench.c" path="F:\Workspace\Convolution2D\Convolution2D\testbench.c"/>
+    <originFiles name="testbench.c" path="F:\Workspace\Design-Conv2D-using-HLS\Convolution2D\Convolution2D\testbench.c"/>
   </testbench>
 </autopilotfilemapping:AutoPilotFileMapping>

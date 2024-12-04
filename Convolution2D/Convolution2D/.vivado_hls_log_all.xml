@@ -2,10 +2,7 @@
 <vivadoHLSLog:LogRoot xmlns:vivadoHLSLog="www.xilinx.com/vivadoHLSLog">
   <errorLogs>
     <logs>
-      <synLog>
-        <logs message="ERROR: [HLS 200-70] Synthesizability check failed.&#xD;&#xA;command 'ap_source' returned error code&#xD;&#xA;    while executing&#xD;&#xA;&quot;source F:/Workspace/Convolution2D/Convolution2D/solution1/csynth.tcl&quot;&#xD;&#xA;    invoked from within&#xD;&#xA;&quot;hls::main F:/Workspace/Convolution2D/Convolution2D/solution1/csynth.tcl&quot;&#xD;&#xA;    (&quot;uplevel&quot; body line 1)&#xD;&#xA;    invoked from within&#xD;&#xA;&quot;uplevel 1 hls::main {*}$args&quot;&#xD;&#xA;    (procedure &quot;hls_proc&quot; line 5)&#xD;&#xA;    invoked from within&#xD;&#xA;&quot;hls_proc $argv&quot;&#xD;&#xA;" projectName="Convolution2D" solutionName="solution1" date="2024-11-29T21:03:05.758+0700"/>
-        <logs message="ERROR: [SYNCHK 200-61] Convolution2D/convolution2D.c:10: unsupported memory access on variable 'input' which is (or contains) an array with unknown size at compile time." projectName="Convolution2D" solutionName="solution1" date="2024-11-29T21:03:05.521+0700"/>
-      </synLog>
+      <synLog/>
       <simLog/>
       <mgLog/>
       <packageLog/>
@@ -14,7 +11,11 @@
   </errorLogs>
   <warningLogs>
     <logs>
-      <synLog/>
+      <synLog>
+        <logs message="WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('input_load_2', Convolution2D/convolution2D.c:13) on array 'input_r' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'input_r'." projectName="Convolution2D" solutionName="solution1" date="2024-12-04T15:48:41.905+0700" type="Warning"/>
+        <logs message="WARNING: [SYN 201-107] Renaming port name 'convolution2D/output' to 'convolution2D/output_r' to avoid the conflict with HDL keywords or other object names." projectName="Convolution2D" solutionName="solution1" date="2024-12-04T15:48:41.455+0700" type="Warning"/>
+        <logs message="WARNING: [SYN 201-107] Renaming port name 'convolution2D/input' to 'convolution2D/input_r' to avoid the conflict with HDL keywords or other object names." projectName="Convolution2D" solutionName="solution1" date="2024-12-04T15:48:41.431+0700" type="Warning"/>
+      </synLog>
       <simLog/>
       <mgLog/>
       <packageLog/>

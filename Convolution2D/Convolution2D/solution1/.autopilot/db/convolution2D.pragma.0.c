@@ -136,7 +136,7 @@
 
 
 
-void convolution2D(int rows, int cols, int input[rows][cols], int kernel[3][3], int output[rows-2][cols-2]);
+void convolution2D(int input[5][5], int kernel[3][3], int output[3][3]);
 # 2 "Convolution2D/convolution2D.c" 2
 # 1 "F:/Vivado/Vivado/2018.3/win64/tools/clang/bin/../lib/clang/3.1/../../../x86_64-w64-mingw32/include\\stdio.h" 1 3
 
@@ -640,14 +640,16 @@ const char *__mingw_get_crt_info (void);
 # 511 "F:/Vivado/Vivado/2018.3/win64/tools/clang/bin/../lib/clang/3.1/../../../x86_64-w64-mingw32/include\\stdio.h" 2 3
 # 3 "Convolution2D/convolution2D.c" 2
 
-void convolution2D(int rows, int cols, int input[rows][cols], int kernel[3][3], int output[rows-2][cols-2]) {_ssdm_SpecArrayDimSize(kernel, 3);
- for (int i = 0; i < rows - 2; i++) {
-        for (int j = 0; j < cols - 2; j++) {
+void convolution2D(int input[5][5], int kernel[3][3], int output[3][3]) {_ssdm_SpecArrayDimSize(input, 5);_ssdm_SpecArrayDimSize(kernel, 3);_ssdm_SpecArrayDimSize(output, 3);
+    for (int i = 0; i < 3; i++) {
+#pragma HLS PIPELINE II=1
+ for (int j = 0; j < 3; j++) {
             int sum = 0;
             for (int ki = 0; ki < 3; ki++) {
-                for (int kj = 0; kj < 3; kj++) {
-                    int product = input[i + ki][j + kj] * kernel[ki][kj];
-                    sum += product;
+#pragma HLS UNROLL
+ for (int kj = 0; kj < 3; kj++) {
+#pragma HLS UNROLL
+ sum += input[i + ki][j + kj] * kernel[ki][kj];
                 }
             }
             output[i][j] = sum;

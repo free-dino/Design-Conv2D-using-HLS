@@ -1,6 +1,6 @@
 #ifndef CONVOLUTION2D_H
 #define CONVOLUTION2D_H
 
-void convolution2D(int rows, int cols, int input[rows][cols], int kernel[3][3], int output[rows-2][cols-2]);
+void convolution2D(int input[5][5], int kernel[3][3], int output[3][3]);
 
 #endif

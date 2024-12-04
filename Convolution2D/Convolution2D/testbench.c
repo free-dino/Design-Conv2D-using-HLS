@@ -20,7 +20,7 @@ void test_case_1() {
 
     int output[3][3] = {0};
 
-    convolution2D(rows, cols, input, kernel, output);
+    convolution2D(input, kernel, output);
 
     int expected_output[3][3] = {
         {41, 46, 51},
@@ -64,7 +64,7 @@ void test_case_2() {
 
     int output[3][3] = {0};
 
-    convolution2D(rows, cols, input, kernel, output);
+    convolution2D(input, kernel, output);
 
     int expected_output[3][3] = {
         {0, 0, 0},
@@ -108,7 +108,7 @@ void test_case_3() {
 
     int output[3][3] = {0};
 
-    convolution2D(rows, cols, input, kernel, output);
+    convolution2D(input, kernel, output);
 
     int expected_output[3][3] = {
         {63, 72, 81},
@@ -152,7 +152,7 @@ void test_case_4() {
 
     int output[3][3] = {0};
 
-    convolution2D(rows, cols, input, kernel, output);
+    convolution2D(input, kernel, output);
 
     int expected_output[3][3] = {
         {28, 32, 36},
@@ -196,7 +196,7 @@ void test_case_5() {
 
     int output[3][3] = {0};
 
-    convolution2D(rows, cols, input, kernel, output);
+    convolution2D(input, kernel, output);
 
     int expected_output[3][3] = {
         {-41, -46, -51},
