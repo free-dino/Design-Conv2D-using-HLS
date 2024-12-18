@@ -23,7 +23,7 @@
     "ClockPeriod": "10",
     "IsCombLogic": "0",
     "II": "x",
-    "Latency": "15",
+    "Latency": "25",
     "Uncertainty": "1.25"
   },
   "Xdc": {"OocClocks": ["create_clock -name ap_clk -period 10.000 [get_ports ap_clk]"]},
@@ -40,8 +40,24 @@
   },
   "Files": {
     "CSource": ["..\/convolution2D.c"],
-    "Vhdl": ["impl\/vhdl\/convolution2D.vhd"],
-    "Verilog": ["impl\/verilog\/convolution2D.v"],
+    "Vhdl": [
+      "impl\/vhdl\/convolution2D_conv_io_s_axi.vhd",
+      "impl\/vhdl\/convolution2D.vhd"
+    ],
+    "Verilog": [
+      "impl\/verilog\/convolution2D_conv_io_s_axi.v",
+      "impl\/verilog\/convolution2D.v"
+    ],
+    "SwDriver": [
+      "impl\/misc\/drivers\/convolution2D_v0_0\/data\/convolution2D.mdd",
+      "impl\/misc\/drivers\/convolution2D_v0_0\/data\/convolution2D.tcl",
+      "impl\/misc\/drivers\/convolution2D_v0_0\/src\/Makefile",
+      "impl\/misc\/drivers\/convolution2D_v0_0\/src\/xconvolution2d.c",
+      "impl\/misc\/drivers\/convolution2D_v0_0\/src\/xconvolution2d.h",
+      "impl\/misc\/drivers\/convolution2D_v0_0\/src\/xconvolution2d_hw.h",
+      "impl\/misc\/drivers\/convolution2D_v0_0\/src\/xconvolution2d_linux.c",
+      "impl\/misc\/drivers\/convolution2D_v0_0\/src\/xconvolution2d_sinit.c"
+    ],
     "Misc": ["impl\/misc\/logo.png"],
     "DesignXml": "F:\/Workspace\/Design-Conv2D-using-HLS\/Convolution2D\/Convolution2D\/solution1\/.autopilot\/db\/convolution2D.design.xml"
   },
@@ -54,565 +70,568 @@
     "ap_clk": {
       "type": "clock",
       "ctype": {"CLK": {"Type": "bool"}},
-      "reset": "ap_rst"
+      "buses": "s_axi_conv_io",
+      "reset": "ap_rst_n"
     },
-    "ap_ctrl": {
-      "type": "ap_ctrl",
-      "ctrl_ports": "ap_start ap_done ap_idle ap_ready",
-      "ctype": {
-        "start": {"Type": "bool"},
-        "done": {"Type": "bool"},
-        "idle": {"Type": "bool"},
-        "ready": {"Type": "bool"}
-      }
-    },
-    "ap_rst": {
+    "ap_rst_n": {
       "type": "reset",
-      "polarity": "ACTIVE_HIGH",
+      "polarity": "ACTIVE_LOW",
       "ctype": {"RST": {"Type": "bool"}}
     },
-    "input_0_address0": {
-      "type": "data",
-      "dir": "out",
-      "width": "4",
-      "ctype": {"DATA": {
-          "Type": "null",
+    "interrupt": {
+      "type": "interrupt",
+      "ctype": {"INTERRUPT": {"Type": "bool"}}
+    },
+    "s_axi_conv_io": {
+      "type": "axi4lite",
+      "is_adaptor": "true",
+      "mode": "slave",
+      "port_prefix": "s_axi_conv_io",
+      "param_prefix": "C_S_AXI_CONV_IO",
+      "addr_bits": "9",
+      "registers": [
+        {
+          "offset": "0x00",
+          "name": "CTRL",
+          "access": "RW",
+          "reset_value": "0x0",
+          "description": "Control signals",
+          "fields": [
+            {
+              "offset": "0",
+              "width": "1",
+              "name": "AP_START",
+              "access": "RW",
+              "reset_value": "0",
+              "description": "Control signal Register for 'ap_start'."
+            },
+            {
+              "offset": "1",
+              "width": "1",
+              "name": "AP_DONE",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Control signal Register for 'ap_done'."
+            },
+            {
+              "offset": "2",
+              "width": "1",
+              "name": "AP_IDLE",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Control signal Register for 'ap_idle'."
+            },
+            {
+              "offset": "3",
+              "width": "1",
+              "name": "AP_READY",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Control signal Register for 'ap_ready'."
+            },
+            {
+              "offset": "4",
+              "width": "3",
+              "name": "RESERVED_1",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Reserved.  0s on read."
+            },
+            {
+              "offset": "7",
+              "width": "1",
+              "name": "AUTO_RESTART",
+              "access": "RW",
+              "reset_value": "0",
+              "description": "Control signal Register for 'auto_restart'."
+            },
+            {
+              "offset": "8",
+              "width": "24",
+              "name": "RESERVED_2",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Reserved.  0s on read."
+            }
+          ]
+        },
+        {
+          "offset": "0x04",
+          "name": "GIER",
+          "access": "RW",
+          "reset_value": "0x0",
+          "description": "Global Interrupt Enable Register",
+          "fields": [
+            {
+              "offset": "0",
+              "width": "1",
+              "name": "Enable",
+              "access": "RW",
+              "reset_value": "0",
+              "description": "Master enable for the device interrupt output to the system interrupt controller: 0 = Disabled, 1 = Enabled"
+            },
+            {
+              "offset": "1",
+              "width": "31",
+              "name": "RESERVED",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Reserved.  0s on read."
+            }
+          ]
+        },
+        {
+          "offset": "0x08",
+          "name": "IP_IER",
+          "access": "RW",
+          "reset_value": "0x0",
+          "description": "IP Interrupt Enable Register",
+          "fields": [
+            {
+              "offset": "0",
+              "width": "1",
+              "name": "CHAN0_INT_EN",
+              "access": "RW",
+              "reset_value": "0",
+              "description": "Enable Channel 0 (ap_done) Interrupt.  0 = Disabled, 1 = Enabled."
+            },
+            {
+              "offset": "1",
+              "width": "1",
+              "name": "CHAN1_INT_EN",
+              "access": "RW",
+              "reset_value": "0",
+              "description": "Enable Channel 1 (ap_ready) Interrupt.  0 = Disabled, 1 = Enabled."
+            },
+            {
+              "offset": "2",
+              "width": "30",
+              "name": "RESERVED",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Reserved.  0s on read."
+            }
+          ]
+        },
+        {
+          "offset": "0x0c",
+          "name": "IP_ISR",
+          "access": "RW",
+          "reset_value": "0x0",
+          "description": "IP Interrupt Status Register",
+          "fields": [
+            {
+              "offset": "0",
+              "width": "1",
+              "name": "CHAN0_INT_ST",
+              "access": "RTOW",
+              "reset_value": "0",
+              "description": "Channel 0 (ap_done) Interrupt Status. 0 = No Channel 0 input interrupt, 1 = Channel 0 input interrup"
+            },
+            {
+              "offset": "1",
+              "width": "1",
+              "name": "CHAN1_INT_ST",
+              "access": "RTOW",
+              "reset_value": "0",
+              "description": "Channel 1 (ap_ready) Interrupt Status. 0 = No Channel 1 input interrupt, 1 = Channel 1 input interrup"
+            },
+            {
+              "offset": "2",
+              "width": "30",
+              "name": "RESERVED",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Reserved.  0s on read."
+            }
+          ]
+        },
+        {
+          "offset": "0xe0",
+          "name": "kernel_0_0",
+          "access": "W",
+          "reset_value": "0x0",
+          "description": "Data signal of kernel_0_0",
+          "fields": [{
+              "offset": "0",
+              "width": "32",
+              "name": "kernel_0_0",
+              "access": "W",
+              "reset_value": "0",
+              "description": "Bit 31 to 0 Data signal of kernel_0_0"
+            }]
+        },
+        {
+          "offset": "0xe8",
+          "name": "kernel_0_1",
+          "access": "W",
+          "reset_value": "0x0",
+          "description": "Data signal of kernel_0_1",
+          "fields": [{
+              "offset": "0",
+              "width": "32",
+              "name": "kernel_0_1",
+              "access": "W",
+              "reset_value": "0",
+              "description": "Bit 31 to 0 Data signal of kernel_0_1"
+            }]
+        },
+        {
+          "offset": "0xf0",
+          "name": "kernel_0_2",
+          "access": "W",
+          "reset_value": "0x0",
+          "description": "Data signal of kernel_0_2",
+          "fields": [{
+              "offset": "0",
+              "width": "32",
+              "name": "kernel_0_2",
+              "access": "W",
+              "reset_value": "0",
+              "description": "Bit 31 to 0 Data signal of kernel_0_2"
+            }]
+        },
+        {
+          "offset": "0xf8",
+          "name": "kernel_1_0",
+          "access": "W",
+          "reset_value": "0x0",
+          "description": "Data signal of kernel_1_0",
+          "fields": [{
+              "offset": "0",
+              "width": "32",
+              "name": "kernel_1_0",
+              "access": "W",
+              "reset_value": "0",
+              "description": "Bit 31 to 0 Data signal of kernel_1_0"
+            }]
+        },
+        {
+          "offset": "0x100",
+          "name": "kernel_1_1",
+          "access": "W",
+          "reset_value": "0x0",
+          "description": "Data signal of kernel_1_1",
+          "fields": [{
+              "offset": "0",
+              "width": "32",
+              "name": "kernel_1_1",
+              "access": "W",
+              "reset_value": "0",
+              "description": "Bit 31 to 0 Data signal of kernel_1_1"
+            }]
+        },
+        {
+          "offset": "0x108",
+          "name": "kernel_1_2",
+          "access": "W",
+          "reset_value": "0x0",
+          "description": "Data signal of kernel_1_2",
+          "fields": [{
+              "offset": "0",
+              "width": "32",
+              "name": "kernel_1_2",
+              "access": "W",
+              "reset_value": "0",
+              "description": "Bit 31 to 0 Data signal of kernel_1_2"
+            }]
+        },
+        {
+          "offset": "0x110",
+          "name": "kernel_2_0",
+          "access": "W",
+          "reset_value": "0x0",
+          "description": "Data signal of kernel_2_0",
+          "fields": [{
+              "offset": "0",
+              "width": "32",
+              "name": "kernel_2_0",
+              "access": "W",
+              "reset_value": "0",
+              "description": "Bit 31 to 0 Data signal of kernel_2_0"
+            }]
+        },
+        {
+          "offset": "0x118",
+          "name": "kernel_2_1",
+          "access": "W",
+          "reset_value": "0x0",
+          "description": "Data signal of kernel_2_1",
+          "fields": [{
+              "offset": "0",
+              "width": "32",
+              "name": "kernel_2_1",
+              "access": "W",
+              "reset_value": "0",
+              "description": "Bit 31 to 0 Data signal of kernel_2_1"
+            }]
+        },
+        {
+          "offset": "0x120",
+          "name": "kernel_2_2",
+          "access": "W",
+          "reset_value": "0x0",
+          "description": "Data signal of kernel_2_2",
+          "fields": [{
+              "offset": "0",
+              "width": "32",
+              "name": "kernel_2_2",
+              "access": "W",
+              "reset_value": "0",
+              "description": "Bit 31 to 0 Data signal of kernel_2_2"
+            }]
+        }
+      ],
+      "memories": "input_0 {base_address 64 range 64} input_1 {base_address 128 range 64} input_2 {base_address 192 range 32} output_r {base_address 320 range 64}",
+      "ctype": {
+        "AWVALID": {"Type": "bool"},
+        "AWREADY": {"Type": "bool"},
+        "WVALID": {"Type": "bool"},
+        "WREADY": {"Type": "bool"},
+        "BVALID": {"Type": "bool"},
+        "BREADY": {"Type": "bool"},
+        "BRESP": {
+          "Type": "integer unsigned",
+          "Width": "2"
+        },
+        "ARVALID": {"Type": "bool"},
+        "ARREADY": {"Type": "bool"},
+        "RVALID": {"Type": "bool"},
+        "RREADY": {"Type": "bool"},
+        "RRESP": {
+          "Type": "integer unsigned",
+          "Width": "2"
+        },
+        "AWADDR": {
+          "Type": "integer unsigned",
+          "Width": "9"
+        },
+        "WDATA": {
+          "Type": "integer signed",
+          "Width": "32"
+        },
+        "WSTRB": {
+          "Type": "integer unsigned",
           "Width": "4"
-        }}
-    },
-    "input_0_address1": {
-      "type": "data",
-      "dir": "out",
-      "width": "4",
-      "ctype": {"DATA": {
-          "Type": "null",
-          "Width": "4"
-        }}
-    },
-    "input_0_ce1": {
-      "type": "data",
-      "dir": "out",
-      "width": "1",
-      "ctype": {"DATA": {
-          "Type": "null",
-          "Width": "1"
-        }}
-    },
-    "input_0_q0": {
-      "type": "data",
-      "dir": "in",
-      "width": "32",
-      "ctype": {"DATA": {
+        },
+        "ARADDR": {
+          "Type": "integer unsigned",
+          "Width": "9"
+        },
+        "RDATA": {
           "Type": "integer signed",
           "Width": "32"
-        }}
-    },
-    "input_0_q1": {
-      "type": "data",
-      "dir": "in",
-      "width": "32",
-      "ctype": {"DATA": {
-          "Type": "null",
-          "Width": "32"
-        }}
-    },
-    "input_1_address0": {
-      "type": "data",
-      "dir": "out",
-      "width": "4",
-      "ctype": {"DATA": {
-          "Type": "null",
-          "Width": "4"
-        }}
-    },
-    "input_1_address1": {
-      "type": "data",
-      "dir": "out",
-      "width": "4",
-      "ctype": {"DATA": {
-          "Type": "null",
-          "Width": "4"
-        }}
-    },
-    "input_1_ce1": {
-      "type": "data",
-      "dir": "out",
-      "width": "1",
-      "ctype": {"DATA": {
-          "Type": "null",
-          "Width": "1"
-        }}
-    },
-    "input_1_q0": {
-      "type": "data",
-      "dir": "in",
-      "width": "32",
-      "ctype": {"DATA": {
-          "Type": "integer signed",
-          "Width": "32"
-        }}
-    },
-    "input_1_q1": {
-      "type": "data",
-      "dir": "in",
-      "width": "32",
-      "ctype": {"DATA": {
-          "Type": "null",
-          "Width": "32"
-        }}
-    },
-    "input_2_address0": {
-      "type": "data",
-      "dir": "out",
-      "width": "3",
-      "ctype": {"DATA": {
-          "Type": "null",
-          "Width": "3"
-        }}
-    },
-    "input_2_address1": {
-      "type": "data",
-      "dir": "out",
-      "width": "3",
-      "ctype": {"DATA": {
-          "Type": "null",
-          "Width": "3"
-        }}
-    },
-    "input_2_ce1": {
-      "type": "data",
-      "dir": "out",
-      "width": "1",
-      "ctype": {"DATA": {
-          "Type": "null",
-          "Width": "1"
-        }}
-    },
-    "input_2_q0": {
-      "type": "data",
-      "dir": "in",
-      "width": "32",
-      "ctype": {"DATA": {
-          "Type": "integer signed",
-          "Width": "32"
-        }}
-    },
-    "input_2_q1": {
-      "type": "data",
-      "dir": "in",
-      "width": "32",
-      "ctype": {"DATA": {
-          "Type": "null",
-          "Width": "32"
-        }}
-    },
-    "kernel_0_0": {
-      "type": "data",
-      "dir": "in",
-      "width": "32",
-      "ctype": {"DATA": {
-          "Type": "integer signed",
-          "Width": "32"
-        }}
-    },
-    "kernel_0_1": {
-      "type": "data",
-      "dir": "in",
-      "width": "32",
-      "ctype": {"DATA": {
-          "Type": "integer signed",
-          "Width": "32"
-        }}
-    },
-    "kernel_0_2": {
-      "type": "data",
-      "dir": "in",
-      "width": "32",
-      "ctype": {"DATA": {
-          "Type": "integer signed",
-          "Width": "32"
-        }}
-    },
-    "kernel_1_0": {
-      "type": "data",
-      "dir": "in",
-      "width": "32",
-      "ctype": {"DATA": {
-          "Type": "integer signed",
-          "Width": "32"
-        }}
-    },
-    "kernel_1_1": {
-      "type": "data",
-      "dir": "in",
-      "width": "32",
-      "ctype": {"DATA": {
-          "Type": "integer signed",
-          "Width": "32"
-        }}
-    },
-    "kernel_1_2": {
-      "type": "data",
-      "dir": "in",
-      "width": "32",
-      "ctype": {"DATA": {
-          "Type": "integer signed",
-          "Width": "32"
-        }}
-    },
-    "kernel_2_0": {
-      "type": "data",
-      "dir": "in",
-      "width": "32",
-      "ctype": {"DATA": {
-          "Type": "integer signed",
-          "Width": "32"
-        }}
-    },
-    "kernel_2_1": {
-      "type": "data",
-      "dir": "in",
-      "width": "32",
-      "ctype": {"DATA": {
-          "Type": "integer signed",
-          "Width": "32"
-        }}
-    },
-    "kernel_2_2": {
-      "type": "data",
-      "dir": "in",
-      "width": "32",
-      "ctype": {"DATA": {
-          "Type": "integer signed",
-          "Width": "32"
-        }}
-    },
-    "output_r_address0": {
-      "type": "data",
-      "dir": "out",
-      "width": "4",
-      "ctype": {"DATA": {
-          "Type": "null",
-          "Width": "4"
-        }}
-    },
-    "output_r_address1": {
-      "type": "data",
-      "dir": "out",
-      "width": "4",
-      "ctype": {"DATA": {
-          "Type": "null",
-          "Width": "4"
-        }}
-    },
-    "output_r_ce1": {
-      "type": "data",
-      "dir": "out",
-      "width": "1",
-      "ctype": {"DATA": {
-          "Type": "null",
-          "Width": "1"
-        }}
-    },
-    "output_r_d0": {
-      "type": "data",
-      "dir": "out",
-      "width": "32",
-      "ctype": {"DATA": {
-          "Type": "integer signed",
-          "Width": "32"
-        }}
-    },
-    "output_r_d1": {
-      "type": "data",
-      "dir": "out",
-      "width": "32",
-      "ctype": {"DATA": {
-          "Type": "null",
-          "Width": "32"
-        }}
-    },
-    "output_r_we1": {
-      "type": "data",
-      "dir": "out",
-      "width": "1",
-      "ctype": {"DATA": {
-          "Type": "null",
-          "Width": "1"
-        }}
+        }
+      },
+      "data_width": "32",
+      "port_width": {
+        "ARADDR": "9",
+        "AWADDR": "9",
+        "RDATA": "32",
+        "WDATA": "32",
+        "WSTRB": "4"
+      }
     }
   },
   "RtlPorts": {
+    "s_axi_conv_io_AWVALID": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_conv_io_AWREADY": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_conv_io_AWADDR": {
+      "dir": "in",
+      "width": "9"
+    },
+    "s_axi_conv_io_WVALID": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_conv_io_WREADY": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_conv_io_WDATA": {
+      "dir": "in",
+      "width": "32"
+    },
+    "s_axi_conv_io_WSTRB": {
+      "dir": "in",
+      "width": "4"
+    },
+    "s_axi_conv_io_ARVALID": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_conv_io_ARREADY": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_conv_io_ARADDR": {
+      "dir": "in",
+      "width": "9"
+    },
+    "s_axi_conv_io_RVALID": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_conv_io_RREADY": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_conv_io_RDATA": {
+      "dir": "out",
+      "width": "32"
+    },
+    "s_axi_conv_io_RRESP": {
+      "dir": "out",
+      "width": "2"
+    },
+    "s_axi_conv_io_BVALID": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_conv_io_BREADY": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_conv_io_BRESP": {
+      "dir": "out",
+      "width": "2"
+    },
     "ap_clk": {
       "dir": "in",
       "width": "1"
     },
-    "ap_rst": {
+    "ap_rst_n": {
       "dir": "in",
       "width": "1"
     },
-    "ap_start": {
-      "dir": "in",
-      "width": "1"
-    },
-    "ap_done": {
-      "dir": "out",
-      "width": "1"
-    },
-    "ap_idle": {
-      "dir": "out",
-      "width": "1"
-    },
-    "ap_ready": {
-      "dir": "out",
-      "width": "1"
-    },
-    "input_0_address0": {
-      "dir": "out",
-      "width": "4"
-    },
-    "input_0_ce0": {
-      "dir": "out",
-      "width": "1"
-    },
-    "input_0_q0": {
-      "dir": "in",
-      "width": "32"
-    },
-    "input_0_address1": {
-      "dir": "out",
-      "width": "4"
-    },
-    "input_0_ce1": {
+    "interrupt": {
       "dir": "out",
       "width": "1",
       "isVector": "true"
-    },
-    "input_0_q1": {
-      "dir": "in",
-      "width": "32"
-    },
-    "input_1_address0": {
-      "dir": "out",
-      "width": "4"
-    },
-    "input_1_ce0": {
-      "dir": "out",
-      "width": "1"
-    },
-    "input_1_q0": {
-      "dir": "in",
-      "width": "32"
-    },
-    "input_1_address1": {
-      "dir": "out",
-      "width": "4"
-    },
-    "input_1_ce1": {
-      "dir": "out",
-      "width": "1",
-      "isVector": "true"
-    },
-    "input_1_q1": {
-      "dir": "in",
-      "width": "32"
-    },
-    "input_2_address0": {
-      "dir": "out",
-      "width": "3"
-    },
-    "input_2_ce0": {
-      "dir": "out",
-      "width": "1"
-    },
-    "input_2_q0": {
-      "dir": "in",
-      "width": "32"
-    },
-    "input_2_address1": {
-      "dir": "out",
-      "width": "3"
-    },
-    "input_2_ce1": {
-      "dir": "out",
-      "width": "1",
-      "isVector": "true"
-    },
-    "input_2_q1": {
-      "dir": "in",
-      "width": "32"
-    },
-    "kernel_0_0": {
-      "dir": "in",
-      "width": "32"
-    },
-    "kernel_0_1": {
-      "dir": "in",
-      "width": "32"
-    },
-    "kernel_0_2": {
-      "dir": "in",
-      "width": "32"
-    },
-    "kernel_1_0": {
-      "dir": "in",
-      "width": "32"
-    },
-    "kernel_1_1": {
-      "dir": "in",
-      "width": "32"
-    },
-    "kernel_1_2": {
-      "dir": "in",
-      "width": "32"
-    },
-    "kernel_2_0": {
-      "dir": "in",
-      "width": "32"
-    },
-    "kernel_2_1": {
-      "dir": "in",
-      "width": "32"
-    },
-    "kernel_2_2": {
-      "dir": "in",
-      "width": "32"
-    },
-    "output_r_address0": {
-      "dir": "out",
-      "width": "4"
-    },
-    "output_r_ce0": {
-      "dir": "out",
-      "width": "1"
-    },
-    "output_r_we0": {
-      "dir": "out",
-      "width": "1"
-    },
-    "output_r_d0": {
-      "dir": "out",
-      "width": "32"
-    },
-    "output_r_address1": {
-      "dir": "out",
-      "width": "4"
-    },
-    "output_r_ce1": {
-      "dir": "out",
-      "width": "1",
-      "isVector": "true"
-    },
-    "output_r_we1": {
-      "dir": "out",
-      "width": "1",
-      "isVector": "true"
-    },
-    "output_r_d1": {
-      "dir": "out",
-      "width": "32"
     }
   },
   "CPorts": {
-    "ap_ctrl": {
-      "interfaceRef": "ap_ctrl",
-      "dir": "out"
-    },
-    "input_0_q0": {
-      "interfaceRef": "input_0_q0",
+    "input_0": {
+      "interfaceRef": "s_axi_conv_io",
       "dir": "in",
-      "dataWidth": "32",
-      "busTypeRef": "ap_memory",
-      "arraySize": "10",
-      "handshakeRef": "ap_none"
+      "offset": "64",
+      "statusOffset": "NA",
+      "Object": "conv_io"
     },
-    "input_1_q0": {
-      "interfaceRef": "input_1_q0",
+    "input_1": {
+      "interfaceRef": "s_axi_conv_io",
       "dir": "in",
-      "dataWidth": "32",
-      "busTypeRef": "ap_memory",
-      "arraySize": "10",
-      "handshakeRef": "ap_none"
+      "offset": "128",
+      "statusOffset": "NA",
+      "Object": "conv_io"
     },
-    "input_2_q0": {
-      "interfaceRef": "input_2_q0",
+    "input_2": {
+      "interfaceRef": "s_axi_conv_io",
       "dir": "in",
-      "dataWidth": "32",
-      "busTypeRef": "ap_memory",
-      "arraySize": "5",
-      "handshakeRef": "ap_none"
+      "offset": "192",
+      "statusOffset": "NA",
+      "Object": "conv_io"
     },
     "kernel_0_0": {
-      "interfaceRef": "kernel_0_0",
+      "interfaceRef": "s_axi_conv_io",
       "dir": "in",
-      "dataWidth": "32",
-      "handshakeRef": "ap_none"
+      "offset": "224",
+      "statusOffset": "NA",
+      "handshakeRef": "ap_none",
+      "Object": "conv_io"
     },
     "kernel_0_1": {
-      "interfaceRef": "kernel_0_1",
+      "interfaceRef": "s_axi_conv_io",
       "dir": "in",
-      "dataWidth": "32",
-      "handshakeRef": "ap_none"
+      "offset": "232",
+      "statusOffset": "NA",
+      "handshakeRef": "ap_none",
+      "Object": "conv_io"
     },
     "kernel_0_2": {
-      "interfaceRef": "kernel_0_2",
+      "interfaceRef": "s_axi_conv_io",
       "dir": "in",
-      "dataWidth": "32",
-      "handshakeRef": "ap_none"
+      "offset": "240",
+      "statusOffset": "NA",
+      "handshakeRef": "ap_none",
+      "Object": "conv_io"
     },
     "kernel_1_0": {
-      "interfaceRef": "kernel_1_0",
+      "interfaceRef": "s_axi_conv_io",
       "dir": "in",
-      "dataWidth": "32",
-      "handshakeRef": "ap_none"
+      "offset": "248",
+      "statusOffset": "NA",
+      "handshakeRef": "ap_none",
+      "Object": "conv_io"
     },
     "kernel_1_1": {
-      "interfaceRef": "kernel_1_1",
+      "interfaceRef": "s_axi_conv_io",
       "dir": "in",
-      "dataWidth": "32",
-      "handshakeRef": "ap_none"
+      "offset": "256",
+      "statusOffset": "NA",
+      "handshakeRef": "ap_none",
+      "Object": "conv_io"
     },
     "kernel_1_2": {
-      "interfaceRef": "kernel_1_2",
+      "interfaceRef": "s_axi_conv_io",
       "dir": "in",
-      "dataWidth": "32",
-      "handshakeRef": "ap_none"
+      "offset": "264",
+      "statusOffset": "NA",
+      "handshakeRef": "ap_none",
+      "Object": "conv_io"
     },
     "kernel_2_0": {
-      "interfaceRef": "kernel_2_0",
+      "interfaceRef": "s_axi_conv_io",
       "dir": "in",
-      "dataWidth": "32",
-      "handshakeRef": "ap_none"
+      "offset": "272",
+      "statusOffset": "NA",
+      "handshakeRef": "ap_none",
+      "Object": "conv_io"
     },
     "kernel_2_1": {
-      "interfaceRef": "kernel_2_1",
+      "interfaceRef": "s_axi_conv_io",
       "dir": "in",
-      "dataWidth": "32",
-      "handshakeRef": "ap_none"
+      "offset": "280",
+      "statusOffset": "NA",
+      "handshakeRef": "ap_none",
+      "Object": "conv_io"
     },
     "kernel_2_2": {
-      "interfaceRef": "kernel_2_2",
+      "interfaceRef": "s_axi_conv_io",
       "dir": "in",
-      "dataWidth": "32",
-      "handshakeRef": "ap_none"
+      "offset": "288",
+      "statusOffset": "NA",
+      "handshakeRef": "ap_none",
+      "Object": "conv_io"
     },
-    "output_r_d0": {
-      "interfaceRef": "output_r_d0",
+    "output_r": {
+      "interfaceRef": "s_axi_conv_io",
       "dir": "out",
-      "dataWidth": "32",
-      "busTypeRef": "ap_memory",
-      "arraySize": "9",
-      "handshakeRef": "ap_none"
+      "offset": "320",
+      "statusOffset": "NA",
+      "Object": "conv_io",
+      "firstOutLatency": "10"
+    },
+    "ap_ctrl": {
+      "interfaceRef": "s_axi_conv_io",
+      "dir": "in",
+      "offset": "0"
     }
   },
   "ModuleInfo": {
     "Hierarchy": {"ModuleName": "convolution2D"},
     "Metrics": {"convolution2D": {
         "Latency": {
-          "LatencyBest": "15",
-          "LatencyAvg": "15",
-          "LatencyWorst": "15",
-          "PipelineII": "16",
+          "LatencyBest": "25",
+          "LatencyAvg": "25",
+          "LatencyWorst": "25",
+          "PipelineII": "26",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
@@ -624,15 +643,15 @@
         "Loops": [{
             "Name": "Loop 1",
             "TripCount": "3",
-            "Latency": "13",
-            "PipelineII": "3",
-            "PipelineDepth": "8"
+            "Latency": "23",
+            "PipelineII": "6",
+            "PipelineDepth": "12"
           }],
         "Area": {
-          "BRAM_18K": "0",
-          "DSP48E": "75",
-          "FF": "1762",
-          "LUT": "1661"
+          "BRAM_18K": "8",
+          "DSP48E": "54",
+          "FF": "2273",
+          "LUT": "2324"
         }
       }}
   },
@@ -646,7 +665,7 @@
   },
   "GenData": {
     "DataVersion": "0.1",
-    "Time": "2024-12-18 18:11:02 +0700",
+    "Time": "2024-12-18 21:04:28 +0700",
     "ToolName": "vivado_hls",
     "ToolVersion": "2018.3"
   }

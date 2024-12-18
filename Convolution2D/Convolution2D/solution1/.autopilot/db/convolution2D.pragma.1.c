@@ -641,6 +641,10 @@ const char *__mingw_get_crt_info (void);
 # 3 "Convolution2D/convolution2D.c" 2
 
 void convolution2D(int input[5][5], int kernel[3][3], int output[3][3]) {_ssdm_SpecArrayDimSize(input, 5);_ssdm_SpecArrayDimSize(kernel, 3);_ssdm_SpecArrayDimSize(output, 3);
+_ssdm_op_SpecInterface(0, "s_axilite", 0, 0, "", 0, 0, "conv_io", "", "", 0, 0, 0, 0, "", "");
+_ssdm_op_SpecInterface(output, "s_axilite", 0, 0, "", 0, 0, "conv_io", "", "", 0, 0, 0, 0, "", "");
+_ssdm_op_SpecInterface(kernel, "s_axilite", 0, 0, "", 0, 0, "conv_io", "", "", 0, 0, 0, 0, "", "");
+_ssdm_op_SpecInterface(input, "s_axilite", 0, 0, "", 0, 0, "conv_io", "", "", 0, 0, 0, 0, "", "");
 _ssdm_InlineSelf(0, "");
 _ssdm_SpecArrayPartition( input, 2, "BLOCK", 3, "");
 _ssdm_SpecArrayPartition( kernel, 0, "COMPLETE", 0, "");

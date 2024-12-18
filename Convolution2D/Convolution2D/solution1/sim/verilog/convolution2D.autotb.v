@@ -1,5 +1,5 @@
 // ==============================================================
-// File generated on Wed Dec 18 17:07:46 +0700 2024
+// File generated on Wed Dec 18 21:05:07 +0700 2024
 // Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 // SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 // IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -17,12 +17,9 @@
 `define AUTOTB_MAX_ALLOW_LATENCY  15000000
 `define AUTOTB_CLOCK_PERIOD_DIV2 5.00
 
-`define AESL_MEM_input_0 AESL_automem_input_0
-`define AESL_MEM_INST_input_0 mem_inst_input_0
-`define AESL_MEM_input_1 AESL_automem_input_1
-`define AESL_MEM_INST_input_1 mem_inst_input_1
-`define AESL_MEM_input_2 AESL_automem_input_2
-`define AESL_MEM_INST_input_2 mem_inst_input_2
+`define AESL_DEPTH_input_0 1
+`define AESL_DEPTH_input_1 1
+`define AESL_DEPTH_input_2 1
 `define AESL_DEPTH_kernel_0_0 1
 `define AESL_DEPTH_kernel_0_1 1
 `define AESL_DEPTH_kernel_0_2 1
@@ -32,8 +29,7 @@
 `define AESL_DEPTH_kernel_2_0 1
 `define AESL_DEPTH_kernel_2_1 1
 `define AESL_DEPTH_kernel_2_2 1
-`define AESL_MEM_output_r AESL_automem_output_r
-`define AESL_MEM_INST_output_r mem_inst_output_r
+`define AESL_DEPTH_output_r 1
 `define AUTOTB_TVIN_input_0  "../tv/cdatafile/c.convolution2D.autotvin_input_0.dat"
 `define AUTOTB_TVIN_input_1  "../tv/cdatafile/c.convolution2D.autotvin_input_1.dat"
 `define AUTOTB_TVIN_input_2  "../tv/cdatafile/c.convolution2D.autotvin_input_2.dat"
@@ -46,7 +42,6 @@
 `define AUTOTB_TVIN_kernel_2_0  "../tv/cdatafile/c.convolution2D.autotvin_kernel_2_0.dat"
 `define AUTOTB_TVIN_kernel_2_1  "../tv/cdatafile/c.convolution2D.autotvin_kernel_2_1.dat"
 `define AUTOTB_TVIN_kernel_2_2  "../tv/cdatafile/c.convolution2D.autotvin_kernel_2_2.dat"
-`define AUTOTB_TVIN_output_r  "../tv/cdatafile/c.convolution2D.autotvin_output_r.dat"
 `define AUTOTB_TVIN_input_0_out_wrapc  "../tv/rtldatafile/rtl.convolution2D.autotvin_input_0.dat"
 `define AUTOTB_TVIN_input_1_out_wrapc  "../tv/rtldatafile/rtl.convolution2D.autotvin_input_1.dat"
 `define AUTOTB_TVIN_input_2_out_wrapc  "../tv/rtldatafile/rtl.convolution2D.autotvin_input_2.dat"
@@ -59,14 +54,13 @@
 `define AUTOTB_TVIN_kernel_2_0_out_wrapc  "../tv/rtldatafile/rtl.convolution2D.autotvin_kernel_2_0.dat"
 `define AUTOTB_TVIN_kernel_2_1_out_wrapc  "../tv/rtldatafile/rtl.convolution2D.autotvin_kernel_2_1.dat"
 `define AUTOTB_TVIN_kernel_2_2_out_wrapc  "../tv/rtldatafile/rtl.convolution2D.autotvin_kernel_2_2.dat"
-`define AUTOTB_TVIN_output_r_out_wrapc  "../tv/rtldatafile/rtl.convolution2D.autotvin_output_r.dat"
 `define AUTOTB_TVOUT_output_r  "../tv/cdatafile/c.convolution2D.autotvout_output_r.dat"
 `define AUTOTB_TVOUT_output_r_out_wrapc  "../tv/rtldatafile/rtl.convolution2D.autotvout_output_r.dat"
 module `AUTOTB_TOP;
 
 parameter AUTOTB_TRANSACTION_NUM = 5;
 parameter PROGRESS_TIMEOUT = 10000000;
-parameter LATENCY_ESTIMATION = 70;
+parameter LATENCY_ESTIMATION = 25;
 parameter LENGTH_input_0 = 10;
 parameter LENGTH_input_1 = 10;
 parameter LENGTH_input_2 = 5;
@@ -83,7 +77,7 @@ parameter LENGTH_output_r = 9;
 
 task read_token;
     input integer fp;
-    output reg [159 : 0] token;
+    output reg [191 : 0] token;
     integer ret;
     begin
         token = "";
@@ -109,41 +103,24 @@ reg AESL_done_delay2 = 0;
 reg AESL_ready_delay = 0;
 wire ready;
 wire ready_wire;
-wire ap_start;
-wire ap_done;
-wire ap_idle;
-wire ap_ready;
-wire [3 : 0] input_0_address0;
-wire  input_0_ce0;
-wire [31 : 0] input_0_q0;
-wire [3 : 0] input_0_address1;
-wire  input_0_ce1;
-wire [31 : 0] input_0_q1;
-wire [3 : 0] input_1_address0;
-wire  input_1_ce0;
-wire [31 : 0] input_1_q0;
-wire [3 : 0] input_1_address1;
-wire  input_1_ce1;
-wire [31 : 0] input_1_q1;
-wire [2 : 0] input_2_address0;
-wire  input_2_ce0;
-wire [31 : 0] input_2_q0;
-wire [2 : 0] input_2_address1;
-wire  input_2_ce1;
-wire [31 : 0] input_2_q1;
-wire [31 : 0] kernel_0_0;
-wire [31 : 0] kernel_0_1;
-wire [31 : 0] kernel_0_2;
-wire [31 : 0] kernel_1_0;
-wire [31 : 0] kernel_1_1;
-wire [31 : 0] kernel_1_2;
-wire [31 : 0] kernel_2_0;
-wire [31 : 0] kernel_2_1;
-wire [31 : 0] kernel_2_2;
-wire [3 : 0] output_r_address0;
-wire  output_r_ce0;
-wire  output_r_we0;
-wire [31 : 0] output_r_d0;
+wire [8 : 0] conv_io_AWADDR;
+wire  conv_io_AWVALID;
+wire  conv_io_AWREADY;
+wire  conv_io_WVALID;
+wire  conv_io_WREADY;
+wire [31 : 0] conv_io_WDATA;
+wire [3 : 0] conv_io_WSTRB;
+wire [8 : 0] conv_io_ARADDR;
+wire  conv_io_ARVALID;
+wire  conv_io_ARREADY;
+wire  conv_io_RVALID;
+wire  conv_io_RREADY;
+wire [31 : 0] conv_io_RDATA;
+wire [1 : 0] conv_io_RRESP;
+wire  conv_io_BVALID;
+wire  conv_io_BREADY;
+wire [1 : 0] conv_io_BRESP;
+wire  conv_io_INTERRUPT;
 integer done_cnt = 0;
 integer AESL_ready_cnt = 0;
 integer ready_cnt = 0;
@@ -153,737 +130,158 @@ reg ready_last_n;
 reg ready_delay_last_n;
 reg done_delay_last_n;
 reg interface_done = 0;
+wire conv_io_read_data_finish;
+wire conv_io_write_data_finish;
+wire AESL_slave_start;
+reg AESL_slave_start_lock = 0;
+wire AESL_slave_write_start_in;
+wire AESL_slave_write_start_finish;
+reg AESL_slave_ready;
+wire AESL_slave_output_done;
+wire AESL_slave_done;
+reg ready_rise = 0;
+reg start_rise = 0;
+reg slave_start_status = 0;
+reg slave_done_status = 0;
+reg ap_done_lock = 0;
 
 wire ap_clk;
-wire ap_rst;
 wire ap_rst_n;
+wire ap_rst_n_n;
 
 `AUTOTB_DUT `AUTOTB_DUT_INST(
+    .s_axi_conv_io_AWADDR(conv_io_AWADDR),
+    .s_axi_conv_io_AWVALID(conv_io_AWVALID),
+    .s_axi_conv_io_AWREADY(conv_io_AWREADY),
+    .s_axi_conv_io_WVALID(conv_io_WVALID),
+    .s_axi_conv_io_WREADY(conv_io_WREADY),
+    .s_axi_conv_io_WDATA(conv_io_WDATA),
+    .s_axi_conv_io_WSTRB(conv_io_WSTRB),
+    .s_axi_conv_io_ARADDR(conv_io_ARADDR),
+    .s_axi_conv_io_ARVALID(conv_io_ARVALID),
+    .s_axi_conv_io_ARREADY(conv_io_ARREADY),
+    .s_axi_conv_io_RVALID(conv_io_RVALID),
+    .s_axi_conv_io_RREADY(conv_io_RREADY),
+    .s_axi_conv_io_RDATA(conv_io_RDATA),
+    .s_axi_conv_io_RRESP(conv_io_RRESP),
+    .s_axi_conv_io_BVALID(conv_io_BVALID),
+    .s_axi_conv_io_BREADY(conv_io_BREADY),
+    .s_axi_conv_io_BRESP(conv_io_BRESP),
+    .interrupt(conv_io_INTERRUPT),
     .ap_clk(ap_clk),
-    .ap_rst(ap_rst),
-    .ap_start(ap_start),
-    .ap_done(ap_done),
-    .ap_idle(ap_idle),
-    .ap_ready(ap_ready),
-    .input_0_address0(input_0_address0),
-    .input_0_ce0(input_0_ce0),
-    .input_0_q0(input_0_q0),
-    .input_0_address1(input_0_address1),
-    .input_0_ce1(input_0_ce1),
-    .input_0_q1(input_0_q1),
-    .input_1_address0(input_1_address0),
-    .input_1_ce0(input_1_ce0),
-    .input_1_q0(input_1_q0),
-    .input_1_address1(input_1_address1),
-    .input_1_ce1(input_1_ce1),
-    .input_1_q1(input_1_q1),
-    .input_2_address0(input_2_address0),
-    .input_2_ce0(input_2_ce0),
-    .input_2_q0(input_2_q0),
-    .input_2_address1(input_2_address1),
-    .input_2_ce1(input_2_ce1),
-    .input_2_q1(input_2_q1),
-    .kernel_0_0(kernel_0_0),
-    .kernel_0_1(kernel_0_1),
-    .kernel_0_2(kernel_0_2),
-    .kernel_1_0(kernel_1_0),
-    .kernel_1_1(kernel_1_1),
-    .kernel_1_2(kernel_1_2),
-    .kernel_2_0(kernel_2_0),
-    .kernel_2_1(kernel_2_1),
-    .kernel_2_2(kernel_2_2),
-    .output_r_address0(output_r_address0),
-    .output_r_ce0(output_r_ce0),
-    .output_r_we0(output_r_we0),
-    .output_r_d0(output_r_d0));
+    .ap_rst_n(ap_rst_n));
 
 // Assignment for control signal
 assign ap_clk = AESL_clock;
-assign ap_rst = AESL_reset;
-assign ap_rst_n = ~AESL_reset;
+assign ap_rst_n = AESL_reset;
+assign ap_rst_n_n = ~AESL_reset;
 assign AESL_reset = rst;
-assign ap_start = AESL_start;
 assign AESL_start = start;
-assign AESL_done = ap_done;
-assign AESL_idle = ap_idle;
-assign AESL_ready = ap_ready;
 assign AESL_ce = ce;
 assign AESL_continue = tb_continue;
-    always @(posedge AESL_clock) begin
-        if (AESL_reset) begin
-        end else begin
-            if (AESL_done !== 1 && AESL_done !== 0) begin
-                $display("ERROR: Control signal AESL_done is invalid!");
-                $finish;
-            end
+  assign AESL_slave_write_start_in = slave_start_status  & conv_io_write_data_finish;
+  assign AESL_slave_start = AESL_slave_write_start_finish;
+  assign AESL_done = slave_done_status  & conv_io_read_data_finish;
+
+always @(posedge AESL_clock)
+begin
+    if(AESL_reset === 0)
+    begin
+        slave_start_status <= 1;
+    end
+    else begin
+        if (AESL_start == 1 ) begin
+            start_rise = 1;
+        end
+        if (start_rise == 1 && AESL_done == 1 ) begin
+            slave_start_status <= 1;
+        end
+        if (AESL_slave_write_start_in == 1 && AESL_done == 0) begin 
+            slave_start_status <= 0;
+            start_rise = 0;
         end
     end
-    always @(posedge AESL_clock) begin
-        if (AESL_reset) begin
-        end else begin
-            if (AESL_ready !== 1 && AESL_ready !== 0) begin
-                $display("ERROR: Control signal AESL_ready is invalid!");
-                $finish;
-            end
+end
+
+always @(posedge AESL_clock)
+begin
+    if(AESL_reset === 0)
+    begin
+        AESL_slave_ready <= 0;
+        ready_rise = 0;
+    end
+    else begin
+        if (AESL_ready == 1 ) begin
+            ready_rise = 1;
+        end
+        if (ready_rise == 1 && AESL_done_delay == 1 ) begin
+            AESL_slave_ready <= 1;
+        end
+        if (AESL_slave_ready == 1) begin 
+            AESL_slave_ready <= 0;
+            ready_rise = 0;
         end
     end
-//------------------------arrayinput_0 Instantiation--------------
+end
 
-// The input and output of arrayinput_0
-wire    arrayinput_0_ce0, arrayinput_0_ce1;
-wire    arrayinput_0_we0, arrayinput_0_we1;
-wire    [3 : 0]    arrayinput_0_address0, arrayinput_0_address1;
-wire    [31 : 0]    arrayinput_0_din0, arrayinput_0_din1;
-wire    [31 : 0]    arrayinput_0_dout0, arrayinput_0_dout1;
-wire    arrayinput_0_ready;
-wire    arrayinput_0_done;
+always @ (posedge AESL_clock)
+begin
+    if (AESL_done == 1) begin
+        slave_done_status <= 0;
+    end
+    else if (AESL_slave_output_done == 1 ) begin
+        slave_done_status <= 1;
+    end
+end
 
-`AESL_MEM_input_0 `AESL_MEM_INST_input_0(
-    .clk        (AESL_clock),
-    .rst        (AESL_reset),
-    .ce0        (arrayinput_0_ce0),
-    .we0        (arrayinput_0_we0),
-    .address0   (arrayinput_0_address0),
-    .din0       (arrayinput_0_din0),
-    .dout0      (arrayinput_0_dout0),
-    .ce1        (arrayinput_0_ce1),
-    .we1        (arrayinput_0_we1),
-    .address1   (arrayinput_0_address1),
-    .din1       (arrayinput_0_din1),
-    .dout1      (arrayinput_0_dout1),
-    .ready      (arrayinput_0_ready),
-    .done    (arrayinput_0_done)
+
+
+
+
+
+
+
+
+
+
+
+
+AESL_axi_slave_conv_io AESL_AXI_SLAVE_conv_io(
+    .clk   (AESL_clock),
+    .reset (AESL_reset),
+    .TRAN_s_axi_conv_io_AWADDR (conv_io_AWADDR),
+    .TRAN_s_axi_conv_io_AWVALID (conv_io_AWVALID),
+    .TRAN_s_axi_conv_io_AWREADY (conv_io_AWREADY),
+    .TRAN_s_axi_conv_io_WVALID (conv_io_WVALID),
+    .TRAN_s_axi_conv_io_WREADY (conv_io_WREADY),
+    .TRAN_s_axi_conv_io_WDATA (conv_io_WDATA),
+    .TRAN_s_axi_conv_io_WSTRB (conv_io_WSTRB),
+    .TRAN_s_axi_conv_io_ARADDR (conv_io_ARADDR),
+    .TRAN_s_axi_conv_io_ARVALID (conv_io_ARVALID),
+    .TRAN_s_axi_conv_io_ARREADY (conv_io_ARREADY),
+    .TRAN_s_axi_conv_io_RVALID (conv_io_RVALID),
+    .TRAN_s_axi_conv_io_RREADY (conv_io_RREADY),
+    .TRAN_s_axi_conv_io_RDATA (conv_io_RDATA),
+    .TRAN_s_axi_conv_io_RRESP (conv_io_RRESP),
+    .TRAN_s_axi_conv_io_BVALID (conv_io_BVALID),
+    .TRAN_s_axi_conv_io_BREADY (conv_io_BREADY),
+    .TRAN_s_axi_conv_io_BRESP (conv_io_BRESP),
+    .TRAN_conv_io_interrupt (conv_io_INTERRUPT),
+    .TRAN_conv_io_read_data_finish(conv_io_read_data_finish),
+    .TRAN_conv_io_write_data_finish(conv_io_write_data_finish),
+    .TRAN_conv_io_ready_out (AESL_ready),
+    .TRAN_conv_io_ready_in (AESL_slave_ready),
+    .TRAN_conv_io_done_out (AESL_slave_output_done),
+    .TRAN_conv_io_idle_out (AESL_idle),
+    .TRAN_conv_io_write_start_in     (AESL_slave_write_start_in),
+    .TRAN_conv_io_write_start_finish (AESL_slave_write_start_finish),
+    .TRAN_conv_io_transaction_done_in (AESL_done_delay),
+    .TRAN_conv_io_start_in  (AESL_slave_start)
 );
-
-// Assignment between dut and arrayinput_0
-assign arrayinput_0_address0 = input_0_address0;
-assign arrayinput_0_ce0 = input_0_ce0;
-assign input_0_q0 = arrayinput_0_dout0;
-assign arrayinput_0_we0 = 0;
-assign arrayinput_0_din0 = 0;
-assign arrayinput_0_address1 = input_0_address1;
-assign arrayinput_0_ce1 = input_0_ce1;
-assign input_0_q1 = arrayinput_0_dout1;
-assign arrayinput_0_we1 = 0;
-assign arrayinput_0_din1 = 0;
-assign arrayinput_0_ready=    ready;
-assign arrayinput_0_done = 0;
-
-
-//------------------------arrayinput_1 Instantiation--------------
-
-// The input and output of arrayinput_1
-wire    arrayinput_1_ce0, arrayinput_1_ce1;
-wire    arrayinput_1_we0, arrayinput_1_we1;
-wire    [3 : 0]    arrayinput_1_address0, arrayinput_1_address1;
-wire    [31 : 0]    arrayinput_1_din0, arrayinput_1_din1;
-wire    [31 : 0]    arrayinput_1_dout0, arrayinput_1_dout1;
-wire    arrayinput_1_ready;
-wire    arrayinput_1_done;
-
-`AESL_MEM_input_1 `AESL_MEM_INST_input_1(
-    .clk        (AESL_clock),
-    .rst        (AESL_reset),
-    .ce0        (arrayinput_1_ce0),
-    .we0        (arrayinput_1_we0),
-    .address0   (arrayinput_1_address0),
-    .din0       (arrayinput_1_din0),
-    .dout0      (arrayinput_1_dout0),
-    .ce1        (arrayinput_1_ce1),
-    .we1        (arrayinput_1_we1),
-    .address1   (arrayinput_1_address1),
-    .din1       (arrayinput_1_din1),
-    .dout1      (arrayinput_1_dout1),
-    .ready      (arrayinput_1_ready),
-    .done    (arrayinput_1_done)
-);
-
-// Assignment between dut and arrayinput_1
-assign arrayinput_1_address0 = input_1_address0;
-assign arrayinput_1_ce0 = input_1_ce0;
-assign input_1_q0 = arrayinput_1_dout0;
-assign arrayinput_1_we0 = 0;
-assign arrayinput_1_din0 = 0;
-assign arrayinput_1_address1 = input_1_address1;
-assign arrayinput_1_ce1 = input_1_ce1;
-assign input_1_q1 = arrayinput_1_dout1;
-assign arrayinput_1_we1 = 0;
-assign arrayinput_1_din1 = 0;
-assign arrayinput_1_ready=    ready;
-assign arrayinput_1_done = 0;
-
-
-//------------------------arrayinput_2 Instantiation--------------
-
-// The input and output of arrayinput_2
-wire    arrayinput_2_ce0, arrayinput_2_ce1;
-wire    arrayinput_2_we0, arrayinput_2_we1;
-wire    [2 : 0]    arrayinput_2_address0, arrayinput_2_address1;
-wire    [31 : 0]    arrayinput_2_din0, arrayinput_2_din1;
-wire    [31 : 0]    arrayinput_2_dout0, arrayinput_2_dout1;
-wire    arrayinput_2_ready;
-wire    arrayinput_2_done;
-
-`AESL_MEM_input_2 `AESL_MEM_INST_input_2(
-    .clk        (AESL_clock),
-    .rst        (AESL_reset),
-    .ce0        (arrayinput_2_ce0),
-    .we0        (arrayinput_2_we0),
-    .address0   (arrayinput_2_address0),
-    .din0       (arrayinput_2_din0),
-    .dout0      (arrayinput_2_dout0),
-    .ce1        (arrayinput_2_ce1),
-    .we1        (arrayinput_2_we1),
-    .address1   (arrayinput_2_address1),
-    .din1       (arrayinput_2_din1),
-    .dout1      (arrayinput_2_dout1),
-    .ready      (arrayinput_2_ready),
-    .done    (arrayinput_2_done)
-);
-
-// Assignment between dut and arrayinput_2
-assign arrayinput_2_address0 = input_2_address0;
-assign arrayinput_2_ce0 = input_2_ce0;
-assign input_2_q0 = arrayinput_2_dout0;
-assign arrayinput_2_we0 = 0;
-assign arrayinput_2_din0 = 0;
-assign arrayinput_2_address1 = input_2_address1;
-assign arrayinput_2_ce1 = input_2_ce1;
-assign input_2_q1 = arrayinput_2_dout1;
-assign arrayinput_2_we1 = 0;
-assign arrayinput_2_din1 = 0;
-assign arrayinput_2_ready=    ready;
-assign arrayinput_2_done = 0;
-
-
-// The signal of port kernel_0_0
-reg [31: 0] AESL_REG_kernel_0_0 = 0;
-assign kernel_0_0 = AESL_REG_kernel_0_0;
-initial begin : read_file_process_kernel_0_0
-    integer fp;
-    integer err;
-    integer ret;
-    integer proc_rand;
-    reg [159  : 0] token;
-    integer i;
-    reg transaction_finish;
-    integer transaction_idx;
-    transaction_idx = 0;
-    wait(AESL_reset === 0);
-    fp = $fopen(`AUTOTB_TVIN_kernel_0_0,"r");
-    if(fp == 0) begin       // Failed to open file
-        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_kernel_0_0);
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    read_token(fp, token);
-    if (token != "[[[runtime]]]") begin
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    read_token(fp, token);
-    while (token != "[[[/runtime]]]") begin
-        if (token != "[[transaction]]") begin
-            $display("ERROR: Simulation using HLS TB failed.");
-              $finish;
-        end
-        read_token(fp, token);  // skip transaction number
-          read_token(fp, token);
-            # 0.2;
-            while(ready_wire !== 1) begin
-                @(posedge AESL_clock);
-                # 0.2;
-            end
-        if(token != "[[/transaction]]") begin
-            ret = $sscanf(token, "0x%x", AESL_REG_kernel_0_0);
-              if (ret != 1) begin
-                  $display("Failed to parse token!");
-                $display("ERROR: Simulation using HLS TB failed.");
-                  $finish;
-              end
-            @(posedge AESL_clock);
-              read_token(fp, token);
-        end
-          read_token(fp, token);
-    end
-    $fclose(fp);
-end
-
-
-// The signal of port kernel_0_1
-reg [31: 0] AESL_REG_kernel_0_1 = 0;
-assign kernel_0_1 = AESL_REG_kernel_0_1;
-initial begin : read_file_process_kernel_0_1
-    integer fp;
-    integer err;
-    integer ret;
-    integer proc_rand;
-    reg [159  : 0] token;
-    integer i;
-    reg transaction_finish;
-    integer transaction_idx;
-    transaction_idx = 0;
-    wait(AESL_reset === 0);
-    fp = $fopen(`AUTOTB_TVIN_kernel_0_1,"r");
-    if(fp == 0) begin       // Failed to open file
-        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_kernel_0_1);
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    read_token(fp, token);
-    if (token != "[[[runtime]]]") begin
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    read_token(fp, token);
-    while (token != "[[[/runtime]]]") begin
-        if (token != "[[transaction]]") begin
-            $display("ERROR: Simulation using HLS TB failed.");
-              $finish;
-        end
-        read_token(fp, token);  // skip transaction number
-          read_token(fp, token);
-            # 0.2;
-            while(ready_wire !== 1) begin
-                @(posedge AESL_clock);
-                # 0.2;
-            end
-        if(token != "[[/transaction]]") begin
-            ret = $sscanf(token, "0x%x", AESL_REG_kernel_0_1);
-              if (ret != 1) begin
-                  $display("Failed to parse token!");
-                $display("ERROR: Simulation using HLS TB failed.");
-                  $finish;
-              end
-            @(posedge AESL_clock);
-              read_token(fp, token);
-        end
-          read_token(fp, token);
-    end
-    $fclose(fp);
-end
-
-
-// The signal of port kernel_0_2
-reg [31: 0] AESL_REG_kernel_0_2 = 0;
-assign kernel_0_2 = AESL_REG_kernel_0_2;
-initial begin : read_file_process_kernel_0_2
-    integer fp;
-    integer err;
-    integer ret;
-    integer proc_rand;
-    reg [159  : 0] token;
-    integer i;
-    reg transaction_finish;
-    integer transaction_idx;
-    transaction_idx = 0;
-    wait(AESL_reset === 0);
-    fp = $fopen(`AUTOTB_TVIN_kernel_0_2,"r");
-    if(fp == 0) begin       // Failed to open file
-        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_kernel_0_2);
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    read_token(fp, token);
-    if (token != "[[[runtime]]]") begin
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    read_token(fp, token);
-    while (token != "[[[/runtime]]]") begin
-        if (token != "[[transaction]]") begin
-            $display("ERROR: Simulation using HLS TB failed.");
-              $finish;
-        end
-        read_token(fp, token);  // skip transaction number
-          read_token(fp, token);
-            # 0.2;
-            while(ready_wire !== 1) begin
-                @(posedge AESL_clock);
-                # 0.2;
-            end
-        if(token != "[[/transaction]]") begin
-            ret = $sscanf(token, "0x%x", AESL_REG_kernel_0_2);
-              if (ret != 1) begin
-                  $display("Failed to parse token!");
-                $display("ERROR: Simulation using HLS TB failed.");
-                  $finish;
-              end
-            @(posedge AESL_clock);
-              read_token(fp, token);
-        end
-          read_token(fp, token);
-    end
-    $fclose(fp);
-end
-
-
-// The signal of port kernel_1_0
-reg [31: 0] AESL_REG_kernel_1_0 = 0;
-assign kernel_1_0 = AESL_REG_kernel_1_0;
-initial begin : read_file_process_kernel_1_0
-    integer fp;
-    integer err;
-    integer ret;
-    integer proc_rand;
-    reg [159  : 0] token;
-    integer i;
-    reg transaction_finish;
-    integer transaction_idx;
-    transaction_idx = 0;
-    wait(AESL_reset === 0);
-    fp = $fopen(`AUTOTB_TVIN_kernel_1_0,"r");
-    if(fp == 0) begin       // Failed to open file
-        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_kernel_1_0);
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    read_token(fp, token);
-    if (token != "[[[runtime]]]") begin
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    read_token(fp, token);
-    while (token != "[[[/runtime]]]") begin
-        if (token != "[[transaction]]") begin
-            $display("ERROR: Simulation using HLS TB failed.");
-              $finish;
-        end
-        read_token(fp, token);  // skip transaction number
-          read_token(fp, token);
-            # 0.2;
-            while(ready_wire !== 1) begin
-                @(posedge AESL_clock);
-                # 0.2;
-            end
-        if(token != "[[/transaction]]") begin
-            ret = $sscanf(token, "0x%x", AESL_REG_kernel_1_0);
-              if (ret != 1) begin
-                  $display("Failed to parse token!");
-                $display("ERROR: Simulation using HLS TB failed.");
-                  $finish;
-              end
-            @(posedge AESL_clock);
-              read_token(fp, token);
-        end
-          read_token(fp, token);
-    end
-    $fclose(fp);
-end
-
-
-// The signal of port kernel_1_1
-reg [31: 0] AESL_REG_kernel_1_1 = 0;
-assign kernel_1_1 = AESL_REG_kernel_1_1;
-initial begin : read_file_process_kernel_1_1
-    integer fp;
-    integer err;
-    integer ret;
-    integer proc_rand;
-    reg [159  : 0] token;
-    integer i;
-    reg transaction_finish;
-    integer transaction_idx;
-    transaction_idx = 0;
-    wait(AESL_reset === 0);
-    fp = $fopen(`AUTOTB_TVIN_kernel_1_1,"r");
-    if(fp == 0) begin       // Failed to open file
-        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_kernel_1_1);
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    read_token(fp, token);
-    if (token != "[[[runtime]]]") begin
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    read_token(fp, token);
-    while (token != "[[[/runtime]]]") begin
-        if (token != "[[transaction]]") begin
-            $display("ERROR: Simulation using HLS TB failed.");
-              $finish;
-        end
-        read_token(fp, token);  // skip transaction number
-          read_token(fp, token);
-            # 0.2;
-            while(ready_wire !== 1) begin
-                @(posedge AESL_clock);
-                # 0.2;
-            end
-        if(token != "[[/transaction]]") begin
-            ret = $sscanf(token, "0x%x", AESL_REG_kernel_1_1);
-              if (ret != 1) begin
-                  $display("Failed to parse token!");
-                $display("ERROR: Simulation using HLS TB failed.");
-                  $finish;
-              end
-            @(posedge AESL_clock);
-              read_token(fp, token);
-        end
-          read_token(fp, token);
-    end
-    $fclose(fp);
-end
-
-
-// The signal of port kernel_1_2
-reg [31: 0] AESL_REG_kernel_1_2 = 0;
-assign kernel_1_2 = AESL_REG_kernel_1_2;
-initial begin : read_file_process_kernel_1_2
-    integer fp;
-    integer err;
-    integer ret;
-    integer proc_rand;
-    reg [159  : 0] token;
-    integer i;
-    reg transaction_finish;
-    integer transaction_idx;
-    transaction_idx = 0;
-    wait(AESL_reset === 0);
-    fp = $fopen(`AUTOTB_TVIN_kernel_1_2,"r");
-    if(fp == 0) begin       // Failed to open file
-        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_kernel_1_2);
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    read_token(fp, token);
-    if (token != "[[[runtime]]]") begin
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    read_token(fp, token);
-    while (token != "[[[/runtime]]]") begin
-        if (token != "[[transaction]]") begin
-            $display("ERROR: Simulation using HLS TB failed.");
-              $finish;
-        end
-        read_token(fp, token);  // skip transaction number
-          read_token(fp, token);
-            # 0.2;
-            while(ready_wire !== 1) begin
-                @(posedge AESL_clock);
-                # 0.2;
-            end
-        if(token != "[[/transaction]]") begin
-            ret = $sscanf(token, "0x%x", AESL_REG_kernel_1_2);
-              if (ret != 1) begin
-                  $display("Failed to parse token!");
-                $display("ERROR: Simulation using HLS TB failed.");
-                  $finish;
-              end
-            @(posedge AESL_clock);
-              read_token(fp, token);
-        end
-          read_token(fp, token);
-    end
-    $fclose(fp);
-end
-
-
-// The signal of port kernel_2_0
-reg [31: 0] AESL_REG_kernel_2_0 = 0;
-assign kernel_2_0 = AESL_REG_kernel_2_0;
-initial begin : read_file_process_kernel_2_0
-    integer fp;
-    integer err;
-    integer ret;
-    integer proc_rand;
-    reg [159  : 0] token;
-    integer i;
-    reg transaction_finish;
-    integer transaction_idx;
-    transaction_idx = 0;
-    wait(AESL_reset === 0);
-    fp = $fopen(`AUTOTB_TVIN_kernel_2_0,"r");
-    if(fp == 0) begin       // Failed to open file
-        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_kernel_2_0);
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    read_token(fp, token);
-    if (token != "[[[runtime]]]") begin
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    read_token(fp, token);
-    while (token != "[[[/runtime]]]") begin
-        if (token != "[[transaction]]") begin
-            $display("ERROR: Simulation using HLS TB failed.");
-              $finish;
-        end
-        read_token(fp, token);  // skip transaction number
-          read_token(fp, token);
-            # 0.2;
-            while(ready_wire !== 1) begin
-                @(posedge AESL_clock);
-                # 0.2;
-            end
-        if(token != "[[/transaction]]") begin
-            ret = $sscanf(token, "0x%x", AESL_REG_kernel_2_0);
-              if (ret != 1) begin
-                  $display("Failed to parse token!");
-                $display("ERROR: Simulation using HLS TB failed.");
-                  $finish;
-              end
-            @(posedge AESL_clock);
-              read_token(fp, token);
-        end
-          read_token(fp, token);
-    end
-    $fclose(fp);
-end
-
-
-// The signal of port kernel_2_1
-reg [31: 0] AESL_REG_kernel_2_1 = 0;
-assign kernel_2_1 = AESL_REG_kernel_2_1;
-initial begin : read_file_process_kernel_2_1
-    integer fp;
-    integer err;
-    integer ret;
-    integer proc_rand;
-    reg [159  : 0] token;
-    integer i;
-    reg transaction_finish;
-    integer transaction_idx;
-    transaction_idx = 0;
-    wait(AESL_reset === 0);
-    fp = $fopen(`AUTOTB_TVIN_kernel_2_1,"r");
-    if(fp == 0) begin       // Failed to open file
-        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_kernel_2_1);
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    read_token(fp, token);
-    if (token != "[[[runtime]]]") begin
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    read_token(fp, token);
-    while (token != "[[[/runtime]]]") begin
-        if (token != "[[transaction]]") begin
-            $display("ERROR: Simulation using HLS TB failed.");
-              $finish;
-        end
-        read_token(fp, token);  // skip transaction number
-          read_token(fp, token);
-            # 0.2;
-            while(ready_wire !== 1) begin
-                @(posedge AESL_clock);
-                # 0.2;
-            end
-        if(token != "[[/transaction]]") begin
-            ret = $sscanf(token, "0x%x", AESL_REG_kernel_2_1);
-              if (ret != 1) begin
-                  $display("Failed to parse token!");
-                $display("ERROR: Simulation using HLS TB failed.");
-                  $finish;
-              end
-            @(posedge AESL_clock);
-              read_token(fp, token);
-        end
-          read_token(fp, token);
-    end
-    $fclose(fp);
-end
-
-
-// The signal of port kernel_2_2
-reg [31: 0] AESL_REG_kernel_2_2 = 0;
-assign kernel_2_2 = AESL_REG_kernel_2_2;
-initial begin : read_file_process_kernel_2_2
-    integer fp;
-    integer err;
-    integer ret;
-    integer proc_rand;
-    reg [159  : 0] token;
-    integer i;
-    reg transaction_finish;
-    integer transaction_idx;
-    transaction_idx = 0;
-    wait(AESL_reset === 0);
-    fp = $fopen(`AUTOTB_TVIN_kernel_2_2,"r");
-    if(fp == 0) begin       // Failed to open file
-        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_kernel_2_2);
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    read_token(fp, token);
-    if (token != "[[[runtime]]]") begin
-        $display("ERROR: Simulation using HLS TB failed.");
-        $finish;
-    end
-    read_token(fp, token);
-    while (token != "[[[/runtime]]]") begin
-        if (token != "[[transaction]]") begin
-            $display("ERROR: Simulation using HLS TB failed.");
-              $finish;
-        end
-        read_token(fp, token);  // skip transaction number
-          read_token(fp, token);
-            # 0.2;
-            while(ready_wire !== 1) begin
-                @(posedge AESL_clock);
-                # 0.2;
-            end
-        if(token != "[[/transaction]]") begin
-            ret = $sscanf(token, "0x%x", AESL_REG_kernel_2_2);
-              if (ret != 1) begin
-                  $display("Failed to parse token!");
-                $display("ERROR: Simulation using HLS TB failed.");
-                  $finish;
-              end
-            @(posedge AESL_clock);
-              read_token(fp, token);
-        end
-          read_token(fp, token);
-    end
-    $fclose(fp);
-end
-
-
-//------------------------arrayoutput_r Instantiation--------------
-
-// The input and output of arrayoutput_r
-wire    arrayoutput_r_ce0, arrayoutput_r_ce1;
-wire    arrayoutput_r_we0, arrayoutput_r_we1;
-wire    [3 : 0]    arrayoutput_r_address0, arrayoutput_r_address1;
-wire    [31 : 0]    arrayoutput_r_din0, arrayoutput_r_din1;
-wire    [31 : 0]    arrayoutput_r_dout0, arrayoutput_r_dout1;
-wire    arrayoutput_r_ready;
-wire    arrayoutput_r_done;
-
-`AESL_MEM_output_r `AESL_MEM_INST_output_r(
-    .clk        (AESL_clock),
-    .rst        (AESL_reset),
-    .ce0        (arrayoutput_r_ce0),
-    .we0        (arrayoutput_r_we0),
-    .address0   (arrayoutput_r_address0),
-    .din0       (arrayoutput_r_din0),
-    .dout0      (arrayoutput_r_dout0),
-    .ce1        (arrayoutput_r_ce1),
-    .we1        (arrayoutput_r_we1),
-    .address1   (arrayoutput_r_address1),
-    .din1       (arrayoutput_r_din1),
-    .dout1      (arrayoutput_r_dout1),
-    .ready      (arrayoutput_r_ready),
-    .done    (arrayoutput_r_done)
-);
-
-// Assignment between dut and arrayoutput_r
-assign arrayoutput_r_address0 = output_r_address0;
-assign arrayoutput_r_ce0 = output_r_ce0;
-assign arrayoutput_r_we0 = output_r_we0;
-assign arrayoutput_r_din0 = output_r_d0;
-assign arrayoutput_r_we1 = 0;
-assign arrayoutput_r_din1 = 0;
-assign arrayoutput_r_ready= ready_initial | arrayoutput_r_done;
-assign arrayoutput_r_done =    AESL_done_delay;
-
 
 initial begin : generate_AESL_ready_cnt_proc
     AESL_ready_cnt = 0;
-    wait(AESL_reset === 0);
+    wait(AESL_reset === 1);
     while(AESL_ready_cnt != AUTOTB_TRANSACTION_NUM) begin
         while(AESL_ready !== 1) begin
             @(posedge AESL_clock);
@@ -900,7 +298,7 @@ end
     
     initial begin : gen_ready_cnt
         ready_cnt = 0;
-        wait (AESL_reset === 0);
+        wait (AESL_reset === 1);
         forever begin
             @ (posedge AESL_clock);
             if (ready == 1) begin
@@ -916,7 +314,7 @@ end
     
     // done_cnt
     always @ (posedge AESL_clock) begin
-        if (AESL_reset) begin
+        if (~AESL_reset) begin
             done_cnt <= 0;
         end else begin
             if (AESL_done == 1) begin
@@ -985,10 +383,10 @@ reg [31:0] size_output_r_backup;
 
 initial begin : initial_process
     integer proc_rand;
-    rst = 1;
+    rst = 0;
     # 100;
     repeat(3) @ (posedge AESL_clock);
-    rst = 0;
+    rst = 1;
 end
 initial begin : start_process
     integer proc_rand;
@@ -996,7 +394,7 @@ initial begin : start_process
     ce = 1;
     start = 0;
     start_cnt = 0;
-    wait (AESL_reset === 0);
+    wait (AESL_reset === 1);
     @ (posedge AESL_clock);
     #0 start = 1;
     start_cnt = start_cnt + 1;
@@ -1027,7 +425,7 @@ end
 
 always @(posedge AESL_clock)
 begin
-    if(AESL_reset)
+    if(AESL_reset === 0)
       AESL_ready_delay = 0;
   else
       AESL_ready_delay = AESL_ready;
@@ -1041,7 +439,7 @@ end
 
 always @(posedge AESL_clock)
 begin
-    if(AESL_reset)
+    if(AESL_reset === 0)
       ready_delay_last_n = 0;
   else
       ready_delay_last_n <= ready_last_n;
@@ -1058,7 +456,7 @@ end
 
 always @(posedge AESL_clock)
 begin
-    if(AESL_reset)
+    if(AESL_reset === 0)
   begin
       AESL_done_delay <= 0;
       AESL_done_delay2 <= 0;
@@ -1070,7 +468,7 @@ begin
 end
 always @(posedge AESL_clock)
 begin
-    if(AESL_reset)
+    if(AESL_reset === 0)
       interface_done = 0;
   else begin
       # 0.01;
@@ -1145,7 +543,7 @@ initial begin
     start_cnt = 0;
     finish_cnt = 0;
     ap_ready_cnt = 0;
-    wait (AESL_reset == 0);
+    wait (AESL_reset == 1);
     wait_start();
     start_timestamp[start_cnt] = clk_cnt;
     start_cnt = start_cnt + 1;
@@ -1182,7 +580,7 @@ reg [31:0] progress_timeout;
 
 initial begin : simulation_progress
     real intra_progress;
-    wait (AESL_reset == 0);
+    wait (AESL_reset == 1);
     progress_timeout = PROGRESS_TIMEOUT;
     $display("////////////////////////////////////////////////////////////////////////////////////");
     $display("// Inter-Transaction Progress: Completed Transaction / Total Transaction");

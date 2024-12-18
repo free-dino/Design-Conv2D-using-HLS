@@ -3,12 +3,12 @@
 	<Message severity="INFO" prefix="[COSIM 212-47]" key="COSIM_TCL_47_1115" tag="" content="Using XSIM for RTL simulation."/>
 	<Message severity="INFO" prefix="[COSIM 212-14]" key="COSIM_TCL_14_1084" tag="" content="Instrumenting C test bench ..."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1427" tag="" content="Running &apos;F:/Vivado/Vivado/2018.3/bin/unwrapped/win64.o/apcc.exe&apos;"/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1428" tag="" content="For user &apos;TGDD&apos; on host &apos;laptop-f7v13plb&apos; (Windows NT_amd64 version 6.2) on Wed Dec 18 18:09:13 +0700 2024"/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1428" tag="" content="For user &apos;TGDD&apos; on host &apos;laptop-f7v13plb&apos; (Windows NT_amd64 version 6.2) on Wed Dec 18 21:05:39 +0700 2024"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1430" tag="" content="In directory &apos;F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/wrapc&apos;"/>
 	<Message severity="INFO" prefix="[APCC 202-3]" key="APCC_3_1610" tag="" content="Tmp directory is apcc_db"/>
 	<Message severity="INFO" prefix="[APCC 202-1]" key="APCC_1_1611" tag="" content="APCC is done."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1427" tag="" content="Running &apos;F:/Vivado/Vivado/2018.3/bin/unwrapped/win64.o/apcc.exe&apos;"/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1428" tag="" content="For user &apos;TGDD&apos; on host &apos;laptop-f7v13plb&apos; (Windows NT_amd64 version 6.2) on Wed Dec 18 18:09:19 +0700 2024"/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1428" tag="" content="For user &apos;TGDD&apos; on host &apos;laptop-f7v13plb&apos; (Windows NT_amd64 version 6.2) on Wed Dec 18 21:05:43 +0700 2024"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1430" tag="" content="In directory &apos;F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/wrapc&apos;"/>
 	<Message severity="INFO" prefix="[APCC 202-3]" key="APCC_3_1610" tag="" content="Tmp directory is apcc_db"/>
 	<Message severity="INFO" prefix="[APCC 202-1]" key="APCC_1_1611" tag="" content="APCC is done."/>

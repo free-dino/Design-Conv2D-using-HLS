@@ -2,8 +2,8 @@
 # xsim v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Wed Dec 18 18:09:35 2024
-# Process ID: 12952
+# Start of session at: Wed Dec 18 21:05:53 2024
+# Process ID: 17472
 # Current directory: F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/vhdl
 # Command line: xsim.exe -mode tcl -source {xsim.dir/convolution2D/xsim_script.tcl}
 # Log file: F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/vhdl/xsim.log

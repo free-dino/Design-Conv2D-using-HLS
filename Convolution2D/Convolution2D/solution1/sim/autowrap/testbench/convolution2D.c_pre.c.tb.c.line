@@ -515,6 +515,10 @@ const char *__mingw_get_crt_info (void);
 #pragma line 3 "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/convolution2D.c" 2
 #pragma empty_line
 void convolution2D(int input[5][5], int kernel[3][3], int output[3][3]) {
+#pragma HLS INTERFACE s_axilite port=return bundle=conv_io
+#pragma HLS INTERFACE s_axilite port=output bundle=conv_io
+#pragma HLS INTERFACE s_axilite port=kernel bundle=conv_io
+#pragma HLS INTERFACE s_axilite port=input bundle=conv_io
 #pragma HLS INLINE
 #pragma HLS ARRAY_PARTITION variable=input block dim=2 factor=3
 #pragma HLS ARRAY_PARTITION variable=kernel complete dim=0
