@@ -1,49 +1,33 @@
 
 log_wave -r /
 set designtopgroup [add_wave_group "Design Top Signals"]
-set coutputgroup [add_wave_group "C Outputs" -into $designtopgroup]
-set output_group [add_wave_group output(memory) -into $coutputgroup]
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_d0 -into $output_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_we0 -into $output_group -color #ffff00 -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_ce0 -into $output_group -color #ffff00 -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_address0 -into $output_group -radix hex
-set cinputgroup [add_wave_group "C Inputs" -into $designtopgroup]
-set kernel_group [add_wave_group kernel(wire) -into $cinputgroup]
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/kernel_2_2 -into $kernel_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/kernel_2_1 -into $kernel_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/kernel_2_0 -into $kernel_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/kernel_1_2 -into $kernel_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/kernel_1_1 -into $kernel_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/kernel_1_0 -into $kernel_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/kernel_0_2 -into $kernel_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/kernel_0_1 -into $kernel_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/kernel_0_0 -into $kernel_group -radix hex
-set input_group [add_wave_group input(memory) -into $cinputgroup]
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_2_q1 -into $input_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_2_ce1 -into $input_group -color #ffff00 -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_2_address1 -into $input_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_2_q0 -into $input_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_2_ce0 -into $input_group -color #ffff00 -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_2_address0 -into $input_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_1_q1 -into $input_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_1_ce1 -into $input_group -color #ffff00 -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_1_address1 -into $input_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_1_q0 -into $input_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_1_ce0 -into $input_group -color #ffff00 -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_1_address0 -into $input_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_0_q1 -into $input_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_0_ce1 -into $input_group -color #ffff00 -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_0_address1 -into $input_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_0_q0 -into $input_group -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_0_ce0 -into $input_group -color #ffff00 -radix hex
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_0_address0 -into $input_group -radix hex
-set blocksiggroup [add_wave_group "Block-level IO Handshake" -into $designtopgroup]
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/ap_start -into $blocksiggroup
+set cinoutgroup [add_wave_group "C InOuts" -into $designtopgroup]
+set input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group [add_wave_group input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return(axi_slave) -into $cinoutgroup]
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/interrupt -into $input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/s_axi_conv_io_BRESP -into $input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/s_axi_conv_io_BREADY -into $input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/s_axi_conv_io_BVALID -into $input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/s_axi_conv_io_RRESP -into $input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/s_axi_conv_io_RDATA -into $input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/s_axi_conv_io_RREADY -into $input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/s_axi_conv_io_RVALID -into $input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/s_axi_conv_io_ARREADY -into $input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/s_axi_conv_io_ARVALID -into $input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/s_axi_conv_io_ARADDR -into $input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/s_axi_conv_io_WSTRB -into $input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/s_axi_conv_io_WDATA -into $input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/s_axi_conv_io_WREADY -into $input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/s_axi_conv_io_WVALID -into $input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/s_axi_conv_io_AWREADY -into $input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/s_axi_conv_io_AWVALID -into $input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/s_axi_conv_io_AWADDR -into $input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -radix hex
+set blocksiggroup [add_wave_group "Block-level IO Handshake(internal)" -into $designtopgroup]
 add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/ap_done -into $blocksiggroup
 add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/ap_idle -into $blocksiggroup
 add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/ap_ready -into $blocksiggroup
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/ap_start -into $blocksiggroup
 set resetgroup [add_wave_group "Reset" -into $designtopgroup]
-add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/ap_rst -into $resetgroup
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/ap_rst_n -into $resetgroup
 set clockgroup [add_wave_group "Clock" -into $designtopgroup]
 add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/ap_clk -into $clockgroup
 set testbenchgroup [add_wave_group "Test Bench Signals"]
@@ -66,42 +50,26 @@ add_wave /apatb_convolution2D_top/LENGTH_kernel_2_0 -into $tb_portdepth_group -r
 add_wave /apatb_convolution2D_top/LENGTH_kernel_2_1 -into $tb_portdepth_group -radix hex
 add_wave /apatb_convolution2D_top/LENGTH_kernel_2_2 -into $tb_portdepth_group -radix hex
 add_wave /apatb_convolution2D_top/LENGTH_output_r -into $tb_portdepth_group -radix hex
-set tbcoutputgroup [add_wave_group "C Outputs" -into $testbenchgroup]
-set tb_output_group [add_wave_group output(memory) -into $tbcoutputgroup]
-add_wave /apatb_convolution2D_top/output_r_d0 -into $tb_output_group -radix hex
-add_wave /apatb_convolution2D_top/output_r_we0 -into $tb_output_group -color #ffff00 -radix hex
-add_wave /apatb_convolution2D_top/output_r_ce0 -into $tb_output_group -color #ffff00 -radix hex
-add_wave /apatb_convolution2D_top/output_r_address0 -into $tb_output_group -radix hex
-set tbcinputgroup [add_wave_group "C Inputs" -into $testbenchgroup]
-set tb_kernel_group [add_wave_group kernel(wire) -into $tbcinputgroup]
-add_wave /apatb_convolution2D_top/kernel_2_2 -into $tb_kernel_group -radix hex
-add_wave /apatb_convolution2D_top/kernel_2_1 -into $tb_kernel_group -radix hex
-add_wave /apatb_convolution2D_top/kernel_2_0 -into $tb_kernel_group -radix hex
-add_wave /apatb_convolution2D_top/kernel_1_2 -into $tb_kernel_group -radix hex
-add_wave /apatb_convolution2D_top/kernel_1_1 -into $tb_kernel_group -radix hex
-add_wave /apatb_convolution2D_top/kernel_1_0 -into $tb_kernel_group -radix hex
-add_wave /apatb_convolution2D_top/kernel_0_2 -into $tb_kernel_group -radix hex
-add_wave /apatb_convolution2D_top/kernel_0_1 -into $tb_kernel_group -radix hex
-add_wave /apatb_convolution2D_top/kernel_0_0 -into $tb_kernel_group -radix hex
-set tb_input_group [add_wave_group input(memory) -into $tbcinputgroup]
-add_wave /apatb_convolution2D_top/input_2_q1 -into $tb_input_group -radix hex
-add_wave /apatb_convolution2D_top/input_2_ce1 -into $tb_input_group -color #ffff00 -radix hex
-add_wave /apatb_convolution2D_top/input_2_address1 -into $tb_input_group -radix hex
-add_wave /apatb_convolution2D_top/input_2_q0 -into $tb_input_group -radix hex
-add_wave /apatb_convolution2D_top/input_2_ce0 -into $tb_input_group -color #ffff00 -radix hex
-add_wave /apatb_convolution2D_top/input_2_address0 -into $tb_input_group -radix hex
-add_wave /apatb_convolution2D_top/input_1_q1 -into $tb_input_group -radix hex
-add_wave /apatb_convolution2D_top/input_1_ce1 -into $tb_input_group -color #ffff00 -radix hex
-add_wave /apatb_convolution2D_top/input_1_address1 -into $tb_input_group -radix hex
-add_wave /apatb_convolution2D_top/input_1_q0 -into $tb_input_group -radix hex
-add_wave /apatb_convolution2D_top/input_1_ce0 -into $tb_input_group -color #ffff00 -radix hex
-add_wave /apatb_convolution2D_top/input_1_address0 -into $tb_input_group -radix hex
-add_wave /apatb_convolution2D_top/input_0_q1 -into $tb_input_group -radix hex
-add_wave /apatb_convolution2D_top/input_0_ce1 -into $tb_input_group -color #ffff00 -radix hex
-add_wave /apatb_convolution2D_top/input_0_address1 -into $tb_input_group -radix hex
-add_wave /apatb_convolution2D_top/input_0_q0 -into $tb_input_group -radix hex
-add_wave /apatb_convolution2D_top/input_0_ce0 -into $tb_input_group -color #ffff00 -radix hex
-add_wave /apatb_convolution2D_top/input_0_address0 -into $tb_input_group -radix hex
+set tbcinoutgroup [add_wave_group "C InOuts" -into $testbenchgroup]
+set tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group [add_wave_group input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return(axi_slave) -into $tbcinoutgroup]
+add_wave /apatb_convolution2D_top/conv_io_INTERRUPT -into $tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/conv_io_BRESP -into $tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -radix hex
+add_wave /apatb_convolution2D_top/conv_io_BREADY -into $tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/conv_io_BVALID -into $tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/conv_io_RRESP -into $tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -radix hex
+add_wave /apatb_convolution2D_top/conv_io_RDATA -into $tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -radix hex
+add_wave /apatb_convolution2D_top/conv_io_RREADY -into $tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/conv_io_RVALID -into $tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/conv_io_ARREADY -into $tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/conv_io_ARVALID -into $tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/conv_io_ARADDR -into $tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -radix hex
+add_wave /apatb_convolution2D_top/conv_io_WSTRB -into $tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -radix hex
+add_wave /apatb_convolution2D_top/conv_io_WDATA -into $tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -radix hex
+add_wave /apatb_convolution2D_top/conv_io_WREADY -into $tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/conv_io_WVALID -into $tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/conv_io_AWREADY -into $tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/conv_io_AWVALID -into $tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/conv_io_AWADDR -into $tb_input__input__input__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__kernel__output__return_group -radix hex
 save_wave_config convolution2D.wcfg
 run all
 quit

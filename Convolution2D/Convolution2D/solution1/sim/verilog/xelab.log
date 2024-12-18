@@ -5,28 +5,26 @@ Running: F:/Vivado/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe xil_defaultlib.
 Multi-threading is on. Using 6 slave threads.
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/glbl.v" into library work
 INFO: [VRFC 10-311] analyzing module glbl
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/AESL_automem_input_0.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module AESL_automem_input_0
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/AESL_automem_input_1.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module AESL_automem_input_1
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/AESL_automem_input_2.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module AESL_automem_input_2
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/AESL_automem_output_r.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module AESL_automem_output_r
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/AESL_axi_slave_conv_io.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_slave_conv_io
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/convolution2D.autotb.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module apatb_convolution2D_top
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/convolution2D.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module convolution2D
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/convolution2D_conv_io_s_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module convolution2D_conv_io_s_axi
+INFO: [VRFC 10-311] analyzing module convolution2D_conv_io_s_axi_ram
 Starting static elaboration
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.convolution2D_conv_io_s_axi_ram(...
+Compiling module xil_defaultlib.convolution2D_conv_io_s_axi_ram(...
+Compiling module xil_defaultlib.convolution2D_conv_io_s_axi_ram(...
+Compiling module xil_defaultlib.convolution2D_conv_io_s_axi
 Compiling module xil_defaultlib.convolution2D
-Compiling module xil_defaultlib.AESL_automem_input_0
-Compiling module xil_defaultlib.AESL_automem_input_1
-Compiling module xil_defaultlib.AESL_automem_input_2
-Compiling module xil_defaultlib.AESL_automem_output_r
+Compiling module xil_defaultlib.AESL_axi_slave_conv_io
 Compiling module xil_defaultlib.apatb_convolution2D_top
 Compiling module work.glbl
 Built simulation snapshot convolution2D

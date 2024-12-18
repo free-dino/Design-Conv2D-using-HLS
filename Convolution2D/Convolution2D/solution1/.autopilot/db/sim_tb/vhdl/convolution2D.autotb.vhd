@@ -1,5 +1,5 @@
 -- ==============================================================
--- File generated on Wed Dec 18 18:09:25 +0700 2024
+-- File generated on Wed Dec 18 21:05:48 +0700 2024
 -- Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 -- SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 -- IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -29,7 +29,6 @@ entity apatb_convolution2D_top is
        AUTOTB_TVIN_kernel_2_0 : STRING := "./c.convolution2D.autotvin_kernel_2_0.dat";
        AUTOTB_TVIN_kernel_2_1 : STRING := "./c.convolution2D.autotvin_kernel_2_1.dat";
        AUTOTB_TVIN_kernel_2_2 : STRING := "./c.convolution2D.autotvin_kernel_2_2.dat";
-       AUTOTB_TVIN_output_r : STRING := "./c.convolution2D.autotvin_output_r.dat";
        AUTOTB_TVIN_input_0_out_wrapc : STRING := "./rtl.convolution2D.autotvin_input_0.dat";
        AUTOTB_TVIN_input_1_out_wrapc : STRING := "./rtl.convolution2D.autotvin_input_1.dat";
        AUTOTB_TVIN_input_2_out_wrapc : STRING := "./rtl.convolution2D.autotvin_input_2.dat";
@@ -42,7 +41,6 @@ entity apatb_convolution2D_top is
        AUTOTB_TVIN_kernel_2_0_out_wrapc : STRING := "./rtl.convolution2D.autotvin_kernel_2_0.dat";
        AUTOTB_TVIN_kernel_2_1_out_wrapc : STRING := "./rtl.convolution2D.autotvin_kernel_2_1.dat";
        AUTOTB_TVIN_kernel_2_2_out_wrapc : STRING := "./rtl.convolution2D.autotvin_kernel_2_2.dat";
-       AUTOTB_TVIN_output_r_out_wrapc : STRING := "./rtl.convolution2D.autotvin_output_r.dat";
        AUTOTB_TVOUT_output_r : STRING := "./c.convolution2D.autotvout_output_r.dat";
        AUTOTB_TVOUT_output_r_out_wrapc : STRING := "./impl_rtl.convolution2D.autotvout_output_r.dat";
       AUTOTB_LAT_RESULT_FILE    : STRING  := "convolution2D.result.lat.rb";
@@ -84,47 +82,26 @@ architecture behav of apatb_convolution2D_top is
   signal ready :   STD_LOGIC := '0';
   signal ready_wire :   STD_LOGIC := '0';
 
+  signal conv_io_AWADDR:  STD_LOGIC_VECTOR (8 DOWNTO 0);
+  signal conv_io_AWVALID:  STD_LOGIC;
+  signal conv_io_AWREADY:  STD_LOGIC;
+  signal conv_io_WVALID:  STD_LOGIC;
+  signal conv_io_WREADY:  STD_LOGIC;
+  signal conv_io_WDATA:  STD_LOGIC_VECTOR (31 DOWNTO 0);
+  signal conv_io_WSTRB:  STD_LOGIC_VECTOR (3 DOWNTO 0);
+  signal conv_io_ARADDR:  STD_LOGIC_VECTOR (8 DOWNTO 0);
+  signal conv_io_ARVALID:  STD_LOGIC;
+  signal conv_io_ARREADY:  STD_LOGIC;
+  signal conv_io_RVALID:  STD_LOGIC;
+  signal conv_io_RREADY:  STD_LOGIC;
+  signal conv_io_RDATA:  STD_LOGIC_VECTOR (31 DOWNTO 0);
+  signal conv_io_RRESP:  STD_LOGIC_VECTOR (1 DOWNTO 0);
+  signal conv_io_BVALID:  STD_LOGIC;
+  signal conv_io_BREADY:  STD_LOGIC;
+  signal conv_io_BRESP:  STD_LOGIC_VECTOR (1 DOWNTO 0);
+  signal conv_io_INTERRUPT:  STD_LOGIC;
   signal ap_clk :  STD_LOGIC;
-  signal ap_rst :  STD_LOGIC;
-  signal ap_start :  STD_LOGIC;
-  signal ap_done :  STD_LOGIC;
-  signal ap_idle :  STD_LOGIC;
-  signal ap_ready :  STD_LOGIC;
-  signal input_0_address0 :  STD_LOGIC_VECTOR (3 DOWNTO 0);
-  signal input_0_ce0 :  STD_LOGIC;
-  signal input_0_q0 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
-  signal input_0_address1 :  STD_LOGIC_VECTOR (3 DOWNTO 0);
-  signal input_0_ce1 :  STD_LOGIC;
-  signal input_0_q1 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
-  signal input_1_address0 :  STD_LOGIC_VECTOR (3 DOWNTO 0);
-  signal input_1_ce0 :  STD_LOGIC;
-  signal input_1_q0 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
-  signal input_1_address1 :  STD_LOGIC_VECTOR (3 DOWNTO 0);
-  signal input_1_ce1 :  STD_LOGIC;
-  signal input_1_q1 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
-  signal input_2_address0 :  STD_LOGIC_VECTOR (2 DOWNTO 0);
-  signal input_2_ce0 :  STD_LOGIC;
-  signal input_2_q0 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
-  signal input_2_address1 :  STD_LOGIC_VECTOR (2 DOWNTO 0);
-  signal input_2_ce1 :  STD_LOGIC;
-  signal input_2_q1 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
-  signal kernel_0_0 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
-  signal kernel_0_1 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
-  signal kernel_0_2 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
-  signal kernel_1_0 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
-  signal kernel_1_1 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
-  signal kernel_1_2 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
-  signal kernel_2_0 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
-  signal kernel_2_1 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
-  signal kernel_2_2 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
-  signal output_r_address0 :  STD_LOGIC_VECTOR (3 DOWNTO 0);
-  signal output_r_ce0 :  STD_LOGIC;
-  signal output_r_we0 :  STD_LOGIC;
-  signal output_r_d0 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
-  signal output_r_address1 :  STD_LOGIC_VECTOR (3 DOWNTO 0);
-  signal output_r_ce1 :  STD_LOGIC;
-  signal output_r_we1 :  STD_LOGIC;
-  signal output_r_d1 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
+  signal ap_rst_n :  STD_LOGIC;
 
   signal ready_cnt : STD_LOGIC_VECTOR(31 DOWNTO 0);
   signal done_cnt	: STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -149,129 +126,33 @@ architecture behav of apatb_convolution2D_top is
 component convolution2D is
 port (
     ap_clk :  IN STD_LOGIC;
-    ap_rst :  IN STD_LOGIC;
-    ap_start :  IN STD_LOGIC;
-    ap_done :  OUT STD_LOGIC;
-    ap_idle :  OUT STD_LOGIC;
-    ap_ready :  OUT STD_LOGIC;
-    input_0_address0 :  OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
-    input_0_ce0 :  OUT STD_LOGIC;
-    input_0_q0 :  IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-    input_0_address1 :  OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
-    input_0_ce1 :  OUT STD_LOGIC;
-    input_0_q1 :  IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-    input_1_address0 :  OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
-    input_1_ce0 :  OUT STD_LOGIC;
-    input_1_q0 :  IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-    input_1_address1 :  OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
-    input_1_ce1 :  OUT STD_LOGIC;
-    input_1_q1 :  IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-    input_2_address0 :  OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
-    input_2_ce0 :  OUT STD_LOGIC;
-    input_2_q0 :  IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-    input_2_address1 :  OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
-    input_2_ce1 :  OUT STD_LOGIC;
-    input_2_q1 :  IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-    kernel_0_0 :  IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-    kernel_0_1 :  IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-    kernel_0_2 :  IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-    kernel_1_0 :  IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-    kernel_1_1 :  IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-    kernel_1_2 :  IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-    kernel_2_0 :  IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-    kernel_2_1 :  IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-    kernel_2_2 :  IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-    output_r_address0 :  OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
-    output_r_ce0 :  OUT STD_LOGIC;
-    output_r_we0 :  OUT STD_LOGIC;
-    output_r_d0 :  OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-    output_r_address1 :  OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
-    output_r_ce1 :  OUT STD_LOGIC;
-    output_r_we1 :  OUT STD_LOGIC;
-    output_r_d1 :  OUT STD_LOGIC_VECTOR (31 DOWNTO 0));
+    ap_rst_n :  IN STD_LOGIC;
+    s_axi_conv_io_AWVALID :  IN STD_LOGIC;
+    s_axi_conv_io_AWREADY :  OUT STD_LOGIC;
+    s_axi_conv_io_AWADDR :  IN STD_LOGIC_VECTOR (8 DOWNTO 0);
+    s_axi_conv_io_WVALID :  IN STD_LOGIC;
+    s_axi_conv_io_WREADY :  OUT STD_LOGIC;
+    s_axi_conv_io_WDATA :  IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+    s_axi_conv_io_WSTRB :  IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+    s_axi_conv_io_ARVALID :  IN STD_LOGIC;
+    s_axi_conv_io_ARREADY :  OUT STD_LOGIC;
+    s_axi_conv_io_ARADDR :  IN STD_LOGIC_VECTOR (8 DOWNTO 0);
+    s_axi_conv_io_RVALID :  OUT STD_LOGIC;
+    s_axi_conv_io_RREADY :  IN STD_LOGIC;
+    s_axi_conv_io_RDATA :  OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+    s_axi_conv_io_RRESP :  OUT STD_LOGIC_VECTOR (1 DOWNTO 0);
+    s_axi_conv_io_BVALID :  OUT STD_LOGIC;
+    s_axi_conv_io_BREADY :  IN STD_LOGIC;
+    s_axi_conv_io_BRESP :  OUT STD_LOGIC_VECTOR (1 DOWNTO 0);
+    interrupt :  OUT STD_LOGIC);
 end component;
 
-signal arrayinput_0_ce0, arrayinput_0_ce1 : STD_LOGIC;
-signal arrayinput_0_we0, arrayinput_0_we1 : STD_LOGIC;
-signal arrayinput_0_address0, arrayinput_0_address1 : STD_LOGIC_VECTOR(3 downto 0);
-signal arrayinput_0_din0, arrayinput_0_din1 : STD_LOGIC_VECTOR(31 downto 0);
-signal arrayinput_0_dout0, arrayinput_0_dout1 :  STD_LOGIC_VECTOR(31 downto 0);
-signal arrayinput_0_ready : STD_LOGIC;
-signal arrayinput_0_done : STD_LOGIC;
-
-component AESL_automem_input_0 is
-  port(
-    clk        :  IN  STD_LOGIC;
-    rst        :  IN  STD_LOGIC;
-    ce0        :  IN  STD_LOGIC;
-    we0        :  IN  STD_LOGIC;
-    address0   :  IN  STD_LOGIC_VECTOR;
-    din0       :  IN  STD_LOGIC_VECTOR;
-    dout0      :  OUT STD_LOGIC_VECTOR;
-    ce1        :  IN  STD_LOGIC;
-    we1        :  IN  STD_LOGIC;
-    address1   :  IN  STD_LOGIC_VECTOR;
-    din1       :  IN  STD_LOGIC_VECTOR;
-    dout1      :  OUT STD_LOGIC_VECTOR;
-    ready	     :  IN  STD_LOGIC;
-    done	     :  IN  STD_LOGIC
-  );
-end component;
-
-signal arrayinput_1_ce0, arrayinput_1_ce1 : STD_LOGIC;
-signal arrayinput_1_we0, arrayinput_1_we1 : STD_LOGIC;
-signal arrayinput_1_address0, arrayinput_1_address1 : STD_LOGIC_VECTOR(3 downto 0);
-signal arrayinput_1_din0, arrayinput_1_din1 : STD_LOGIC_VECTOR(31 downto 0);
-signal arrayinput_1_dout0, arrayinput_1_dout1 :  STD_LOGIC_VECTOR(31 downto 0);
-signal arrayinput_1_ready : STD_LOGIC;
-signal arrayinput_1_done : STD_LOGIC;
-
-component AESL_automem_input_1 is
-  port(
-    clk        :  IN  STD_LOGIC;
-    rst        :  IN  STD_LOGIC;
-    ce0        :  IN  STD_LOGIC;
-    we0        :  IN  STD_LOGIC;
-    address0   :  IN  STD_LOGIC_VECTOR;
-    din0       :  IN  STD_LOGIC_VECTOR;
-    dout0      :  OUT STD_LOGIC_VECTOR;
-    ce1        :  IN  STD_LOGIC;
-    we1        :  IN  STD_LOGIC;
-    address1   :  IN  STD_LOGIC_VECTOR;
-    din1       :  IN  STD_LOGIC_VECTOR;
-    dout1      :  OUT STD_LOGIC_VECTOR;
-    ready	     :  IN  STD_LOGIC;
-    done	     :  IN  STD_LOGIC
-  );
-end component;
-
-signal arrayinput_2_ce0, arrayinput_2_ce1 : STD_LOGIC;
-signal arrayinput_2_we0, arrayinput_2_we1 : STD_LOGIC;
-signal arrayinput_2_address0, arrayinput_2_address1 : STD_LOGIC_VECTOR(2 downto 0);
-signal arrayinput_2_din0, arrayinput_2_din1 : STD_LOGIC_VECTOR(31 downto 0);
-signal arrayinput_2_dout0, arrayinput_2_dout1 :  STD_LOGIC_VECTOR(31 downto 0);
-signal arrayinput_2_ready : STD_LOGIC;
-signal arrayinput_2_done : STD_LOGIC;
-
-component AESL_automem_input_2 is
-  port(
-    clk        :  IN  STD_LOGIC;
-    rst        :  IN  STD_LOGIC;
-    ce0        :  IN  STD_LOGIC;
-    we0        :  IN  STD_LOGIC;
-    address0   :  IN  STD_LOGIC_VECTOR;
-    din0       :  IN  STD_LOGIC_VECTOR;
-    dout0      :  OUT STD_LOGIC_VECTOR;
-    ce1        :  IN  STD_LOGIC;
-    we1        :  IN  STD_LOGIC;
-    address1   :  IN  STD_LOGIC_VECTOR;
-    din1       :  IN  STD_LOGIC_VECTOR;
-    dout1      :  OUT STD_LOGIC_VECTOR;
-    ready	     :  IN  STD_LOGIC;
-    done	     :  IN  STD_LOGIC
-  );
-end component;
-
+-- The signal of port input_0
+shared variable AESL_REG_input_0 : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
+-- The signal of port input_1
+shared variable AESL_REG_input_1 : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
+-- The signal of port input_2
+shared variable AESL_REG_input_2 : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
 -- The signal of port kernel_0_0
 shared variable AESL_REG_kernel_0_0 : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
 -- The signal of port kernel_0_1
@@ -290,31 +171,55 @@ shared variable AESL_REG_kernel_2_0 : STD_LOGIC_VECTOR(31 downto 0) := (others =
 shared variable AESL_REG_kernel_2_1 : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
 -- The signal of port kernel_2_2
 shared variable AESL_REG_kernel_2_2 : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
-signal arrayoutput_r_ce0, arrayoutput_r_ce1 : STD_LOGIC;
-signal arrayoutput_r_we0, arrayoutput_r_we1 : STD_LOGIC;
-signal arrayoutput_r_address0, arrayoutput_r_address1 : STD_LOGIC_VECTOR(3 downto 0);
-signal arrayoutput_r_din0, arrayoutput_r_din1 : STD_LOGIC_VECTOR(31 downto 0);
-signal arrayoutput_r_dout0, arrayoutput_r_dout1 :  STD_LOGIC_VECTOR(31 downto 0);
-signal arrayoutput_r_ready : STD_LOGIC;
-signal arrayoutput_r_done : STD_LOGIC;
-
-component AESL_automem_output_r is
+-- The signal of port output_r
+shared variable AESL_REG_output_r : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
+    signal AESL_slave_output_done : STD_LOGIC;
+    signal AESL_slave_start : STD_LOGIC;
+    signal AESL_slave_start_lock : STD_LOGIC := '0';
+    signal AESL_slave_write_start_in : STD_LOGIC;
+    signal AESL_slave_write_start_finish : STD_LOGIC;
+    signal AESL_slave_ready : STD_LOGIC;
+    signal AESL_slave_done : STD_LOGIC;
+    signal slave_start_status : STD_LOGIC := '0';
+    signal start_rise : STD_LOGIC := '0';
+    signal ready_rise : STD_LOGIC := '0';
+    signal slave_done_status : STD_LOGIC := '0';
+    signal ap_done_lock : STD_LOGIC := '0';
+    signal conv_io_read_data_finish : STD_LOGIC;
+    signal conv_io_write_data_finish : STD_LOGIC;
+component AESL_AXI_SLAVE_conv_io is
   port(
-    clk        :  IN  STD_LOGIC;
-    rst        :  IN  STD_LOGIC;
-    ce0        :  IN  STD_LOGIC;
-    we0        :  IN  STD_LOGIC;
-    address0   :  IN  STD_LOGIC_VECTOR;
-    din0       :  IN  STD_LOGIC_VECTOR;
-    dout0      :  OUT STD_LOGIC_VECTOR;
-    ce1        :  IN  STD_LOGIC;
-    we1        :  IN  STD_LOGIC;
-    address1   :  IN  STD_LOGIC_VECTOR;
-    din1       :  IN  STD_LOGIC_VECTOR;
-    dout1      :  OUT STD_LOGIC_VECTOR;
-    ready	     :  IN  STD_LOGIC;
-    done	     :  IN  STD_LOGIC
-  );
+    clk   :   IN STD_LOGIC;
+    reset :   IN STD_LOGIC;
+    TRAN_s_axi_conv_io_AWADDR : OUT STD_LOGIC_VECTOR;
+    TRAN_s_axi_conv_io_AWVALID : OUT STD_LOGIC;
+    TRAN_s_axi_conv_io_AWREADY : IN STD_LOGIC;
+    TRAN_s_axi_conv_io_WVALID : OUT STD_LOGIC;
+    TRAN_s_axi_conv_io_WREADY : IN STD_LOGIC;
+    TRAN_s_axi_conv_io_WDATA : OUT STD_LOGIC_VECTOR;
+    TRAN_s_axi_conv_io_WSTRB : OUT STD_LOGIC_VECTOR;
+    TRAN_s_axi_conv_io_ARADDR : OUT STD_LOGIC_VECTOR;
+    TRAN_s_axi_conv_io_ARVALID : OUT STD_LOGIC;
+    TRAN_s_axi_conv_io_ARREADY : IN STD_LOGIC;
+    TRAN_s_axi_conv_io_RVALID : IN STD_LOGIC;
+    TRAN_s_axi_conv_io_RREADY : OUT STD_LOGIC;
+    TRAN_s_axi_conv_io_RDATA : IN STD_LOGIC_VECTOR;
+    TRAN_s_axi_conv_io_RRESP : IN STD_LOGIC_VECTOR;
+    TRAN_s_axi_conv_io_BVALID : IN STD_LOGIC;
+    TRAN_s_axi_conv_io_BREADY : OUT STD_LOGIC;
+    TRAN_s_axi_conv_io_BRESP : IN STD_LOGIC_VECTOR;
+    TRAN_conv_io_interrupt   : IN STD_LOGIC;
+    TRAN_conv_io_read_data_finish : OUT STD_LOGIC;
+    TRAN_conv_io_write_data_finish : OUT STD_LOGIC;
+    TRAN_conv_io_ready_out : OUT STD_LOGIC;
+    TRAN_conv_io_ready_in  : IN STD_LOGIC;
+    TRAN_conv_io_done_out  : OUT STD_LOGIC;
+    TRAN_conv_io_idle_out  : OUT STD_LOGIC;
+    TRAN_conv_io_write_start_in     : IN  STD_LOGIC;
+    TRAN_conv_io_write_start_finish : OUT STD_LOGIC;
+    TRAN_conv_io_transaction_done_in    : IN STD_LOGIC;
+    TRAN_conv_io_start_in    : IN STD_LOGIC
+);
 end component;
 
       procedure esl_read_token (file textfile: TEXT; textline: inout LINE; token: out STRING; token_len: out INTEGER) is
@@ -659,10 +564,10 @@ end component;
       procedure post_check (file fp1 : TEXT; file fp2 : TEXT) is
           variable    token_line1 :   LINE;
           variable    token_line2 :   LINE;
-          variable    token1      :   STRING(1 to 160);
-          variable    token2      :   STRING(1 to 160);
-          variable    golden      :   STD_LOGIC_VECTOR(159 downto 0);
-          variable    result      :   STD_LOGIC_VECTOR(159 downto 0);
+          variable    token1      :   STRING(1 to 192);
+          variable    token2      :   STRING(1 to 192);
+          variable    golden      :   STD_LOGIC_VECTOR(191 downto 0);
+          variable    result      :   STD_LOGIC_VECTOR(191 downto 0);
           variable    l1          :   INTEGER;
           variable    l2          :   INTEGER;
       begin
@@ -682,8 +587,8 @@ end component;
               esl_read_token(fp1, token_line1, token1, l1);
               esl_read_token(fp2, token_line2, token2, l2);
               while(token1(1 to 16) /= "[[/transaction]]" and token2(1 to 16) /= "[[/transaction]]") loop
-                  golden := esl_str2lv_hex(token1, 160 );
-                  result := esl_str2lv_hex(token2, 160 );
+                  golden := esl_str2lv_hex(token1, 192 );
+                  result := esl_str2lv_hex(token2, 192 );
                   if(esl_equal_std_lv(golden, result) = false) then
                       report token1(1 to l1) & " (expected) vs. " & token2(1 to l2) & " (actual) - mismatch";
                       assert false report "ERROR: Simulation using HLS TB failed." severity failure;
@@ -698,655 +603,122 @@ end component;
 
 begin
 AESL_inst_convolution2D    :   convolution2D port map (
+   s_axi_conv_io_AWADDR  =>  conv_io_AWADDR,
+   s_axi_conv_io_AWVALID  =>  conv_io_AWVALID,
+   s_axi_conv_io_AWREADY  =>  conv_io_AWREADY,
+   s_axi_conv_io_WVALID  =>  conv_io_WVALID,
+   s_axi_conv_io_WREADY  =>  conv_io_WREADY,
+   s_axi_conv_io_WDATA  =>  conv_io_WDATA,
+   s_axi_conv_io_WSTRB  =>  conv_io_WSTRB,
+   s_axi_conv_io_ARADDR  =>  conv_io_ARADDR,
+   s_axi_conv_io_ARVALID  =>  conv_io_ARVALID,
+   s_axi_conv_io_ARREADY  =>  conv_io_ARREADY,
+   s_axi_conv_io_RVALID  =>  conv_io_RVALID,
+   s_axi_conv_io_RREADY  =>  conv_io_RREADY,
+   s_axi_conv_io_RDATA  =>  conv_io_RDATA,
+   s_axi_conv_io_RRESP  =>  conv_io_RRESP,
+   s_axi_conv_io_BVALID  =>  conv_io_BVALID,
+   s_axi_conv_io_BREADY  =>  conv_io_BREADY,
+   s_axi_conv_io_BRESP  =>  conv_io_BRESP,
+   interrupt  =>  conv_io_INTERRUPT,
    ap_clk  =>  ap_clk,
-   ap_rst  =>  ap_rst,
-   ap_start  =>  ap_start,
-   ap_done  =>  ap_done,
-   ap_idle  =>  ap_idle,
-   ap_ready  =>  ap_ready,
-   input_0_address0  =>  input_0_address0,
-   input_0_ce0  =>  input_0_ce0,
-   input_0_q0  =>  input_0_q0,
-   input_0_address1  =>  input_0_address1,
-   input_0_ce1  =>  input_0_ce1,
-   input_0_q1  =>  input_0_q1,
-   input_1_address0  =>  input_1_address0,
-   input_1_ce0  =>  input_1_ce0,
-   input_1_q0  =>  input_1_q0,
-   input_1_address1  =>  input_1_address1,
-   input_1_ce1  =>  input_1_ce1,
-   input_1_q1  =>  input_1_q1,
-   input_2_address0  =>  input_2_address0,
-   input_2_ce0  =>  input_2_ce0,
-   input_2_q0  =>  input_2_q0,
-   input_2_address1  =>  input_2_address1,
-   input_2_ce1  =>  input_2_ce1,
-   input_2_q1  =>  input_2_q1,
-   kernel_0_0  =>  kernel_0_0,
-   kernel_0_1  =>  kernel_0_1,
-   kernel_0_2  =>  kernel_0_2,
-   kernel_1_0  =>  kernel_1_0,
-   kernel_1_1  =>  kernel_1_1,
-   kernel_1_2  =>  kernel_1_2,
-   kernel_2_0  =>  kernel_2_0,
-   kernel_2_1  =>  kernel_2_1,
-   kernel_2_2  =>  kernel_2_2,
-   output_r_address0  =>  output_r_address0,
-   output_r_ce0  =>  output_r_ce0,
-   output_r_we0  =>  output_r_we0,
-   output_r_d0  =>  output_r_d0,
-   output_r_address1  =>  output_r_address1,
-   output_r_ce1  =>  output_r_ce1,
-   output_r_we1  =>  output_r_we1,
-   output_r_d1  =>  output_r_d1
+   ap_rst_n  =>  ap_rst_n
 );
 
 -- Assignment for control signal
   ap_clk <= AESL_clock;
-  ap_rst <= AESL_reset;
+  ap_rst_n <= AESL_reset;
   AESL_reset <= rst;
-  ap_start <= AESL_start;
   AESL_start <= start;
-  AESL_done <= ap_done;
-  AESL_idle <= ap_idle;
-  AESL_ready <= ap_ready;
   AESL_ce <= ce;
   AESL_continue <= continue;
-gen_check_strlSignal_AESL_done_proc : process(AESL_clock)
+  AESL_slave_write_start_in <= slave_start_status  and conv_io_write_data_finish;
+  AESL_slave_start <= AESL_slave_write_start_finish;
+  AESL_done <= slave_done_status  and conv_io_read_data_finish;
+
+slave_start_proc : process(AESL_clock)
 begin
   if (AESL_clock'event and AESL_clock = '1') then
-    if(AESL_reset = '1') then
-      NULL;
+    if(AESL_reset = '0') then
+        slave_start_status <= '1';
     else
-        if ( AESL_done /= '1' and AESL_done /= '0' ) then
-            assert false report "Control signal AESL_done is invalid!" severity failure;
+        if (AESL_start = '1' ) then
+            start_rise <= '1';
+        end if;
+        if (start_rise = '1' and AESL_done = '1' ) then
+            slave_start_status <= '1';
+        end if;
+        if (AESL_slave_write_start_in = '1' and AESL_done = '0') then 
+            slave_start_status <= '0';
+            start_rise <= '0';
         end if;
     end if;
   end if;
 end process;
-gen_check_strlSignal_AESL_ready_proc : process(AESL_clock)
+
+slave_ready_proc : process(AESL_clock)
 begin
   if (AESL_clock'event and AESL_clock = '1') then
-    if(AESL_reset = '1') then
-      NULL;
+    if(AESL_reset = '0') then
+        AESL_slave_ready <= '0';
+        ready_rise <= '0';
     else
-        if ( AESL_ready /= '1' and AESL_ready /= '0' ) then
-            assert false report "Control signal AESL_ready is invalid!" severity failure;
+        if (AESL_ready = '1' ) then
+            ready_rise <= '1';
+        end if;
+        if (ready_rise = '1' and AESL_done_delay = '1' ) then
+            AESL_slave_ready <= '1';
+        end if;
+        if (AESL_slave_ready = '1') then 
+            AESL_slave_ready <= '0';
+            ready_rise <= '0';
         end if;
     end if;
   end if;
 end process;
-AESL_inst_input_0 : AESL_automem_input_0 port map (
-    clk       =>  AESL_clock,
-    rst       =>  AESL_reset,
-    ce0       =>  arrayinput_0_ce0,
-    we0       =>  arrayinput_0_we0,
-    address0  =>  arrayinput_0_address0,
-    din0      =>  arrayinput_0_din0,
-    dout0     =>  arrayinput_0_dout0,
-    ce1       =>  arrayinput_0_ce1,
-    we1       =>  arrayinput_0_we1,
-    address1  =>  arrayinput_0_address1,
-    din1      =>  arrayinput_0_din1,
-    dout1     =>  arrayinput_0_dout1,
-    ready	    =>  arrayinput_0_ready,
-    done	    =>  arrayinput_0_done
+
+slave_done_proc : process(AESL_clock)
+begin
+  if (AESL_clock'event and AESL_clock = '1') then
+    if (AESL_done = '1') then
+        slave_done_status <= '0';
+    elsif (AESL_slave_output_done = '1' ) then
+        slave_done_status <= '1';
+    end if;
+  end if;
+end process;
+AESL_axi_slave_inst_conv_io : AESL_AXI_SLAVE_conv_io port map (
+    clk   =>  AESL_clock,
+    reset =>  AESL_reset,
+    TRAN_s_axi_conv_io_AWADDR => conv_io_AWADDR,
+    TRAN_s_axi_conv_io_AWVALID => conv_io_AWVALID,
+    TRAN_s_axi_conv_io_AWREADY => conv_io_AWREADY,
+    TRAN_s_axi_conv_io_WVALID => conv_io_WVALID,
+    TRAN_s_axi_conv_io_WREADY => conv_io_WREADY,
+    TRAN_s_axi_conv_io_WDATA => conv_io_WDATA,
+    TRAN_s_axi_conv_io_WSTRB => conv_io_WSTRB,
+    TRAN_s_axi_conv_io_ARADDR => conv_io_ARADDR,
+    TRAN_s_axi_conv_io_ARVALID => conv_io_ARVALID,
+    TRAN_s_axi_conv_io_ARREADY => conv_io_ARREADY,
+    TRAN_s_axi_conv_io_RVALID => conv_io_RVALID,
+    TRAN_s_axi_conv_io_RREADY => conv_io_RREADY,
+    TRAN_s_axi_conv_io_RDATA => conv_io_RDATA,
+    TRAN_s_axi_conv_io_RRESP => conv_io_RRESP,
+    TRAN_s_axi_conv_io_BVALID => conv_io_BVALID,
+    TRAN_s_axi_conv_io_BREADY => conv_io_BREADY,
+    TRAN_s_axi_conv_io_BRESP => conv_io_BRESP,
+    TRAN_conv_io_interrupt => conv_io_INTERRUPT,
+    TRAN_conv_io_read_data_finish => conv_io_read_data_finish,
+    TRAN_conv_io_write_data_finish => conv_io_write_data_finish,
+    TRAN_conv_io_ready_out => AESL_ready,
+    TRAN_conv_io_ready_in => AESL_slave_ready,
+    TRAN_conv_io_done_out => AESL_slave_output_done,
+    TRAN_conv_io_idle_out => AESL_idle,
+    TRAN_conv_io_write_start_in     => AESL_slave_write_start_in,
+    TRAN_conv_io_write_start_finish => AESL_slave_write_start_finish,
+    TRAN_conv_io_transaction_done_in => AESL_done_delay,
+    TRAN_conv_io_start_in  => AESL_slave_start
 );
-
--- Assignment between dut and arrayinput_0
-arrayinput_0_address0 <= input_0_address0;
-arrayinput_0_ce0 <= input_0_ce0;
-input_0_q0 <= arrayinput_0_dout0;
-arrayinput_0_we0 <= '0';
-arrayinput_0_din0 <= (others => '0');
-arrayinput_0_address1 <= input_0_address1;
-arrayinput_0_ce1 <= input_0_ce1;
-input_0_q1 <= arrayinput_0_dout1;
-arrayinput_0_we1 <= '0';
-arrayinput_0_din1 <= (others => '0');
-arrayinput_0_ready <=	ready;
-arrayinput_0_done <= '0';
-
-AESL_inst_input_1 : AESL_automem_input_1 port map (
-    clk       =>  AESL_clock,
-    rst       =>  AESL_reset,
-    ce0       =>  arrayinput_1_ce0,
-    we0       =>  arrayinput_1_we0,
-    address0  =>  arrayinput_1_address0,
-    din0      =>  arrayinput_1_din0,
-    dout0     =>  arrayinput_1_dout0,
-    ce1       =>  arrayinput_1_ce1,
-    we1       =>  arrayinput_1_we1,
-    address1  =>  arrayinput_1_address1,
-    din1      =>  arrayinput_1_din1,
-    dout1     =>  arrayinput_1_dout1,
-    ready	    =>  arrayinput_1_ready,
-    done	    =>  arrayinput_1_done
-);
-
--- Assignment between dut and arrayinput_1
-arrayinput_1_address0 <= input_1_address0;
-arrayinput_1_ce0 <= input_1_ce0;
-input_1_q0 <= arrayinput_1_dout0;
-arrayinput_1_we0 <= '0';
-arrayinput_1_din0 <= (others => '0');
-arrayinput_1_address1 <= input_1_address1;
-arrayinput_1_ce1 <= input_1_ce1;
-input_1_q1 <= arrayinput_1_dout1;
-arrayinput_1_we1 <= '0';
-arrayinput_1_din1 <= (others => '0');
-arrayinput_1_ready <=	ready;
-arrayinput_1_done <= '0';
-
-AESL_inst_input_2 : AESL_automem_input_2 port map (
-    clk       =>  AESL_clock,
-    rst       =>  AESL_reset,
-    ce0       =>  arrayinput_2_ce0,
-    we0       =>  arrayinput_2_we0,
-    address0  =>  arrayinput_2_address0,
-    din0      =>  arrayinput_2_din0,
-    dout0     =>  arrayinput_2_dout0,
-    ce1       =>  arrayinput_2_ce1,
-    we1       =>  arrayinput_2_we1,
-    address1  =>  arrayinput_2_address1,
-    din1      =>  arrayinput_2_din1,
-    dout1     =>  arrayinput_2_dout1,
-    ready	    =>  arrayinput_2_ready,
-    done	    =>  arrayinput_2_done
-);
-
--- Assignment between dut and arrayinput_2
-arrayinput_2_address0 <= input_2_address0;
-arrayinput_2_ce0 <= input_2_ce0;
-input_2_q0 <= arrayinput_2_dout0;
-arrayinput_2_we0 <= '0';
-arrayinput_2_din0 <= (others => '0');
-arrayinput_2_address1 <= input_2_address1;
-arrayinput_2_ce1 <= input_2_ce1;
-input_2_q1 <= arrayinput_2_dout1;
-arrayinput_2_we1 <= '0';
-arrayinput_2_din1 <= (others => '0');
-arrayinput_2_ready <=	ready;
-arrayinput_2_done <= '0';
-
-gen_assign_kernel_0_0_proc : process
-begin
-  wait until (AESL_clock'event and AESL_clock = '1');
-  wait for 0.45 ns;
-  kernel_0_0 <= AESL_REG_kernel_0_0;
-end process;
-read_file_process_kernel_0_0 : process
-  file        fp          :   TEXT;
-  variable    fstatus     :   FILE_OPEN_STATUS;
-  variable    token_line  :   LINE;
-  variable    token       :   STRING(1 to 160);
-  variable    i           :   INTEGER;
-  variable    transaction_finish  :   INTEGER;
-  variable    transaction_idx     :   INTEGER:= 0;
-  variable    rand        :   T_RANDINT     := init_rand(0);
-  variable    rint        :   INTEGER;
-begin
-    wait until AESL_reset = '0';
-    file_open(fstatus, fp, AUTOTB_TVIN_kernel_0_0, READ_MODE);
-    if(fstatus /= OPEN_OK) then
-        assert false report "Open file " & AUTOTB_TVIN_kernel_0_0 & " failed!!!" severity note;
-        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-    end if;
-    esl_read_token(fp, token_line, token);
-    if(token(1 to 13) /= "[[[runtime]]]") then
-        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-    end if;
-    esl_read_token(fp, token_line, token);
-    while(token(1 to 14) /= "[[[/runtime]]]") loop
-        if(token(1 to 15) /= "[[transaction]]") then
-            assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-        end if;
-        esl_read_token(fp, token_line, token);  -- Skip transaction number
-        esl_read_token(fp, token_line, token);
-        wait for 0.2 ns;
-        while(ready_wire /= '1') loop
-            wait until AESL_clock'event and AESL_clock = '1';
-            wait for 0.2 ns;
-        end loop;
-        if(token(1 to 16) /= "[[/transaction]]") then
-            AESL_REG_kernel_0_0 := esl_str2lv_hex(token, 32 );
-            esl_read_token(fp, token_line, token);
-        end if;
-        wait until AESL_clock'event and AESL_clock = '1';
-        esl_read_token(fp, token_line, token);
-    end loop;
-    file_close(fp);
-    wait;
-end process;
-
-gen_assign_kernel_0_1_proc : process
-begin
-  wait until (AESL_clock'event and AESL_clock = '1');
-  wait for 0.45 ns;
-  kernel_0_1 <= AESL_REG_kernel_0_1;
-end process;
-read_file_process_kernel_0_1 : process
-  file        fp          :   TEXT;
-  variable    fstatus     :   FILE_OPEN_STATUS;
-  variable    token_line  :   LINE;
-  variable    token       :   STRING(1 to 160);
-  variable    i           :   INTEGER;
-  variable    transaction_finish  :   INTEGER;
-  variable    transaction_idx     :   INTEGER:= 0;
-  variable    rand        :   T_RANDINT     := init_rand(0);
-  variable    rint        :   INTEGER;
-begin
-    wait until AESL_reset = '0';
-    file_open(fstatus, fp, AUTOTB_TVIN_kernel_0_1, READ_MODE);
-    if(fstatus /= OPEN_OK) then
-        assert false report "Open file " & AUTOTB_TVIN_kernel_0_1 & " failed!!!" severity note;
-        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-    end if;
-    esl_read_token(fp, token_line, token);
-    if(token(1 to 13) /= "[[[runtime]]]") then
-        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-    end if;
-    esl_read_token(fp, token_line, token);
-    while(token(1 to 14) /= "[[[/runtime]]]") loop
-        if(token(1 to 15) /= "[[transaction]]") then
-            assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-        end if;
-        esl_read_token(fp, token_line, token);  -- Skip transaction number
-        esl_read_token(fp, token_line, token);
-        wait for 0.2 ns;
-        while(ready_wire /= '1') loop
-            wait until AESL_clock'event and AESL_clock = '1';
-            wait for 0.2 ns;
-        end loop;
-        if(token(1 to 16) /= "[[/transaction]]") then
-            AESL_REG_kernel_0_1 := esl_str2lv_hex(token, 32 );
-            esl_read_token(fp, token_line, token);
-        end if;
-        wait until AESL_clock'event and AESL_clock = '1';
-        esl_read_token(fp, token_line, token);
-    end loop;
-    file_close(fp);
-    wait;
-end process;
-
-gen_assign_kernel_0_2_proc : process
-begin
-  wait until (AESL_clock'event and AESL_clock = '1');
-  wait for 0.45 ns;
-  kernel_0_2 <= AESL_REG_kernel_0_2;
-end process;
-read_file_process_kernel_0_2 : process
-  file        fp          :   TEXT;
-  variable    fstatus     :   FILE_OPEN_STATUS;
-  variable    token_line  :   LINE;
-  variable    token       :   STRING(1 to 160);
-  variable    i           :   INTEGER;
-  variable    transaction_finish  :   INTEGER;
-  variable    transaction_idx     :   INTEGER:= 0;
-  variable    rand        :   T_RANDINT     := init_rand(0);
-  variable    rint        :   INTEGER;
-begin
-    wait until AESL_reset = '0';
-    file_open(fstatus, fp, AUTOTB_TVIN_kernel_0_2, READ_MODE);
-    if(fstatus /= OPEN_OK) then
-        assert false report "Open file " & AUTOTB_TVIN_kernel_0_2 & " failed!!!" severity note;
-        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-    end if;
-    esl_read_token(fp, token_line, token);
-    if(token(1 to 13) /= "[[[runtime]]]") then
-        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-    end if;
-    esl_read_token(fp, token_line, token);
-    while(token(1 to 14) /= "[[[/runtime]]]") loop
-        if(token(1 to 15) /= "[[transaction]]") then
-            assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-        end if;
-        esl_read_token(fp, token_line, token);  -- Skip transaction number
-        esl_read_token(fp, token_line, token);
-        wait for 0.2 ns;
-        while(ready_wire /= '1') loop
-            wait until AESL_clock'event and AESL_clock = '1';
-            wait for 0.2 ns;
-        end loop;
-        if(token(1 to 16) /= "[[/transaction]]") then
-            AESL_REG_kernel_0_2 := esl_str2lv_hex(token, 32 );
-            esl_read_token(fp, token_line, token);
-        end if;
-        wait until AESL_clock'event and AESL_clock = '1';
-        esl_read_token(fp, token_line, token);
-    end loop;
-    file_close(fp);
-    wait;
-end process;
-
-gen_assign_kernel_1_0_proc : process
-begin
-  wait until (AESL_clock'event and AESL_clock = '1');
-  wait for 0.45 ns;
-  kernel_1_0 <= AESL_REG_kernel_1_0;
-end process;
-read_file_process_kernel_1_0 : process
-  file        fp          :   TEXT;
-  variable    fstatus     :   FILE_OPEN_STATUS;
-  variable    token_line  :   LINE;
-  variable    token       :   STRING(1 to 160);
-  variable    i           :   INTEGER;
-  variable    transaction_finish  :   INTEGER;
-  variable    transaction_idx     :   INTEGER:= 0;
-  variable    rand        :   T_RANDINT     := init_rand(0);
-  variable    rint        :   INTEGER;
-begin
-    wait until AESL_reset = '0';
-    file_open(fstatus, fp, AUTOTB_TVIN_kernel_1_0, READ_MODE);
-    if(fstatus /= OPEN_OK) then
-        assert false report "Open file " & AUTOTB_TVIN_kernel_1_0 & " failed!!!" severity note;
-        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-    end if;
-    esl_read_token(fp, token_line, token);
-    if(token(1 to 13) /= "[[[runtime]]]") then
-        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-    end if;
-    esl_read_token(fp, token_line, token);
-    while(token(1 to 14) /= "[[[/runtime]]]") loop
-        if(token(1 to 15) /= "[[transaction]]") then
-            assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-        end if;
-        esl_read_token(fp, token_line, token);  -- Skip transaction number
-        esl_read_token(fp, token_line, token);
-        wait for 0.2 ns;
-        while(ready_wire /= '1') loop
-            wait until AESL_clock'event and AESL_clock = '1';
-            wait for 0.2 ns;
-        end loop;
-        if(token(1 to 16) /= "[[/transaction]]") then
-            AESL_REG_kernel_1_0 := esl_str2lv_hex(token, 32 );
-            esl_read_token(fp, token_line, token);
-        end if;
-        wait until AESL_clock'event and AESL_clock = '1';
-        esl_read_token(fp, token_line, token);
-    end loop;
-    file_close(fp);
-    wait;
-end process;
-
-gen_assign_kernel_1_1_proc : process
-begin
-  wait until (AESL_clock'event and AESL_clock = '1');
-  wait for 0.45 ns;
-  kernel_1_1 <= AESL_REG_kernel_1_1;
-end process;
-read_file_process_kernel_1_1 : process
-  file        fp          :   TEXT;
-  variable    fstatus     :   FILE_OPEN_STATUS;
-  variable    token_line  :   LINE;
-  variable    token       :   STRING(1 to 160);
-  variable    i           :   INTEGER;
-  variable    transaction_finish  :   INTEGER;
-  variable    transaction_idx     :   INTEGER:= 0;
-  variable    rand        :   T_RANDINT     := init_rand(0);
-  variable    rint        :   INTEGER;
-begin
-    wait until AESL_reset = '0';
-    file_open(fstatus, fp, AUTOTB_TVIN_kernel_1_1, READ_MODE);
-    if(fstatus /= OPEN_OK) then
-        assert false report "Open file " & AUTOTB_TVIN_kernel_1_1 & " failed!!!" severity note;
-        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-    end if;
-    esl_read_token(fp, token_line, token);
-    if(token(1 to 13) /= "[[[runtime]]]") then
-        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-    end if;
-    esl_read_token(fp, token_line, token);
-    while(token(1 to 14) /= "[[[/runtime]]]") loop
-        if(token(1 to 15) /= "[[transaction]]") then
-            assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-        end if;
-        esl_read_token(fp, token_line, token);  -- Skip transaction number
-        esl_read_token(fp, token_line, token);
-        wait for 0.2 ns;
-        while(ready_wire /= '1') loop
-            wait until AESL_clock'event and AESL_clock = '1';
-            wait for 0.2 ns;
-        end loop;
-        if(token(1 to 16) /= "[[/transaction]]") then
-            AESL_REG_kernel_1_1 := esl_str2lv_hex(token, 32 );
-            esl_read_token(fp, token_line, token);
-        end if;
-        wait until AESL_clock'event and AESL_clock = '1';
-        esl_read_token(fp, token_line, token);
-    end loop;
-    file_close(fp);
-    wait;
-end process;
-
-gen_assign_kernel_1_2_proc : process
-begin
-  wait until (AESL_clock'event and AESL_clock = '1');
-  wait for 0.45 ns;
-  kernel_1_2 <= AESL_REG_kernel_1_2;
-end process;
-read_file_process_kernel_1_2 : process
-  file        fp          :   TEXT;
-  variable    fstatus     :   FILE_OPEN_STATUS;
-  variable    token_line  :   LINE;
-  variable    token       :   STRING(1 to 160);
-  variable    i           :   INTEGER;
-  variable    transaction_finish  :   INTEGER;
-  variable    transaction_idx     :   INTEGER:= 0;
-  variable    rand        :   T_RANDINT     := init_rand(0);
-  variable    rint        :   INTEGER;
-begin
-    wait until AESL_reset = '0';
-    file_open(fstatus, fp, AUTOTB_TVIN_kernel_1_2, READ_MODE);
-    if(fstatus /= OPEN_OK) then
-        assert false report "Open file " & AUTOTB_TVIN_kernel_1_2 & " failed!!!" severity note;
-        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-    end if;
-    esl_read_token(fp, token_line, token);
-    if(token(1 to 13) /= "[[[runtime]]]") then
-        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-    end if;
-    esl_read_token(fp, token_line, token);
-    while(token(1 to 14) /= "[[[/runtime]]]") loop
-        if(token(1 to 15) /= "[[transaction]]") then
-            assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-        end if;
-        esl_read_token(fp, token_line, token);  -- Skip transaction number
-        esl_read_token(fp, token_line, token);
-        wait for 0.2 ns;
-        while(ready_wire /= '1') loop
-            wait until AESL_clock'event and AESL_clock = '1';
-            wait for 0.2 ns;
-        end loop;
-        if(token(1 to 16) /= "[[/transaction]]") then
-            AESL_REG_kernel_1_2 := esl_str2lv_hex(token, 32 );
-            esl_read_token(fp, token_line, token);
-        end if;
-        wait until AESL_clock'event and AESL_clock = '1';
-        esl_read_token(fp, token_line, token);
-    end loop;
-    file_close(fp);
-    wait;
-end process;
-
-gen_assign_kernel_2_0_proc : process
-begin
-  wait until (AESL_clock'event and AESL_clock = '1');
-  wait for 0.45 ns;
-  kernel_2_0 <= AESL_REG_kernel_2_0;
-end process;
-read_file_process_kernel_2_0 : process
-  file        fp          :   TEXT;
-  variable    fstatus     :   FILE_OPEN_STATUS;
-  variable    token_line  :   LINE;
-  variable    token       :   STRING(1 to 160);
-  variable    i           :   INTEGER;
-  variable    transaction_finish  :   INTEGER;
-  variable    transaction_idx     :   INTEGER:= 0;
-  variable    rand        :   T_RANDINT     := init_rand(0);
-  variable    rint        :   INTEGER;
-begin
-    wait until AESL_reset = '0';
-    file_open(fstatus, fp, AUTOTB_TVIN_kernel_2_0, READ_MODE);
-    if(fstatus /= OPEN_OK) then
-        assert false report "Open file " & AUTOTB_TVIN_kernel_2_0 & " failed!!!" severity note;
-        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-    end if;
-    esl_read_token(fp, token_line, token);
-    if(token(1 to 13) /= "[[[runtime]]]") then
-        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-    end if;
-    esl_read_token(fp, token_line, token);
-    while(token(1 to 14) /= "[[[/runtime]]]") loop
-        if(token(1 to 15) /= "[[transaction]]") then
-            assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-        end if;
-        esl_read_token(fp, token_line, token);  -- Skip transaction number
-        esl_read_token(fp, token_line, token);
-        wait for 0.2 ns;
-        while(ready_wire /= '1') loop
-            wait until AESL_clock'event and AESL_clock = '1';
-            wait for 0.2 ns;
-        end loop;
-        if(token(1 to 16) /= "[[/transaction]]") then
-            AESL_REG_kernel_2_0 := esl_str2lv_hex(token, 32 );
-            esl_read_token(fp, token_line, token);
-        end if;
-        wait until AESL_clock'event and AESL_clock = '1';
-        esl_read_token(fp, token_line, token);
-    end loop;
-    file_close(fp);
-    wait;
-end process;
-
-gen_assign_kernel_2_1_proc : process
-begin
-  wait until (AESL_clock'event and AESL_clock = '1');
-  wait for 0.45 ns;
-  kernel_2_1 <= AESL_REG_kernel_2_1;
-end process;
-read_file_process_kernel_2_1 : process
-  file        fp          :   TEXT;
-  variable    fstatus     :   FILE_OPEN_STATUS;
-  variable    token_line  :   LINE;
-  variable    token       :   STRING(1 to 160);
-  variable    i           :   INTEGER;
-  variable    transaction_finish  :   INTEGER;
-  variable    transaction_idx     :   INTEGER:= 0;
-  variable    rand        :   T_RANDINT     := init_rand(0);
-  variable    rint        :   INTEGER;
-begin
-    wait until AESL_reset = '0';
-    file_open(fstatus, fp, AUTOTB_TVIN_kernel_2_1, READ_MODE);
-    if(fstatus /= OPEN_OK) then
-        assert false report "Open file " & AUTOTB_TVIN_kernel_2_1 & " failed!!!" severity note;
-        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-    end if;
-    esl_read_token(fp, token_line, token);
-    if(token(1 to 13) /= "[[[runtime]]]") then
-        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-    end if;
-    esl_read_token(fp, token_line, token);
-    while(token(1 to 14) /= "[[[/runtime]]]") loop
-        if(token(1 to 15) /= "[[transaction]]") then
-            assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-        end if;
-        esl_read_token(fp, token_line, token);  -- Skip transaction number
-        esl_read_token(fp, token_line, token);
-        wait for 0.2 ns;
-        while(ready_wire /= '1') loop
-            wait until AESL_clock'event and AESL_clock = '1';
-            wait for 0.2 ns;
-        end loop;
-        if(token(1 to 16) /= "[[/transaction]]") then
-            AESL_REG_kernel_2_1 := esl_str2lv_hex(token, 32 );
-            esl_read_token(fp, token_line, token);
-        end if;
-        wait until AESL_clock'event and AESL_clock = '1';
-        esl_read_token(fp, token_line, token);
-    end loop;
-    file_close(fp);
-    wait;
-end process;
-
-gen_assign_kernel_2_2_proc : process
-begin
-  wait until (AESL_clock'event and AESL_clock = '1');
-  wait for 0.45 ns;
-  kernel_2_2 <= AESL_REG_kernel_2_2;
-end process;
-read_file_process_kernel_2_2 : process
-  file        fp          :   TEXT;
-  variable    fstatus     :   FILE_OPEN_STATUS;
-  variable    token_line  :   LINE;
-  variable    token       :   STRING(1 to 160);
-  variable    i           :   INTEGER;
-  variable    transaction_finish  :   INTEGER;
-  variable    transaction_idx     :   INTEGER:= 0;
-  variable    rand        :   T_RANDINT     := init_rand(0);
-  variable    rint        :   INTEGER;
-begin
-    wait until AESL_reset = '0';
-    file_open(fstatus, fp, AUTOTB_TVIN_kernel_2_2, READ_MODE);
-    if(fstatus /= OPEN_OK) then
-        assert false report "Open file " & AUTOTB_TVIN_kernel_2_2 & " failed!!!" severity note;
-        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-    end if;
-    esl_read_token(fp, token_line, token);
-    if(token(1 to 13) /= "[[[runtime]]]") then
-        assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-    end if;
-    esl_read_token(fp, token_line, token);
-    while(token(1 to 14) /= "[[[/runtime]]]") loop
-        if(token(1 to 15) /= "[[transaction]]") then
-            assert false report "ERROR: Simulation using HLS TB failed." severity failure;
-        end if;
-        esl_read_token(fp, token_line, token);  -- Skip transaction number
-        esl_read_token(fp, token_line, token);
-        wait for 0.2 ns;
-        while(ready_wire /= '1') loop
-            wait until AESL_clock'event and AESL_clock = '1';
-            wait for 0.2 ns;
-        end loop;
-        if(token(1 to 16) /= "[[/transaction]]") then
-            AESL_REG_kernel_2_2 := esl_str2lv_hex(token, 32 );
-            esl_read_token(fp, token_line, token);
-        end if;
-        wait until AESL_clock'event and AESL_clock = '1';
-        esl_read_token(fp, token_line, token);
-    end loop;
-    file_close(fp);
-    wait;
-end process;
-
-AESL_inst_output_r : AESL_automem_output_r port map (
-    clk       =>  AESL_clock,
-    rst       =>  AESL_reset,
-    ce0       =>  arrayoutput_r_ce0,
-    we0       =>  arrayoutput_r_we0,
-    address0  =>  arrayoutput_r_address0,
-    din0      =>  arrayoutput_r_din0,
-    dout0     =>  arrayoutput_r_dout0,
-    ce1       =>  arrayoutput_r_ce1,
-    we1       =>  arrayoutput_r_we1,
-    address1  =>  arrayoutput_r_address1,
-    din1      =>  arrayoutput_r_din1,
-    dout1     =>  arrayoutput_r_dout1,
-    ready	    =>  arrayoutput_r_ready,
-    done	    =>  arrayoutput_r_done
-);
-
--- Assignment between dut and arrayoutput_r
-arrayoutput_r_address0 <= output_r_address0;
-arrayoutput_r_ce0 <= output_r_ce0;
-arrayoutput_r_we0 <= output_r_we0;
-arrayoutput_r_din0 <= output_r_d0;
-arrayoutput_r_address1 <= output_r_address1;
-arrayoutput_r_ce1 <= output_r_ce1;
-arrayoutput_r_we1 <= output_r_we1;
-arrayoutput_r_din1 <= output_r_d1;
-arrayoutput_r_ready <= ready_initial or arrayoutput_r_done;
-arrayoutput_r_done <=	AESL_done_delay;
 
 generate_ready_cnt_proc : process(ready_initial, AESL_clock)
 begin
@@ -1365,7 +737,7 @@ end process;
 
 generate_done_cnt_proc : process(AESL_reset, AESL_clock)
 begin
-    if(AESL_reset = '1') then
+    if(AESL_reset = '0') then
         done_cnt <= (others => '0');
     elsif(AESL_clock'event and AESL_clock = '1') then
         if(done_cnt /= AUTOTB_TRANSACTION_NUM) then
@@ -1388,18 +760,6 @@ begin
         wait until AESL_clock'event and AESL_clock = '1';
         wait until AESL_clock'event and AESL_clock = '1';
         wait until AESL_clock'event and AESL_clock = '1';
-    file_open(fstatus1, fp1, "./rtl.convolution2D.autotvout_output_r.dat", READ_MODE);
-    file_open(fstatus2, fp2, "./impl_rtl.convolution2D.autotvout_output_r.dat", READ_MODE);
-    if(fstatus1 /= OPEN_OK) then
-        assert false report string'("Open file rtl.convolution2D.autotvout_output_r.dat failed!!!") severity note;
-    elsif(fstatus2 /= OPEN_OK) then
-        assert false report string'("Open file impl_rtl.convolution2D.autotvout_output_r.dat failed!!!") severity note;
-    else
-        report string'("Comparing rtl.convolution2D.autotvout_output_r.dat with impl_rtl.convolution2D.autotvout_output_r.dat");
-        post_check(fp1, fp2);
-    end if;
-    file_close(fp1);
-    file_close(fp2);
     report "Simulation Passed.";
     assert false report "simulation done!" severity note;
     assert false report "NORMAL EXIT (note: failure is to force the simulator to stop)" severity failure;
@@ -1420,12 +780,12 @@ gen_reset_proc : process
     variable  rand            :   T_RANDINT     := init_rand(0);
     variable  rint            :   INTEGER;
 begin
-    rst <= '1';
+    rst <= '0';
     wait for 100 ns;
     for i in 1 to 3 loop
         wait until AESL_clock'event and AESL_clock = '1';
     end loop;
-    rst <= '0';
+    rst <= '1';
     wait;
 end process;
 
@@ -1435,7 +795,7 @@ gen_start_proc : process
 begin
   start <= '0';
   ce <= '1';
-    wait until AESL_reset = '0';
+    wait until AESL_reset = '1';
   wait until (AESL_clock'event and AESL_clock = '1');
   start <= '1';
   while(ready_cnt /= AUTOTB_TRANSACTION_NUM + 1) loop
@@ -1458,7 +818,7 @@ end process;
 gen_AESL_ready_delay_proc : process(AESL_clock)
 begin
   if (AESL_clock'event and AESL_clock = '1') then
-    if(AESL_reset = '1') then
+    if(AESL_reset = '0') then
           AESL_ready_delay <= '0';
       else
           AESL_ready_delay <= AESL_ready;
@@ -1489,7 +849,7 @@ end process;
 gen_ready_delay_n_last_proc : process(AESL_clock)
 begin
   if (AESL_clock'event and AESL_clock = '1') then
-    if(AESL_reset = '1') then
+    if(AESL_reset = '0') then
           ready_delay_last_n <= '0';
       else
           ready_delay_last_n <= ready_last_n;
@@ -1504,7 +864,7 @@ done_delay_last_n <= '0' when done_cnt = AUTOTB_TRANSACTION_NUM else '1';
 gen_done_delay_proc : process(AESL_clock)
 begin
   if (AESL_clock'event and AESL_clock = '1') then
-    if(AESL_reset = '1') then
+    if(AESL_reset = '0') then
           AESL_done_delay <= '0';
           AESL_done_delay2 <= '0';
       else
@@ -1559,7 +919,7 @@ end process;
 gen_clock_counter_proc : process(AESL_clock)
 begin
   if (AESL_clock'event and AESL_clock = '0') then
-    if(AESL_reset = '1') then
+    if(AESL_reset = '0') then
         AESL_clk_counter := 0;
     else
         AESL_clk_counter := AESL_clk_counter + 1;
@@ -1570,7 +930,7 @@ end process;
 gen_mLatcnterout_proc : process(AESL_clock)
 begin
   if (AESL_clock'event and AESL_clock = '1') then
-    if(AESL_reset = '1') then
+    if(AESL_reset = '0') then
           AESL_mLatCnterOut_addr := 0;
           AESL_mLatCnterOut(AESL_mLatCnterOut_addr) := AESL_clk_counter + 1 ;
           reported_stuck_cnt := 0;
@@ -1579,15 +939,6 @@ begin
               AESL_mLatCnterOut(AESL_mLatCnterOut_addr) := AESL_clk_counter;
               AESL_mLatCnterOut_addr := AESL_mLatCnterOut_addr + 1;
               reported_stuck <= '0';
-          elsif (reported_stuck = '0' and reported_stuck_cnt < 4) then
-              if ( AESL_mLatCnterIn_addr > AESL_mLatCnterOut_addr ) then
-                  -- if ( AESL_clk_counter - AESL_mLatCnterIn(AESL_mLatCnterOut_addr) > 10000 and AESL_clk_counter - AESL_mLatCnterIn(AESL_mLatCnterOut_addr) > 10 * 15 ) then
-                  if ( AESL_clk_counter - AESL_mLatCnterIn(AESL_mLatCnterOut_addr) > 10000 and AESL_clk_counter - AESL_mLatCnterIn(AESL_mLatCnterOut_addr) > 10000000 ) then
-                      report "WARNING: The latency is much larger than expected. Simulation may be stuck.";
-                      reported_stuck <= '1';
-                      reported_stuck_cnt := reported_stuck_cnt + 1;
-                  end if;
-              end if;
           end if;
       end if;
   end if;
@@ -1596,13 +947,10 @@ end process;
 gen_mLatcnterin_proc : process(AESL_clock)
 begin
   if (AESL_clock'event and AESL_clock = '1') then
-    if(AESL_reset = '1') then
+    if(AESL_reset = '0') then
           AESL_mLatCnterIn_addr := 0;
       else
-    if (AESL_start = '1' and AESL_mLatCnterIn_addr = 0) then
-        AESL_mLatCnterIn(AESL_mLatCnterIn_addr) := AESL_clk_counter;
-        AESL_mLatCnterIn_addr := AESL_mLatCnterIn_addr + 1;
-    elsif (AESL_ready = '1' and AESL_mLatCnterIn_addr < AUTOTB_TRANSACTION_NUM + 1 ) then
+    if (AESL_slave_write_start_finish = '1' and AESL_mLatCnterIn_addr < AUTOTB_TRANSACTION_NUM + 1) then
         AESL_mLatCnterIn(AESL_mLatCnterIn_addr) := AESL_clk_counter;
         AESL_mLatCnterIn_addr := AESL_mLatCnterIn_addr + 1;
     end if;
@@ -1648,7 +996,7 @@ begin
     thraver   := 0;
 
     wait until (AESL_clock'event and AESL_clock = '1');
-    wait until (AESL_reset = '0'); 
+    wait until (AESL_reset = '1'); 
     while (done_cnt /= AUTOTB_TRANSACTION_NUM) loop
         wait until (AESL_clock'event and AESL_clock = '1');
     end loop;
@@ -1710,11 +1058,11 @@ begin
         writeline(fp, token_line);
         write(token_line, "$AVER_LATENCY = " & '"' & integer'image(lataver) & '"');
         writeline(fp, token_line);
-        write(token_line, "$MAX_THROUGHPUT = " & '"' & integer'image(thrmax) & '"');
+        write(token_line, "$MAX_THROUGHPUT = " & '"' & integer'image(latmax) & '"');
         writeline(fp, token_line);
-        write(token_line, "$MIN_THROUGHPUT = " & '"' & integer'image(thrmin) & '"');
+        write(token_line, "$MIN_THROUGHPUT = " & '"' & integer'image(latmin) & '"');
         writeline(fp, token_line);
-        write(token_line, "$AVER_THROUGHPUT = " & '"' & integer'image(thraver) & '"');
+        write(token_line, "$AVER_THROUGHPUT = " & '"' & integer'image(lataver) & '"');
         writeline(fp, token_line);
     end if;
 

@@ -5,8 +5,8 @@
 ############################################################
 open_project Convolution2D
 set_top convolution2D
-add_files Convolution2D/convolution2D.c
 add_files Convolution2D/convolution2D.h
+add_files Convolution2D/convolution2D.c
 add_files -tb Convolution2D/testbench.c -cflags "-Wno-unknown-pragmas"
 open_solution "solution1"
 set_part {xc7z020clg484-1} -tool vivado

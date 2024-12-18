@@ -1,7 +1,7 @@
-Running: xsim.dir/convolution2D/xsimk.exe -simmode gui -wdb convolution2D.wdb -simrunnum 0 -socket 57112
+Running: xsim.dir/convolution2D/xsimk.exe -simmode gui -wdb convolution2D.wdb -simrunnum 0 -socket 49262
 Design successfully loaded
-Design Loading Memory Usage: 7760 KB (Peak: 7760 KB)
-Design Loading CPU Usage: 15 ms
+Design Loading Memory Usage: 7868 KB (Peak: 7868 KB)
+Design Loading CPU Usage: 0 ms
 Simulation completed
-Simulation Memory Usage: 10624 KB (Peak: 10624 KB)
-Simulation CPU Usage: 62 ms
+Simulation Memory Usage: 12604 KB (Peak: 12604 KB)
+Simulation CPU Usage: 77 ms

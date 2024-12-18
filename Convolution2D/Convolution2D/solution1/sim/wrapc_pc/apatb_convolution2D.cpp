@@ -1,5 +1,5 @@
 // ==============================================================
-// File generated on Wed Dec 18 18:09:04 +0700 2024
+// File generated on Wed Dec 18 21:05:35 +0700 2024
 // Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 // SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 // IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -58,7 +58,6 @@ using namespace sc_dt;
 #define AUTOTB_TVIN_kernel_2_2  "../tv/cdatafile/c.convolution2D.autotvin_kernel_2_2.dat"
 // wrapc file define: "output_r"
 #define AUTOTB_TVOUT_output_r  "../tv/cdatafile/c.convolution2D.autotvout_output_r.dat"
-#define AUTOTB_TVIN_output_r  "../tv/cdatafile/c.convolution2D.autotvin_output_r.dat"
 
 #define INTER_TCL  "../tv/cdatafile/ref.tcl"
 
@@ -365,8 +364,6 @@ int output[3][3])
 		aesl_fh.touch(AUTOTB_TVIN_kernel_2_2);
 
 		// "output_r"
-		char* tvin_output_r = new char[50];
-		aesl_fh.touch(AUTOTB_TVIN_output_r);
 		char* tvout_output_r = new char[50];
 		aesl_fh.touch(AUTOTB_TVOUT_output_r);
 
@@ -998,58 +995,6 @@ int output[3][3])
 		// release memory allocation
 		delete [] kernel_2_2_tvin_wrapc_buffer;
 
-		// [[transaction]]
-		sprintf(tvin_output_r, "[[transaction]] %d\n", AESL_transaction);
-		aesl_fh.write(AUTOTB_TVIN_output_r, tvin_output_r);
-
-		sc_bv<32>* output_r_tvin_wrapc_buffer = new sc_bv<32>[9];
-
-		// RTL Name: output_r
-		{
-			// bitslice(31, 0)
-			{
-				int hls_map_index = 0;
-				// celement: output(31, 0)
-				{
-					// carray: (0) => (2) @ (1)
-					for (int i_0 = 0; i_0 <= 2; i_0 += 1)
-					{
-						// carray: (0) => (2) @ (1)
-						for (int i_1 = 0; i_1 <= 2; i_1 += 1)
-						{
-							// sub                   : i_0 i_1
-							// ori_name              : output[i_0][i_1]
-							// sub_1st_elem          : 0 0
-							// ori_name_1st_elem     : output[0][0]
-							// regulate_c_name       : output
-							// input_type_conversion : output[i_0][i_1]
-							if (&(output[0][0]) != NULL) // check the null address if the c port is array or others
-							{
-								sc_lv<32> output_tmp_mem;
-								output_tmp_mem = output[i_0][i_1];
-								output_r_tvin_wrapc_buffer[hls_map_index].range(31, 0) = output_tmp_mem.range(31, 0);
-                                 		       hls_map_index++;
-							}
-						}
-					}
-				}
-			}
-		}
-
-		// dump tv to file
-		for (int i = 0; i < 9; i++)
-		{
-			sprintf(tvin_output_r, "%s\n", (output_r_tvin_wrapc_buffer[i]).to_string(SC_HEX).c_str());
-			aesl_fh.write(AUTOTB_TVIN_output_r, tvin_output_r);
-		}
-
-		tcl_file.set_num(9, &tcl_file.output_r_depth);
-		sprintf(tvin_output_r, "[[/transaction]] \n");
-		aesl_fh.write(AUTOTB_TVIN_output_r, tvin_output_r);
-
-		// release memory allocation
-		delete [] output_r_tvin_wrapc_buffer;
-
 // [call_c_dut] ---------->
 
 		CodeState = CALL_C_DUT;
@@ -1136,7 +1081,6 @@ int output[3][3])
 		delete [] tvin_kernel_2_2;
 		// release memory allocation: "output_r"
 		delete [] tvout_output_r;
-		delete [] tvin_output_r;
 
 		AESL_transaction++;
 

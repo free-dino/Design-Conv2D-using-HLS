@@ -7,18 +7,15 @@ Determining compilation order of HDL files.
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/vhdl/glbl.v" into library work
 INFO: [VRFC 10-311] analyzing module glbl
 INFO: [VRFC 10-163] Analyzing VHDL file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/vhdl/AESL_sim_pkg.vhd" into library xil_defaultlib
-INFO: [VRFC 10-163] Analyzing VHDL file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/vhdl/AESL_automem_input_0.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'AESL_automem_input_0'
-INFO: [VRFC 10-163] Analyzing VHDL file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/vhdl/AESL_automem_input_1.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'AESL_automem_input_1'
-INFO: [VRFC 10-163] Analyzing VHDL file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/vhdl/AESL_automem_input_2.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'AESL_automem_input_2'
-INFO: [VRFC 10-163] Analyzing VHDL file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/vhdl/AESL_automem_output_r.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'AESL_automem_output_r'
+INFO: [VRFC 10-163] Analyzing VHDL file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/vhdl/AESL_axi_slave_conv_io.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'AESL_axi_slave_conv_io'
 INFO: [VRFC 10-163] Analyzing VHDL file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/vhdl/convolution2D.autotb.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'apatb_convolution2D_top'
 INFO: [VRFC 10-163] Analyzing VHDL file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/vhdl/convolution2D.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'convolution2D'
+INFO: [VRFC 10-163] Analyzing VHDL file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/vhdl/convolution2D_conv_io_s_axi.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'convolution2D_conv_io_s_axi'
+INFO: [VRFC 10-3107] analyzing entity 'convolution2D_conv_io_s_axi_ram'
 Starting static elaboration
 Completed static elaboration
 Starting simulation data flow analysis
@@ -32,10 +29,11 @@ Compiling package ieee.std_logic_unsigned
 Compiling package ieee.numeric_std
 Compiling package ieee.std_logic_textio
 Compiling module work.glbl
+Compiling architecture behave of entity xil_defaultlib.convolution2D_conv_io_s_axi_ram [\convolution2D_conv_io_s_axi_ram...]
+Compiling architecture behave of entity xil_defaultlib.convolution2D_conv_io_s_axi_ram [\convolution2D_conv_io_s_axi_ram...]
+Compiling architecture behave of entity xil_defaultlib.convolution2D_conv_io_s_axi_ram [\convolution2D_conv_io_s_axi_ram...]
+Compiling architecture behave of entity xil_defaultlib.convolution2D_conv_io_s_axi [convolution2d_conv_io_s_axi_defa...]
 Compiling architecture behav of entity xil_defaultlib.convolution2D [convolution2d_default]
-Compiling architecture behav of entity xil_defaultlib.AESL_automem_input_0 [aesl_automem_input_0_default]
-Compiling architecture behav of entity xil_defaultlib.AESL_automem_input_1 [aesl_automem_input_1_default]
-Compiling architecture behav of entity xil_defaultlib.AESL_automem_input_2 [aesl_automem_input_2_default]
-Compiling architecture behav of entity xil_defaultlib.AESL_automem_output_r [aesl_automem_output_r_default]
+Compiling architecture behav of entity xil_defaultlib.AESL_axi_slave_conv_io [aesl_axi_slave_conv_io_default]
 Compiling architecture behav of entity xil_defaultlib.apatb_convolution2d_top
 Built simulation snapshot convolution2D

@@ -1,5 +1,5 @@
 # ==============================================================
-# File generated on Wed Dec 18 18:11:02 +0700 2024
+# File generated on Wed Dec 18 21:04:28 +0700 2024
 # Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -73,7 +73,8 @@ set sdx_kernel_files {}
 set enable_xo_gen 0
 set sdaccel_dir [file join [pwd] .. sdaccel]
 set xo_hls_files_dir ""
-set hdl_module_list {convolution2D
+set hdl_module_list {convolution2D_conv_io_s_axi
+convolution2D
 }
 set kernel_xo ""
 
@@ -89,6 +90,104 @@ set BDFiles [sort_file_names [glob -nocomplain bd/*]]
 set ConstraintFiles [sort_file_names [glob -nocomplain constraints/*]]
 set MiscFiles [sort_file_names [glob -nocomplain misc/*]]
 set Interfaces {
+    s_axi_conv_io {
+        type "axi4lite"
+        mode "slave"
+        port_prefix "s_axi_conv_io"
+        param_prefix "C_S_AXI_CONV_IO"
+        addr_bits "9"
+        port_width "AWADDR 9 WDATA 32 WSTRB 4 ARADDR 9 RDATA 32"
+        registers {{0x00 CTRL       RW   0x0 "Control signals" {{ 0 1 AP_START RW 0 "Control signal Register for 'ap_start'." } { 1 1 AP_DONE R 0 "Control signal Register for 'ap_done'." } { 2 1 AP_IDLE R 0 "Control signal Register for 'ap_idle'." } { 3 1 AP_READY R 0 "Control signal Register for 'ap_ready'." } { 4 3 RESERVED_1 R 0 "Reserved.  0s on read." } { 7 1 AUTO_RESTART RW 0 "Control signal Register for 'auto_restart'." } { 8 24 RESERVED_2 R 0 "Reserved.  0s on read." }}} {0x04 GIER       RW   0x0 "Global Interrupt Enable Register" {{ 0 1 Enable RW 0 "Master enable for the device interrupt output to the system interrupt controller: 0 = Disabled, 1 = Enabled" } { 1 31 RESERVED R 0 "Reserved.  0s on read." }} } {0x08 IP_IER     RW   0x0 "IP Interrupt Enable Register" {{ 0 1 CHAN0_INT_EN RW 0 "Enable Channel 0 (ap_done) Interrupt.  0 = Disabled, 1 = Enabled." } { 1 1 CHAN1_INT_EN RW 0 "Enable Channel 1 (ap_ready) Interrupt.  0 = Disabled, 1 = Enabled." } { 2 30 RESERVED R 0 "Reserved.  0s on read." }}} {0x0c IP_ISR     RW   0x0 "IP Interrupt Status Register" {{ 0 1 CHAN0_INT_ST RTOW 0 "Channel 0 (ap_done) Interrupt Status. 0 = No Channel 0 input interrupt, 1 = Channel 0 input interrup" } { 1 1 CHAN1_INT_ST RTOW 0 "Channel 1 (ap_ready) Interrupt Status. 0 = No Channel 1 input interrupt, 1 = Channel 1 input interrup" } { 2 30 RESERVED R 0 "Reserved.  0s on read." }}} {0xe0 kernel_0_0 W 0x0 "Data signal of kernel_0_0" {{0 32 kernel_0_0 W 0 "Bit 31 to 0 Data signal of kernel_0_0"}}} {0xe8 kernel_0_1 W 0x0 "Data signal of kernel_0_1" {{0 32 kernel_0_1 W 0 "Bit 31 to 0 Data signal of kernel_0_1"}}} {0xf0 kernel_0_2 W 0x0 "Data signal of kernel_0_2" {{0 32 kernel_0_2 W 0 "Bit 31 to 0 Data signal of kernel_0_2"}}} {0xf8 kernel_1_0 W 0x0 "Data signal of kernel_1_0" {{0 32 kernel_1_0 W 0 "Bit 31 to 0 Data signal of kernel_1_0"}}} {0x100 kernel_1_1 W 0x0 "Data signal of kernel_1_1" {{0 32 kernel_1_1 W 0 "Bit 31 to 0 Data signal of kernel_1_1"}}} {0x108 kernel_1_2 W 0x0 "Data signal of kernel_1_2" {{0 32 kernel_1_2 W 0 "Bit 31 to 0 Data signal of kernel_1_2"}}} {0x110 kernel_2_0 W 0x0 "Data signal of kernel_2_0" {{0 32 kernel_2_0 W 0 "Bit 31 to 0 Data signal of kernel_2_0"}}} {0x118 kernel_2_1 W 0x0 "Data signal of kernel_2_1" {{0 32 kernel_2_1 W 0 "Bit 31 to 0 Data signal of kernel_2_1"}}} {0x120 kernel_2_2 W 0x0 "Data signal of kernel_2_2" {{0 32 kernel_2_2 W 0 "Bit 31 to 0 Data signal of kernel_2_2"}}}}
+        memories "input_0 {base_address 64 range 64} input_1 {base_address 128 range 64} input_2 {base_address 192 range 32} output_r {base_address 320 range 64}"
+        ctype {
+            AWVALID {
+                Type "bool"
+                Width "1"
+                Bits "1"
+            }
+            AWREADY {
+                Type "bool"
+                Width "1"
+                Bits "1"
+            }
+            WVALID {
+                Type "bool"
+                Width "1"
+                Bits "1"
+            }
+            WREADY {
+                Type "bool"
+                Width "1"
+                Bits "1"
+            }
+            BVALID {
+                Type "bool"
+                Width "1"
+                Bits "1"
+            }
+            BREADY {
+                Type "bool"
+                Width "1"
+                Bits "1"
+            }
+            BRESP {
+                Type "integer unsigned"
+                Width "2"
+                Bits "2"
+            }
+            ARVALID {
+                Type "bool"
+                Width "1"
+                Bits "1"
+            }
+            ARREADY {
+                Type "bool"
+                Width "1"
+                Bits "1"
+            }
+            RVALID {
+                Type "bool"
+                Width "1"
+                Bits "1"
+            }
+            RREADY {
+                Type "bool"
+                Width "1"
+                Bits "1"
+            }
+            RRESP {
+                Type "integer unsigned"
+                Width "2"
+                Bits "2"
+            }
+            AWADDR {
+                Type "integer unsigned"
+                Width "9"
+                Bits "9"
+            }
+            WDATA {
+                Type "integer signed"
+                Width "32"
+                Bits "32"
+            }
+            WSTRB {
+                Type "integer unsigned"
+                Width "4"
+                Bits "4"
+            }
+            ARADDR {
+                Type "integer unsigned"
+                Width "9"
+                Bits "9"
+            }
+            RDATA {
+                Type "integer signed"
+                Width "32"
+                Bits "32"
+            }
+        }
+        data_width "32"
+    }
     ap_clk {
         type "clock"
         ctype {
@@ -98,12 +197,12 @@ set Interfaces {
                 Bits "1"
             }
         }
-        buses ""
-        reset "ap_rst"
+        buses "s_axi_conv_io"
+        reset "ap_rst_n"
     }
-    ap_rst {
+    ap_rst_n {
         type "reset"
-        polarity "ACTIVE_HIGH"
+        polarity "ACTIVE_LOW"
         ctype {
             RST {
                 Type "bool"
@@ -112,389 +211,13 @@ set Interfaces {
             }
         }
     }
-    ap_ctrl {
-        type "ap_ctrl"
-        ctrl_ports "ap_start ap_done ap_idle ap_ready"
+    interrupt {
+        type "interrupt"
         ctype {
-            start {
+            INTERRUPT {
                 Type "bool"
                 Width "1"
                 Bits "1"
-            }
-            done {
-                Type "bool"
-                Width "1"
-                Bits "1"
-            }
-            idle {
-                Type "bool"
-                Width "1"
-                Bits "1"
-            }
-            ready {
-                Type "bool"
-                Width "1"
-                Bits "1"
-            }
-        }
-    }
-    input_0_address0 {
-        type "data"
-        dir "out"
-        width "4"
-        ctype {
-            DATA {
-                Type "null"
-                Width "4"
-                Bits "4"
-            }
-        }
-    }
-    input_0_q0 {
-        type "data"
-        dir "in"
-        width "32"
-        ctype {
-            DATA {
-                Type "integer signed"
-                Width "32"
-                Bits "32"
-            }
-        }
-    }
-    input_0_address1 {
-        type "data"
-        dir "out"
-        width "4"
-        ctype {
-            DATA {
-                Type "null"
-                Width "4"
-                Bits "4"
-            }
-        }
-    }
-    input_0_ce1 {
-        type "data"
-        dir "out"
-        width "1"
-        ctype {
-            DATA {
-                Type "null"
-                Width "1"
-                Bits "1"
-            }
-        }
-    }
-    input_0_q1 {
-        type "data"
-        dir "in"
-        width "32"
-        ctype {
-            DATA {
-                Type "null"
-                Width "32"
-                Bits "32"
-            }
-        }
-    }
-    input_1_address0 {
-        type "data"
-        dir "out"
-        width "4"
-        ctype {
-            DATA {
-                Type "null"
-                Width "4"
-                Bits "4"
-            }
-        }
-    }
-    input_1_q0 {
-        type "data"
-        dir "in"
-        width "32"
-        ctype {
-            DATA {
-                Type "integer signed"
-                Width "32"
-                Bits "32"
-            }
-        }
-    }
-    input_1_address1 {
-        type "data"
-        dir "out"
-        width "4"
-        ctype {
-            DATA {
-                Type "null"
-                Width "4"
-                Bits "4"
-            }
-        }
-    }
-    input_1_ce1 {
-        type "data"
-        dir "out"
-        width "1"
-        ctype {
-            DATA {
-                Type "null"
-                Width "1"
-                Bits "1"
-            }
-        }
-    }
-    input_1_q1 {
-        type "data"
-        dir "in"
-        width "32"
-        ctype {
-            DATA {
-                Type "null"
-                Width "32"
-                Bits "32"
-            }
-        }
-    }
-    input_2_address0 {
-        type "data"
-        dir "out"
-        width "3"
-        ctype {
-            DATA {
-                Type "null"
-                Width "3"
-                Bits "3"
-            }
-        }
-    }
-    input_2_q0 {
-        type "data"
-        dir "in"
-        width "32"
-        ctype {
-            DATA {
-                Type "integer signed"
-                Width "32"
-                Bits "32"
-            }
-        }
-    }
-    input_2_address1 {
-        type "data"
-        dir "out"
-        width "3"
-        ctype {
-            DATA {
-                Type "null"
-                Width "3"
-                Bits "3"
-            }
-        }
-    }
-    input_2_ce1 {
-        type "data"
-        dir "out"
-        width "1"
-        ctype {
-            DATA {
-                Type "null"
-                Width "1"
-                Bits "1"
-            }
-        }
-    }
-    input_2_q1 {
-        type "data"
-        dir "in"
-        width "32"
-        ctype {
-            DATA {
-                Type "null"
-                Width "32"
-                Bits "32"
-            }
-        }
-    }
-    kernel_0_0 {
-        type "data"
-        dir "in"
-        width "32"
-        ctype {
-            DATA {
-                Type "integer signed"
-                Width "32"
-                Bits "32"
-            }
-        }
-    }
-    kernel_0_1 {
-        type "data"
-        dir "in"
-        width "32"
-        ctype {
-            DATA {
-                Type "integer signed"
-                Width "32"
-                Bits "32"
-            }
-        }
-    }
-    kernel_0_2 {
-        type "data"
-        dir "in"
-        width "32"
-        ctype {
-            DATA {
-                Type "integer signed"
-                Width "32"
-                Bits "32"
-            }
-        }
-    }
-    kernel_1_0 {
-        type "data"
-        dir "in"
-        width "32"
-        ctype {
-            DATA {
-                Type "integer signed"
-                Width "32"
-                Bits "32"
-            }
-        }
-    }
-    kernel_1_1 {
-        type "data"
-        dir "in"
-        width "32"
-        ctype {
-            DATA {
-                Type "integer signed"
-                Width "32"
-                Bits "32"
-            }
-        }
-    }
-    kernel_1_2 {
-        type "data"
-        dir "in"
-        width "32"
-        ctype {
-            DATA {
-                Type "integer signed"
-                Width "32"
-                Bits "32"
-            }
-        }
-    }
-    kernel_2_0 {
-        type "data"
-        dir "in"
-        width "32"
-        ctype {
-            DATA {
-                Type "integer signed"
-                Width "32"
-                Bits "32"
-            }
-        }
-    }
-    kernel_2_1 {
-        type "data"
-        dir "in"
-        width "32"
-        ctype {
-            DATA {
-                Type "integer signed"
-                Width "32"
-                Bits "32"
-            }
-        }
-    }
-    kernel_2_2 {
-        type "data"
-        dir "in"
-        width "32"
-        ctype {
-            DATA {
-                Type "integer signed"
-                Width "32"
-                Bits "32"
-            }
-        }
-    }
-    output_r_address0 {
-        type "data"
-        dir "out"
-        width "4"
-        ctype {
-            DATA {
-                Type "null"
-                Width "4"
-                Bits "4"
-            }
-        }
-    }
-    output_r_d0 {
-        type "data"
-        dir "out"
-        width "32"
-        ctype {
-            DATA {
-                Type "integer signed"
-                Width "32"
-                Bits "32"
-            }
-        }
-    }
-    output_r_address1 {
-        type "data"
-        dir "out"
-        width "4"
-        ctype {
-            DATA {
-                Type "null"
-                Width "4"
-                Bits "4"
-            }
-        }
-    }
-    output_r_ce1 {
-        type "data"
-        dir "out"
-        width "1"
-        ctype {
-            DATA {
-                Type "null"
-                Width "1"
-                Bits "1"
-            }
-        }
-    }
-    output_r_we1 {
-        type "data"
-        dir "out"
-        width "1"
-        ctype {
-            DATA {
-                Type "null"
-                Width "1"
-                Bits "1"
-            }
-        }
-    }
-    output_r_d1 {
-        type "data"
-        dir "out"
-        width "32"
-        ctype {
-            DATA {
-                Type "null"
-                Width "32"
-                Bits "32"
             }
         }
     }
@@ -1966,7 +1689,7 @@ if {![regexp -nocase {2014\.3.*} $vivado_ver match]} {
 ipx::create_xgui_files -logo_file misc/logo.png $core
 
 ## System Info
-set user_parameters_list {clk_period 10 machine 64 combinational 0 latency 15 II x}
+set user_parameters_list {clk_period 10 machine 64 combinational 0 latency 25 II x}
 foreach {user_para value} $user_parameters_list {
     incr user_parameter_order
     set user_para_value [ipx::add_user_parameter $user_para $core]
