@@ -1,0 +1,9 @@
+vhdl xil_defaultlib "AESL_sim_pkg.vhd"
+sv work "glbl.v"
+vhdl xil_defaultlib "AESL_automem_input_0.vhd"
+vhdl xil_defaultlib "AESL_automem_input_1.vhd"
+vhdl xil_defaultlib "AESL_automem_input_2.vhd"
+vhdl xil_defaultlib "AESL_automem_output_r.vhd"
+vhdl xil_defaultlib "convolution2D.autotb.vhd"
+vhdl xil_defaultlib "convolution2D.vhd"
+
