@@ -11,8 +11,9 @@ add_files -tb Convolution2D/testbench.c -cflags "-Wno-unknown-pragmas"
 open_solution "solution1"
 set_part {xc7z020clg484-1} -tool vivado
 create_clock -period 10 -name default
+config_export -display_name convolution2D -format ip_catalog -rtl vhdl -version 0.0.0
 #source "./Convolution2D/solution1/directives.tcl"
 csim_design
 csynth_design
-cosim_design
-export_design -rtl verilog -format ip_catalog
+cosim_design -trace_level all
+export_design -rtl vhdl -format ip_catalog -version "0.0.0" -display_name "convolution2D"

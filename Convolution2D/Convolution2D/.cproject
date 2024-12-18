@@ -59,6 +59,8 @@
                                     									
                                     <listOptionValue builtIn="false" value="F:/Vivado/Vivado/2018.3/win64/tools/systemc/include"/>
                                     									
+                                    <listOptionValue builtIn="false" value="F:/Workspace/Design-Conv2D-using-HLS/Convolution2D"/>
+                                    									
                                     <listOptionValue builtIn="false" value="F:/Vivado/Vivado/2018.3/include"/>
                                     								
                                 </option>
@@ -92,6 +94,8 @@
                                     <listOptionValue builtIn="false" value="F:/Vivado/Vivado/2018.3/include/ap_sysc"/>
                                     									
                                     <listOptionValue builtIn="false" value="F:/Vivado/Vivado/2018.3/win64/tools/systemc/include"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="F:/Workspace/Design-Conv2D-using-HLS/Convolution2D"/>
                                     									
                                     <listOptionValue builtIn="false" value="F:/Vivado/Vivado/2018.3/include"/>
                                     								
@@ -257,6 +261,8 @@
                                     									
                                     <listOptionValue builtIn="false" value="F:/Vivado/Vivado/2018.3/win64/tools/systemc/include"/>
                                     									
+                                    <listOptionValue builtIn="false" value="F:/Workspace/Design-Conv2D-using-HLS/Convolution2D"/>
+                                    									
                                     <listOptionValue builtIn="false" value="F:/Vivado/Vivado/2018.3/include"/>
                                     								
                                 </option>
@@ -280,6 +286,8 @@
                                     <listOptionValue builtIn="false" value="F:/Vivado/Vivado/2018.3/include/ap_sysc"/>
                                     									
                                     <listOptionValue builtIn="false" value="F:/Vivado/Vivado/2018.3/win64/tools/systemc/include"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="F:/Workspace/Design-Conv2D-using-HLS/Convolution2D"/>
                                     									
                                     <listOptionValue builtIn="false" value="F:/Vivado/Vivado/2018.3/include"/>
                                     								

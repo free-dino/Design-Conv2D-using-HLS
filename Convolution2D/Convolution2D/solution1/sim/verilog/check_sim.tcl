@@ -1,5 +1,5 @@
 # ==============================================================
-# File generated on Wed Dec 04 15:50:55 +0700 2024
+# File generated on Wed Dec 18 17:07:47 +0700 2024
 # Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -83,8 +83,18 @@ proc check_tvin_file {} {
 		puts stdout "[debug_prompt arg check_sim.tcl] start...";
 	}
     set rtlfilelist {
-         "c.convolution2D.autotvin_input_r.dat"
-         "c.convolution2D.autotvin_kernel.dat"
+         "c.convolution2D.autotvin_input_0.dat"
+         "c.convolution2D.autotvin_input_1.dat"
+         "c.convolution2D.autotvin_input_2.dat"
+         "c.convolution2D.autotvin_kernel_0_0.dat"
+         "c.convolution2D.autotvin_kernel_0_1.dat"
+         "c.convolution2D.autotvin_kernel_0_2.dat"
+         "c.convolution2D.autotvin_kernel_1_0.dat"
+         "c.convolution2D.autotvin_kernel_1_1.dat"
+         "c.convolution2D.autotvin_kernel_1_2.dat"
+         "c.convolution2D.autotvin_kernel_2_0.dat"
+         "c.convolution2D.autotvin_kernel_2_1.dat"
+         "c.convolution2D.autotvin_kernel_2_2.dat"
          "c.convolution2D.autotvin_output_r.dat"
          "c.convolution2D.autotvout_output_r.dat"
     }

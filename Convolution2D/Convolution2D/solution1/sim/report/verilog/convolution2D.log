@@ -4,7 +4,7 @@ INFO: [COSIM-14] Instrumenting C test bench ...
    Compiling apatb_convolution2D.cpp
    Compiling (apcc) testbench.c_pre.c.tb.c
 INFO: [HLS 200-10] Running 'F:/Vivado/Vivado/2018.3/bin/unwrapped/win64.o/apcc.exe'
-INFO: [HLS 200-10] For user 'TGDD' on host 'laptop-f7v13plb' (Windows NT_amd64 version 6.2) on Wed Dec 04 15:50:45 +0700 2024
+INFO: [HLS 200-10] For user 'TGDD' on host 'laptop-f7v13plb' (Windows NT_amd64 version 6.2) on Wed Dec 18 17:07:41 +0700 2024
 INFO: [HLS 200-10] In directory 'F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/wrapc'
 clang: warning: argument unused during compilation: '-fno-builtin-isinf'
 clang: warning: argument unused during compilation: '-fno-builtin-isnan'
@@ -12,7 +12,7 @@ INFO: [APCC 202-3] Tmp directory is apcc_db
 INFO: [APCC 202-1] APCC is done.
    Compiling (apcc) convolution2D.c_pre.c.tb.c
 INFO: [HLS 200-10] Running 'F:/Vivado/Vivado/2018.3/bin/unwrapped/win64.o/apcc.exe'
-INFO: [HLS 200-10] For user 'TGDD' on host 'laptop-f7v13plb' (Windows NT_amd64 version 6.2) on Wed Dec 04 15:50:50 +0700 2024
+INFO: [HLS 200-10] For user 'TGDD' on host 'laptop-f7v13plb' (Windows NT_amd64 version 6.2) on Wed Dec 18 17:07:44 +0700 2024
 INFO: [HLS 200-10] In directory 'F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/wrapc'
 clang: warning: argument unused during compilation: '-fno-builtin-isinf'
 clang: warning: argument unused during compilation: '-fno-builtin-isnan'
@@ -33,18 +33,20 @@ Test Case 5: PASS
 
 F:\Workspace\Design-Conv2D-using-HLS\Convolution2D\Convolution2D\solution1\sim\verilog>set PATH= 
 
-F:\Workspace\Design-Conv2D-using-HLS\Convolution2D\Convolution2D\solution1\sim\verilog>call F:/Vivado/Vivado/2018.3/bin/xelab xil_defaultlib.apatb_convolution2D_top glbl -prj convolution2D.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm --initfile "F:/Vivado/Vivado/2018.3/data/xsim/ip/xsim_ip.ini" --lib "ieee_proposed=./ieee_proposed" -s convolution2D  
+F:\Workspace\Design-Conv2D-using-HLS\Convolution2D\Convolution2D\solution1\sim\verilog>call F:/Vivado/Vivado/2018.3/bin/xelab xil_defaultlib.apatb_convolution2D_top glbl -prj convolution2D.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm --initfile "F:/Vivado/Vivado/2018.3/data/xsim/ip/xsim_ip.ini" --lib "ieee_proposed=./ieee_proposed" -s convolution2D -debug wave 
 INFO: [XSIM 43-3496] Using init file passed via -initfile option "F:/Vivado/Vivado/2018.3/data/xsim/ip/xsim_ip.ini".
 Vivado Simulator 2018.3
 Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
-Running: F:/Vivado/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe xil_defaultlib.apatb_convolution2D_top glbl -prj convolution2D.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm --initfile F:/Vivado/Vivado/2018.3/data/xsim/ip/xsim_ip.ini --lib ieee_proposed=./ieee_proposed -s convolution2D 
+Running: F:/Vivado/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe xil_defaultlib.apatb_convolution2D_top glbl -prj convolution2D.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm --initfile F:/Vivado/Vivado/2018.3/data/xsim/ip/xsim_ip.ini --lib ieee_proposed=./ieee_proposed -s convolution2D -debug wave 
 Multi-threading is on. Using 6 slave threads.
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/glbl.v" into library work
 INFO: [VRFC 10-311] analyzing module glbl
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/AESL_automem_input_r.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module AESL_automem_input_r
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/AESL_automem_kernel.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module AESL_automem_kernel
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/AESL_automem_input_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_input_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/AESL_automem_input_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_input_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/AESL_automem_input_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_input_2
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/AESL_automem_output_r.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module AESL_automem_output_r
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/convolution2D.autotb.v" into library xil_defaultlib
@@ -57,8 +59,9 @@ Starting simulation data flow analysis
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.convolution2D
-Compiling module xil_defaultlib.AESL_automem_input_r
-Compiling module xil_defaultlib.AESL_automem_kernel
+Compiling module xil_defaultlib.AESL_automem_input_0
+Compiling module xil_defaultlib.AESL_automem_input_1
+Compiling module xil_defaultlib.AESL_automem_input_2
 Compiling module xil_defaultlib.AESL_automem_output_r
 Compiling module xil_defaultlib.apatb_convolution2D_top
 Compiling module work.glbl
@@ -70,7 +73,7 @@ Built simulation snapshot convolution2D
     ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 
 source F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/xsim.dir/convolution2D/webtalk/xsim_webtalk.tcl -notrace
-INFO: [Common 17-206] Exiting Webtalk at Wed Dec  4 15:51:06 2024...
+INFO: [Common 17-206] Exiting Webtalk at Wed Dec 18 17:07:50 2024...
 
 ****** xsim v2018.3 (64-bit)
   **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
@@ -82,6 +85,111 @@ source xsim.dir/convolution2D/xsim_script.tcl
 Vivado Simulator 2018.3
 Time resolution is 1 ps
 source convolution2D.tcl
+## log_wave -r /
+WARNING: [Simtcl 6-197] One or more HDL objects could not be logged because of object type or size limitations.  To see details please rerun the command with -verbose (-v).
+## set designtopgroup [add_wave_group "Design Top Signals"]
+## set coutputgroup [add_wave_group "C Outputs" -into $designtopgroup]
+## set output_group [add_wave_group output(memory) -into $coutputgroup]
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_d0 -into $output_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_we0 -into $output_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_ce0 -into $output_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_address0 -into $output_group -radix hex
+## set cinputgroup [add_wave_group "C Inputs" -into $designtopgroup]
+## set kernel_group [add_wave_group kernel(wire) -into $cinputgroup]
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/kernel_2_2 -into $kernel_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/kernel_2_1 -into $kernel_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/kernel_2_0 -into $kernel_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/kernel_1_2 -into $kernel_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/kernel_1_1 -into $kernel_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/kernel_1_0 -into $kernel_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/kernel_0_2 -into $kernel_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/kernel_0_1 -into $kernel_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/kernel_0_0 -into $kernel_group -radix hex
+## set input_group [add_wave_group input(memory) -into $cinputgroup]
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_2_q1 -into $input_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_2_ce1 -into $input_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_2_address1 -into $input_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_2_q0 -into $input_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_2_ce0 -into $input_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_2_address0 -into $input_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_1_q1 -into $input_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_1_ce1 -into $input_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_1_address1 -into $input_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_1_q0 -into $input_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_1_ce0 -into $input_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_1_address0 -into $input_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_0_q1 -into $input_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_0_ce1 -into $input_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_0_address1 -into $input_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_0_q0 -into $input_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_0_ce0 -into $input_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/input_0_address0 -into $input_group -radix hex
+## set blocksiggroup [add_wave_group "Block-level IO Handshake" -into $designtopgroup]
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/ap_start -into $blocksiggroup
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/ap_done -into $blocksiggroup
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/ap_idle -into $blocksiggroup
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/ap_ready -into $blocksiggroup
+## set resetgroup [add_wave_group "Reset" -into $designtopgroup]
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/ap_rst -into $resetgroup
+## set clockgroup [add_wave_group "Clock" -into $designtopgroup]
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/ap_clk -into $clockgroup
+## set testbenchgroup [add_wave_group "Test Bench Signals"]
+## set tbinternalsiggroup [add_wave_group "Internal Signals" -into $testbenchgroup]
+## set tb_simstatus_group [add_wave_group "Simulation Status" -into $tbinternalsiggroup]
+## set tb_portdepth_group [add_wave_group "Port Depth" -into $tbinternalsiggroup]
+## add_wave /apatb_convolution2D_top/AUTOTB_TRANSACTION_NUM -into $tb_simstatus_group -radix hex
+## add_wave /apatb_convolution2D_top/ready_cnt -into $tb_simstatus_group -radix hex
+## add_wave /apatb_convolution2D_top/done_cnt -into $tb_simstatus_group -radix hex
+## add_wave /apatb_convolution2D_top/LENGTH_input_0 -into $tb_portdepth_group -radix hex
+## add_wave /apatb_convolution2D_top/LENGTH_input_1 -into $tb_portdepth_group -radix hex
+## add_wave /apatb_convolution2D_top/LENGTH_input_2 -into $tb_portdepth_group -radix hex
+## add_wave /apatb_convolution2D_top/LENGTH_kernel_0_0 -into $tb_portdepth_group -radix hex
+## add_wave /apatb_convolution2D_top/LENGTH_kernel_0_1 -into $tb_portdepth_group -radix hex
+## add_wave /apatb_convolution2D_top/LENGTH_kernel_0_2 -into $tb_portdepth_group -radix hex
+## add_wave /apatb_convolution2D_top/LENGTH_kernel_1_0 -into $tb_portdepth_group -radix hex
+## add_wave /apatb_convolution2D_top/LENGTH_kernel_1_1 -into $tb_portdepth_group -radix hex
+## add_wave /apatb_convolution2D_top/LENGTH_kernel_1_2 -into $tb_portdepth_group -radix hex
+## add_wave /apatb_convolution2D_top/LENGTH_kernel_2_0 -into $tb_portdepth_group -radix hex
+## add_wave /apatb_convolution2D_top/LENGTH_kernel_2_1 -into $tb_portdepth_group -radix hex
+## add_wave /apatb_convolution2D_top/LENGTH_kernel_2_2 -into $tb_portdepth_group -radix hex
+## add_wave /apatb_convolution2D_top/LENGTH_output_r -into $tb_portdepth_group -radix hex
+## set tbcoutputgroup [add_wave_group "C Outputs" -into $testbenchgroup]
+## set tb_output_group [add_wave_group output(memory) -into $tbcoutputgroup]
+## add_wave /apatb_convolution2D_top/output_r_d0 -into $tb_output_group -radix hex
+## add_wave /apatb_convolution2D_top/output_r_we0 -into $tb_output_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/output_r_ce0 -into $tb_output_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/output_r_address0 -into $tb_output_group -radix hex
+## set tbcinputgroup [add_wave_group "C Inputs" -into $testbenchgroup]
+## set tb_kernel_group [add_wave_group kernel(wire) -into $tbcinputgroup]
+## add_wave /apatb_convolution2D_top/kernel_2_2 -into $tb_kernel_group -radix hex
+## add_wave /apatb_convolution2D_top/kernel_2_1 -into $tb_kernel_group -radix hex
+## add_wave /apatb_convolution2D_top/kernel_2_0 -into $tb_kernel_group -radix hex
+## add_wave /apatb_convolution2D_top/kernel_1_2 -into $tb_kernel_group -radix hex
+## add_wave /apatb_convolution2D_top/kernel_1_1 -into $tb_kernel_group -radix hex
+## add_wave /apatb_convolution2D_top/kernel_1_0 -into $tb_kernel_group -radix hex
+## add_wave /apatb_convolution2D_top/kernel_0_2 -into $tb_kernel_group -radix hex
+## add_wave /apatb_convolution2D_top/kernel_0_1 -into $tb_kernel_group -radix hex
+## add_wave /apatb_convolution2D_top/kernel_0_0 -into $tb_kernel_group -radix hex
+## set tb_input_group [add_wave_group input(memory) -into $tbcinputgroup]
+## add_wave /apatb_convolution2D_top/input_2_q1 -into $tb_input_group -radix hex
+## add_wave /apatb_convolution2D_top/input_2_ce1 -into $tb_input_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/input_2_address1 -into $tb_input_group -radix hex
+## add_wave /apatb_convolution2D_top/input_2_q0 -into $tb_input_group -radix hex
+## add_wave /apatb_convolution2D_top/input_2_ce0 -into $tb_input_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/input_2_address0 -into $tb_input_group -radix hex
+## add_wave /apatb_convolution2D_top/input_1_q1 -into $tb_input_group -radix hex
+## add_wave /apatb_convolution2D_top/input_1_ce1 -into $tb_input_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/input_1_address1 -into $tb_input_group -radix hex
+## add_wave /apatb_convolution2D_top/input_1_q0 -into $tb_input_group -radix hex
+## add_wave /apatb_convolution2D_top/input_1_ce0 -into $tb_input_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/input_1_address0 -into $tb_input_group -radix hex
+## add_wave /apatb_convolution2D_top/input_0_q1 -into $tb_input_group -radix hex
+## add_wave /apatb_convolution2D_top/input_0_ce1 -into $tb_input_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/input_0_address1 -into $tb_input_group -radix hex
+## add_wave /apatb_convolution2D_top/input_0_q0 -into $tb_input_group -radix hex
+## add_wave /apatb_convolution2D_top/input_0_ce0 -into $tb_input_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/input_0_address0 -into $tb_input_group -radix hex
+## save_wave_config convolution2D.wcfg
 ## run all
 ////////////////////////////////////////////////////////////////////////////////////
 // Inter-Transaction Progress: Completed Transaction / Total Transaction
@@ -90,15 +198,15 @@ source convolution2D.tcl
 // RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
 ////////////////////////////////////////////////////////////////////////////////////
 // RTL Simulation : 0 / 5 [0.00%] @ "125000"
-// RTL Simulation : 1 / 5 [100.00%] @ "435000"
-// RTL Simulation : 2 / 5 [100.00%] @ "735000"
-// RTL Simulation : 3 / 5 [100.00%] @ "1035000"
-// RTL Simulation : 4 / 5 [100.00%] @ "1335000"
-// RTL Simulation : 5 / 5 [100.00%] @ "1635000"
+// RTL Simulation : 1 / 5 [100.00%] @ "845000"
+// RTL Simulation : 2 / 5 [100.00%] @ "1555000"
+// RTL Simulation : 3 / 5 [100.00%] @ "2265000"
+// RTL Simulation : 4 / 5 [100.00%] @ "2975000"
+// RTL Simulation : 5 / 5 [100.00%] @ "3685000"
 ////////////////////////////////////////////////////////////////////////////////////
-$finish called at time : 1675 ns : File "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/convolution2D.autotb.v" Line 337
+$finish called at time : 3725 ns : File "F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/verilog/convolution2D.autotb.v" Line 937
 ## quit
-INFO: [Common 17-206] Exiting xsim at Wed Dec  4 15:51:15 2024...
+INFO: [Common 17-206] Exiting xsim at Wed Dec 18 17:07:54 2024...
 Test Case 1: PASS
 Test Case 2: PASS
 Test Case 3: PASS

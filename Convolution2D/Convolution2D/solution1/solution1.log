@@ -495,3 +495,518 @@ INFO: [COSIM 212-323] Starting verilog simulation.
 INFO: [COSIM 212-15] Starting XSIM ...
 INFO: [COSIM 212-316] Starting C post checking ...
 INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+==============================================================
+File generated on Thu Dec 05 17:26:16 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'Convolution2D/convolution2D.c' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 102.680 ; gain = 17.820
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 102.680 ; gain = 17.820
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 104.031 ; gain = 19.172
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 104.289 ; gain = 19.430
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 125.637 ; gain = 40.777
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 125.637 ; gain = 40.777
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'convolution2D' ...
+WARNING: [SYN 201-107] Renaming port name 'convolution2D/input' to 'convolution2D/input_r' to avoid the conflict with HDL keywords or other object names.
+WARNING: [SYN 201-107] Renaming port name 'convolution2D/output' to 'convolution2D/output_r' to avoid the conflict with HDL keywords or other object names.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'convolution2D' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 5.396 seconds; current allocated memory: 76.739 MB.
+INFO: [HLS 200-434] Only 0 loops out of a total 4 loops have been pipelined in this design.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.072 seconds; current allocated memory: 77.121 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'convolution2D' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/input_r' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/output_r' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'convolution2D' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'convolution2D'.
+INFO: [HLS 200-111]  Elapsed time: 0.105 seconds; current allocated memory: 77.508 MB.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 125.715 ; gain = 40.855
+INFO: [SYSC 207-301] Generating SystemC RTL for convolution2D.
+INFO: [VHDL 208-304] Generating VHDL RTL for convolution2D.
+INFO: [VLOG 209-307] Generating Verilog RTL for convolution2D.
+INFO: [HLS 200-112] Total elapsed time: 6.441 seconds; peak allocated memory: 77.508 MB.
+==============================================================
+File generated on Thu Dec 05 17:27:16 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+File generated on Thu Dec 05 17:27:55 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+INFO: [COSIM 212-302] Starting C TB testing ... 
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+INFO: [COSIM 212-316] Starting C post checking ...
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+==============================================================
+File generated on Tue Dec 17 15:27:17 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+File generated on Tue Dec 17 22:52:02 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+ERROR: [IMPL 213-28] Failed to generate IP.
+==============================================================
+File generated on Tue Dec 17 22:52:30 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'Convolution2D/convolution2D.c' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 102.738 ; gain = 17.746
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 102.738 ; gain = 17.746
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 104.203 ; gain = 19.211
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 104.457 ; gain = 19.465
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 125.883 ; gain = 40.891
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 125.883 ; gain = 40.891
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'convolution2D' ...
+WARNING: [SYN 201-107] Renaming port name 'convolution2D/input' to 'convolution2D/input_r' to avoid the conflict with HDL keywords or other object names.
+WARNING: [SYN 201-107] Renaming port name 'convolution2D/output' to 'convolution2D/output_r' to avoid the conflict with HDL keywords or other object names.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'convolution2D' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 6.446 seconds; current allocated memory: 76.723 MB.
+INFO: [HLS 200-434] Only 0 loops out of a total 4 loops have been pipelined in this design.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.072 seconds; current allocated memory: 77.106 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'convolution2D' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/input_r' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/output_r' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'convolution2D' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'convolution2D'.
+INFO: [HLS 200-111]  Elapsed time: 0.153 seconds; current allocated memory: 77.523 MB.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:01 ; elapsed = 00:00:08 . Memory (MB): peak = 126.227 ; gain = 41.234
+INFO: [SYSC 207-301] Generating SystemC RTL for convolution2D.
+INFO: [VHDL 208-304] Generating VHDL RTL for convolution2D.
+INFO: [VLOG 209-307] Generating Verilog RTL for convolution2D.
+INFO: [HLS 200-112] Total elapsed time: 7.611 seconds; peak allocated memory: 77.523 MB.
+==============================================================
+File generated on Tue Dec 17 22:53:30 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+ERROR: [IMPL 213-28] Failed to generate IP.
+==============================================================
+File generated on Tue Dec 17 22:55:15 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+ERROR: [IMPL 213-28] Failed to generate IP.
+==============================================================
+File generated on Wed Dec 18 15:07:30 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+File generated on Wed Dec 18 15:07:42 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'Convolution2D/convolution2D.c' ... 
+WARNING: [HLS 214-114] Only function calls and local variable declarations are allowed in a dataflow region: Convolution2D/convolution2D.c:9:2
+WARNING: [HLS 200-471] Dataflow form checks found 1 issue(s) in file Convolution2D/convolution2D.c
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 103.828 ; gain = 19.039
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 103.828 ; gain = 19.039
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 104.203 ; gain = 19.414
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 104.457 ; gain = 19.668
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.1' (Convolution2D/convolution2D.c:12) in function 'convolution2D' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.1.1' (Convolution2D/convolution2D.c:14) in function 'convolution2D' completely with a factor of 3.
+INFO: [XFORM 203-101] Partitioning array 'input' (Convolution2D/convolution2D.c:4) in dimension 2 with a block factor 3.
+INFO: [XFORM 203-101] Partitioning array 'kernel' (Convolution2D/convolution2D.c:4) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'kernel' (Convolution2D/convolution2D.c:4) in dimension 2 completely.
+INFO: [XFORM 203-721] Changing loop 'Loop_1_proc' (Convolution2D/convolution2D.c:9) to a process function for dataflow in function 'convolution2D'.
+INFO: [XFORM 203-712] Applying dataflow to function 'convolution2D', detected/extracted 1 process function(s): 
+	 'Loop_1_proc'.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Convolution2D/convolution2D.c:16:2) to (Convolution2D/convolution2D.c:10:32) in function 'Loop_1_proc'... converting 28 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'Loop_1_proc' (Convolution2D/convolution2D.c:9:32)...8 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 125.387 ; gain = 40.598
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 126.738 ; gain = 41.949
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'convolution2D' ...
+WARNING: [SYN 201-107] Renaming port name 'convolution2D/output' to 'convolution2D/output_r' to avoid the conflict with HDL keywords or other object names.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Loop_1_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 4.79 seconds; current allocated memory: 87.422 MB.
+INFO: [HLS 200-434] Only 0 loops out of a total 2 loops have been pipelined in this design.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.173 seconds; current allocated memory: 87.850 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'convolution2D' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.194 seconds; current allocated memory: 87.966 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.098 seconds; current allocated memory: 88.037 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Loop_1_proc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Loop_1_proc'.
+INFO: [HLS 200-111]  Elapsed time: 0.161 seconds; current allocated memory: 88.717 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'convolution2D' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/input_0' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/input_1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/input_2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_0_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_0_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_0_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_1_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_1_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_1_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_2_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_2_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_2_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/output_r' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'convolution2D' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'convolution2D'.
+INFO: [HLS 200-111]  Elapsed time: 0.57 seconds; current allocated memory: 89.157 MB.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:02 ; elapsed = 00:00:07 . Memory (MB): peak = 140.148 ; gain = 55.359
+INFO: [SYSC 207-301] Generating SystemC RTL for convolution2D.
+INFO: [VHDL 208-304] Generating VHDL RTL for convolution2D.
+INFO: [VLOG 209-307] Generating Verilog RTL for convolution2D.
+INFO: [HLS 200-112] Total elapsed time: 7.031 seconds; peak allocated memory: 89.157 MB.
+==============================================================
+File generated on Wed Dec 18 15:08:19 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+ERROR: [IMPL 213-28] Failed to generate IP.
+==============================================================
+File generated on Wed Dec 18 15:08:39 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+==============================================================
+File generated on Wed Dec 18 15:09:10 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+==============================================================
+File generated on Wed Dec 18 15:10:24 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'Convolution2D/convolution2D.c' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 103.031 ; gain = 18.324
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 103.031 ; gain = 18.324
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 104.117 ; gain = 19.410
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 104.375 ; gain = 19.668
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.1' (Convolution2D/convolution2D.c:11) in function 'convolution2D' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.1.1' (Convolution2D/convolution2D.c:13) in function 'convolution2D' completely with a factor of 3.
+INFO: [XFORM 203-101] Partitioning array 'input' (Convolution2D/convolution2D.c:4) in dimension 2 with a block factor 3.
+INFO: [XFORM 203-101] Partitioning array 'kernel' (Convolution2D/convolution2D.c:4) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'kernel' (Convolution2D/convolution2D.c:4) in dimension 2 completely.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Convolution2D/convolution2D.c:15:2) to (Convolution2D/convolution2D.c:9:32) in function 'convolution2D'... converting 28 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'convolution2D' (Convolution2D/convolution2D.c:4)...8 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 126.715 ; gain = 42.008
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 126.715 ; gain = 42.008
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'convolution2D' ...
+WARNING: [SYN 201-107] Renaming port name 'convolution2D/output' to 'convolution2D/output_r' to avoid the conflict with HDL keywords or other object names.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'convolution2D' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 4.949 seconds; current allocated memory: 77.714 MB.
+INFO: [HLS 200-434] Only 0 loops out of a total 2 loops have been pipelined in this design.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.11 seconds; current allocated memory: 78.170 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'convolution2D' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/input_0' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/input_1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/input_2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_0_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_0_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_0_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_1_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_1_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_1_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_2_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_2_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_2_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/output_r' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'convolution2D' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'convolution2D'.
+INFO: [HLS 200-111]  Elapsed time: 0.358 seconds; current allocated memory: 78.901 MB.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:02 ; elapsed = 00:00:06 . Memory (MB): peak = 129.086 ; gain = 44.379
+INFO: [SYSC 207-301] Generating SystemC RTL for convolution2D.
+INFO: [VHDL 208-304] Generating VHDL RTL for convolution2D.
+INFO: [VLOG 209-307] Generating Verilog RTL for convolution2D.
+INFO: [HLS 200-112] Total elapsed time: 6.492 seconds; peak allocated memory: 78.901 MB.
+==============================================================
+File generated on Wed Dec 18 15:11:08 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+==============================================================
+File generated on Wed Dec 18 15:11:34 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+INFO: [COSIM 212-302] Starting C TB testing ... 
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+INFO: [COSIM 212-322] Starting VHDL simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+INFO: [COSIM 212-316] Starting C post checking ...
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+==============================================================
+File generated on Wed Dec 18 16:28:33 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'Convolution2D/convolution2D.c' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 103.207 ; gain = 18.434
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 103.207 ; gain = 18.434
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 104.277 ; gain = 19.504
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 104.531 ; gain = 19.758
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.1' (Convolution2D/convolution2D.c:11) in function 'convolution2D' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.1.1' (Convolution2D/convolution2D.c:13) in function 'convolution2D' completely with a factor of 3.
+INFO: [XFORM 203-101] Partitioning array 'input' (Convolution2D/convolution2D.c:4) in dimension 2 with a block factor 3.
+INFO: [XFORM 203-101] Partitioning array 'kernel' (Convolution2D/convolution2D.c:4) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'kernel' (Convolution2D/convolution2D.c:4) in dimension 2 completely.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Convolution2D/convolution2D.c:15:2) to (Convolution2D/convolution2D.c:9:32) in function 'convolution2D'... converting 28 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'convolution2D' (Convolution2D/convolution2D.c:4)...8 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 125.719 ; gain = 40.945
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 125.848 ; gain = 41.074
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'convolution2D' ...
+WARNING: [SYN 201-107] Renaming port name 'convolution2D/output' to 'convolution2D/output_r' to avoid the conflict with HDL keywords or other object names.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'convolution2D' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 4.739 seconds; current allocated memory: 77.713 MB.
+INFO: [HLS 200-434] Only 0 loops out of a total 2 loops have been pipelined in this design.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.12 seconds; current allocated memory: 78.185 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'convolution2D' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/input_0' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/input_1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/input_2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_0_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_0_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_0_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_1_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_1_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_1_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_2_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_2_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/kernel_2_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'convolution2D/output_r' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'convolution2D' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'convolution2D'.
+INFO: [HLS 200-111]  Elapsed time: 0.371 seconds; current allocated memory: 78.901 MB.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:02 ; elapsed = 00:00:06 . Memory (MB): peak = 129.719 ; gain = 44.945
+INFO: [SYSC 207-301] Generating SystemC RTL for convolution2D.
+INFO: [VHDL 208-304] Generating VHDL RTL for convolution2D.
+INFO: [VLOG 209-307] Generating Verilog RTL for convolution2D.
+INFO: [HLS 200-112] Total elapsed time: 6.267 seconds; peak allocated memory: 78.901 MB.
+==============================================================
+File generated on Wed Dec 18 16:55:56 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+==============================================================
+File generated on Wed Dec 18 16:58:50 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+INFO: [COSIM 212-302] Starting C TB testing ... 
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+INFO: [COSIM 212-322] Starting VHDL simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+INFO: [COSIM 212-316] Starting C post checking ...
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+==============================================================
+File generated on Wed Dec 18 17:07:35 +0700 2024
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
+SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+INFO: [COSIM 212-302] Starting C TB testing ... 
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+INFO: [COSIM 212-316] Starting C post checking ...
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***

@@ -157,11 +157,11 @@ static  char aesl_internal_str[18] = "Test Case 1: PASS";
 static  char aesl_internal_str2[18] = "Test Case 2: PASS";
 static  char aesl_internal_str3[18] = "Test Case 2: FAIL";
 static  char aesl_internal_str4[18] = "Test Case 3: PASS";
+static  char aesl_internal_str8[18] = "Test Case 5: PASS";
 static  char aesl_internal_str5[18] = "Test Case 3: FAIL";
-static  char aesl_internal_str9[18] = "Test Case 5: FAIL";
 static  char aesl_internal_str6[18] = "Test Case 4: PASS";
 static  char aesl_internal_str7[18] = "Test Case 4: FAIL";
-static  char aesl_internal_str8[18] = "Test Case 5: PASS";
+static  char aesl_internal_str9[18] = "Test Case 5: FAIL";
 
 
 /* Function Bodies */

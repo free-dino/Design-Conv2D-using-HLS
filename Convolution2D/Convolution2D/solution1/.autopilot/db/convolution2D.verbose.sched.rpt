@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'convolution2D'
 ================================================================
-* Date:           Wed Dec  4 15:48:41 2024
+* Date:           Wed Dec 18 16:28:38 2024
 
 * Version:        2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)
 * Project:        Convolution2D
@@ -29,7 +29,7 @@
     |  Latency  |  Interval | Pipeline|
     | min | max | min | max |   Type  |
     +-----+-----+-----+-----+---------+
-    |   29|   29|   29|   29|   none  |
+    |   70|   70|   70|   70|   none  |
     +-----+-----+-----+-----+---------+
 
     + Detail: 
@@ -37,12 +37,13 @@
         N/A
 
         * Loop: 
-        +----------+-----+-----+----------+-----------+-----------+------+----------+
-        |          |  Latency  | Iteration|  Initiation Interval  | Trip |          |
-        | Loop Name| min | max |  Latency |  achieved |   target  | Count| Pipelined|
-        +----------+-----+-----+----------+-----------+-----------+------+----------+
-        |- Loop 1  |   27|   27|        12|          8|          1|     3|    yes   |
-        +----------+-----+-----+----------+-----------+-----------+------+----------+
+        +-------------+-----+-----+----------+-----------+-----------+------+----------+
+        |             |  Latency  | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name  | min | max |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------+-----+-----+----------+-----------+-----------+------+----------+
+        |- Loop 1     |   69|   69|        23|          -|          -|     3|    no    |
+        | + Loop 1.1  |   21|   21|         7|          -|          -|     3|    no    |
+        +-------------+-----+-----+----------+-----------+-----------+------+----------+
 
 ============================================================
 + Verbose Summary: Synthesis Manager
@@ -66,26 +67,22 @@ IsDontTouch: 0
 HasImplIP: 0
 IsGatedGlobalClock: 0
 
-+ Individual pipeline summary: 
-  * Pipeline-0: initiation interval (II) = 8, depth = 12
-
 
 ============================================================
 + Verbose Summary: Schedule
 ============================================================
-* Number of FSM states : 14
-* Pipeline : 1
-  Pipeline-0 : II = 8, D = 12, States = { 2 3 4 5 6 7 8 9 10 11 12 13 }
+* Number of FSM states : 9
+* Pipeline : 0
 * Dataflow Pipeline: 0
 
 * FSM state transitions: 
 1 --> 
 	2  / true
 2 --> 
-	14  / (exitcond3)
 	3  / (!exitcond3)
 3 --> 
-	4  / true
+	4  / (!exitcond2)
+	2  / (exitcond2)
 4 --> 
 	5  / true
 5 --> 
@@ -97,237 +94,176 @@ IsGatedGlobalClock: 0
 8 --> 
 	9  / true
 9 --> 
-	10  / true
-10 --> 
-	11  / true
-11 --> 
-	12  / true
-12 --> 
-	13  / true
-13 --> 
-	2  / true
-14 --> 
+	3  / true
 
 * FSM state operations: 
 
 State 1 <SV = 0> <Delay = 1.76>
-ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%kernel_addr = getelementptr [9 x i32]* %kernel, i64 0, i64 0" [Convolution2D/convolution2D.c:13]   --->   Operation 15 'getelementptr' 'kernel_addr' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 16 [1/1] (0.00ns)   --->   "%kernel_addr_1 = getelementptr [9 x i32]* %kernel, i64 0, i64 1" [Convolution2D/convolution2D.c:13]   --->   Operation 16 'getelementptr' 'kernel_addr_1' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%kernel_addr_2 = getelementptr [9 x i32]* %kernel, i64 0, i64 2" [Convolution2D/convolution2D.c:13]   --->   Operation 17 'getelementptr' 'kernel_addr_2' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 18 [1/1] (0.00ns)   --->   "%kernel_addr_3 = getelementptr [9 x i32]* %kernel, i64 0, i64 3" [Convolution2D/convolution2D.c:13]   --->   Operation 18 'getelementptr' 'kernel_addr_3' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%kernel_addr_4 = getelementptr [9 x i32]* %kernel, i64 0, i64 4" [Convolution2D/convolution2D.c:13]   --->   Operation 19 'getelementptr' 'kernel_addr_4' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 20 [1/1] (0.00ns)   --->   "%kernel_addr_5 = getelementptr [9 x i32]* %kernel, i64 0, i64 5" [Convolution2D/convolution2D.c:13]   --->   Operation 20 'getelementptr' 'kernel_addr_5' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 21 [1/1] (0.00ns)   --->   "%kernel_addr_6 = getelementptr [9 x i32]* %kernel, i64 0, i64 6" [Convolution2D/convolution2D.c:13]   --->   Operation 21 'getelementptr' 'kernel_addr_6' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 22 [1/1] (0.00ns)   --->   "%kernel_addr_7 = getelementptr [9 x i32]* %kernel, i64 0, i64 7" [Convolution2D/convolution2D.c:13]   --->   Operation 22 'getelementptr' 'kernel_addr_7' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 23 [1/1] (0.00ns)   --->   "%kernel_addr_8 = getelementptr [9 x i32]* %kernel, i64 0, i64 8" [Convolution2D/convolution2D.c:13]   --->   Operation 23 'getelementptr' 'kernel_addr_8' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 24 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([25 x i32]* %input_r) nounwind, !map !7"   --->   Operation 24 'specbitsmap' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 25 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([9 x i32]* %kernel) nounwind, !map !13"   --->   Operation 25 'specbitsmap' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 26 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([9 x i32]* %output_r) nounwind, !map !19"   --->   Operation 26 'specbitsmap' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 27 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecTopModule([14 x i8]* @convolution2D_str) nounwind"   --->   Operation 27 'spectopmodule' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 28 [1/1] (1.76ns)   --->   "br label %1" [Convolution2D/convolution2D.c:5]   --->   Operation 28 'br' <Predicate = true> <Delay = 1.76>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i32* %kernel_2_2), !map !7"   --->   Operation 10 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i32* %kernel_2_1), !map !13"   --->   Operation 11 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i32* %kernel_2_0), !map !19"   --->   Operation 12 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i32* %kernel_1_2), !map !25"   --->   Operation 13 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i32* %kernel_1_1), !map !30"   --->   Operation 14 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i32* %kernel_1_0), !map !35"   --->   Operation 15 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i32* %kernel_0_2), !map !40"   --->   Operation 16 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i32* %kernel_0_1), !map !45"   --->   Operation 17 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i32* %kernel_0_0), !map !50"   --->   Operation 18 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([5 x i32]* %input_2), !map !55"   --->   Operation 19 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([10 x i32]* %input_1), !map !62"   --->   Operation 20 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([10 x i32]* %input_0), !map !68"   --->   Operation 21 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 22 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap([9 x i32]* %output_r), !map !74"   --->   Operation 22 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 23 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecTopModule([14 x i8]* @convolution2D_str) nounwind"   --->   Operation 23 'spectopmodule' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 24 [1/1] (1.76ns)   --->   "br label %.loopexit" [Convolution2D/convolution2D.c:8]   --->   Operation 24 'br' <Predicate = true> <Delay = 1.76>
 
-State 2 <SV = 1> <Delay = 5.83>
-ST_2 : Operation 29 [1/1] (0.00ns)   --->   "%i = phi i2 [ 0, %0 ], [ %i_1, %.preheader.preheader.0 ]"   --->   Operation 29 'phi' 'i' <Predicate = true> <Delay = 0.00>
-ST_2 : Operation 30 [1/1] (0.95ns)   --->   "%exitcond3 = icmp eq i2 %i, -1" [Convolution2D/convolution2D.c:5]   --->   Operation 30 'icmp' 'exitcond3' <Predicate = true> <Delay = 0.95> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.95> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
-ST_2 : Operation 31 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 3, i64 3, i64 3) nounwind"   --->   Operation 31 'speclooptripcount' 'empty' <Predicate = true> <Delay = 0.00>
-ST_2 : Operation 32 [1/1] (1.56ns)   --->   "%i_1 = add i2 %i, 1" [Convolution2D/convolution2D.c:13]   --->   Operation 32 'add' 'i_1' <Predicate = true> <Delay = 1.56> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_2 : Operation 33 [1/1] (0.00ns)   --->   "br i1 %exitcond3, label %2, label %.preheader.preheader.0" [Convolution2D/convolution2D.c:5]   --->   Operation 33 'br' <Predicate = true> <Delay = 0.00>
-ST_2 : Operation 34 [1/1] (0.00ns)   --->   "%i_cast = zext i2 %i to i3" [Convolution2D/convolution2D.c:5]   --->   Operation 34 'zext' 'i_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_2 : Operation 35 [1/1] (0.00ns)   --->   "%tmp_cast = zext i2 %i to i5" [Convolution2D/convolution2D.c:13]   --->   Operation 35 'zext' 'tmp_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_2 : Operation 36 [1/1] (0.00ns)   --->   "%tmp_2 = call i4 @_ssdm_op_BitConcatenate.i4.i2.i2(i2 %i, i2 0)" [Convolution2D/convolution2D.c:13]   --->   Operation 36 'bitconcatenate' 'tmp_2' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_2 : Operation 37 [1/1] (0.00ns)   --->   "%p_shl3_cast = zext i4 %tmp_2 to i5" [Convolution2D/convolution2D.c:13]   --->   Operation 37 'zext' 'p_shl3_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_2 : Operation 38 [1/1] (1.73ns)   --->   "%tmp_3 = add i5 %tmp_cast, %p_shl3_cast" [Convolution2D/convolution2D.c:13]   --->   Operation 38 'add' 'tmp_3' <Predicate = (!exitcond3)> <Delay = 1.73> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_2 : Operation 39 [1/1] (0.00ns)   --->   "%tmp_3_cast = zext i5 %tmp_3 to i64" [Convolution2D/convolution2D.c:13]   --->   Operation 39 'zext' 'tmp_3_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_2 : Operation 40 [1/1] (0.00ns)   --->   "%input_addr = getelementptr [25 x i32]* %input_r, i64 0, i64 %tmp_3_cast" [Convolution2D/convolution2D.c:13]   --->   Operation 40 'getelementptr' 'input_addr' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_2 : Operation 41 [1/1] (1.78ns)   --->   "%tmp_4 = add i5 %tmp_3, 1" [Convolution2D/convolution2D.c:13]   --->   Operation 41 'add' 'tmp_4' <Predicate = (!exitcond3)> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_2 : Operation 42 [1/1] (0.00ns)   --->   "%tmp_4_cast = zext i5 %tmp_4 to i64" [Convolution2D/convolution2D.c:13]   --->   Operation 42 'zext' 'tmp_4_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_2 : Operation 43 [1/1] (0.00ns)   --->   "%input_addr_1 = getelementptr [25 x i32]* %input_r, i64 0, i64 %tmp_4_cast" [Convolution2D/convolution2D.c:13]   --->   Operation 43 'getelementptr' 'input_addr_1' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_2 : Operation 44 [1/1] (1.73ns)   --->   "%tmp_9 = sub i5 %p_shl3_cast, %tmp_cast" [Convolution2D/convolution2D.c:16]   --->   Operation 44 'sub' 'tmp_9' <Predicate = (!exitcond3)> <Delay = 1.73> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_2 : Operation 45 [2/2] (2.32ns)   --->   "%input_load = load i32* %input_addr, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 45 'load' 'input_load' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_2 : Operation 46 [2/2] (2.32ns)   --->   "%kernel_load = load i32* %kernel_addr, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 46 'load' 'kernel_load' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_2 : Operation 47 [2/2] (2.32ns)   --->   "%input_load_1 = load i32* %input_addr_1, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 47 'load' 'input_load_1' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_2 : Operation 48 [2/2] (2.32ns)   --->   "%kernel_load_1 = load i32* %kernel_addr_1, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 48 'load' 'kernel_load_1' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_2 : Operation 49 [1/1] (1.65ns)   --->   "%tmp_4_0_2 = add i3 %i_cast, 2" [Convolution2D/convolution2D.c:13]   --->   Operation 49 'add' 'tmp_4_0_2' <Predicate = (!exitcond3)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+State 2 <SV = 1> <Delay = 1.76>
+ST_2 : Operation 25 [1/1] (0.00ns)   --->   "%i = phi i2 [ 0, %0 ], [ %i_1, %.loopexit.loopexit ]"   --->   Operation 25 'phi' 'i' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 26 [1/1] (0.00ns)   --->   "%i_cast = zext i2 %i to i3" [Convolution2D/convolution2D.c:8]   --->   Operation 26 'zext' 'i_cast' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 27 [1/1] (0.95ns)   --->   "%exitcond3 = icmp eq i2 %i, -1" [Convolution2D/convolution2D.c:8]   --->   Operation 27 'icmp' 'exitcond3' <Predicate = true> <Delay = 0.95> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.13> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 28 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 3, i64 3, i64 3) nounwind"   --->   Operation 28 'speclooptripcount' 'empty' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 29 [1/1] (1.56ns)   --->   "%i_1 = add i2 %i, 1" [Convolution2D/convolution2D.c:15]   --->   Operation 29 'add' 'i_1' <Predicate = true> <Delay = 1.56> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 30 [1/1] (0.00ns)   --->   "br i1 %exitcond3, label %1, label %.preheader4.preheader" [Convolution2D/convolution2D.c:8]   --->   Operation 30 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 31 [1/1] (0.00ns)   --->   "%tmp_cast = zext i2 %i to i5" [Convolution2D/convolution2D.c:15]   --->   Operation 31 'zext' 'tmp_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
+ST_2 : Operation 32 [1/1] (0.00ns)   --->   "%tmp_2 = call i4 @_ssdm_op_BitConcatenate.i4.i2.i2(i2 %i, i2 0)" [Convolution2D/convolution2D.c:15]   --->   Operation 32 'bitconcatenate' 'tmp_2' <Predicate = (!exitcond3)> <Delay = 0.00>
+ST_2 : Operation 33 [1/1] (0.00ns)   --->   "%p_shl_cast = zext i4 %tmp_2 to i5" [Convolution2D/convolution2D.c:18]   --->   Operation 33 'zext' 'p_shl_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
+ST_2 : Operation 34 [1/1] (1.73ns)   --->   "%tmp_3 = sub i5 %p_shl_cast, %tmp_cast" [Convolution2D/convolution2D.c:18]   --->   Operation 34 'sub' 'tmp_3' <Predicate = (!exitcond3)> <Delay = 1.73> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 35 [1/1] (0.00ns)   --->   "%tmp_5_1_cast = zext i2 %i_1 to i3" [Convolution2D/convolution2D.c:15]   --->   Operation 35 'zext' 'tmp_5_1_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
+ST_2 : Operation 36 [1/1] (1.65ns)   --->   "%tmp_4_2 = add i3 %i_cast, 2" [Convolution2D/convolution2D.c:15]   --->   Operation 36 'add' 'tmp_4_2' <Predicate = (!exitcond3)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 37 [1/1] (1.76ns)   --->   "br label %.preheader4" [Convolution2D/convolution2D.c:9]   --->   Operation 37 'br' <Predicate = (!exitcond3)> <Delay = 1.76>
+ST_2 : Operation 38 [1/1] (0.00ns)   --->   "ret void" [Convolution2D/convolution2D.c:21]   --->   Operation 38 'ret' <Predicate = (exitcond3)> <Delay = 0.00>
 
-State 3 <SV = 2> <Delay = 4.10>
-ST_3 : Operation 50 [1/1] (1.78ns)   --->   "%tmp_5 = add i5 %tmp_3, 2" [Convolution2D/convolution2D.c:13]   --->   Operation 50 'add' 'tmp_5' <Predicate = (!exitcond3)> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_3 : Operation 51 [1/1] (0.00ns)   --->   "%tmp_5_cast = zext i5 %tmp_5 to i64" [Convolution2D/convolution2D.c:13]   --->   Operation 51 'zext' 'tmp_5_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_3 : Operation 52 [1/1] (0.00ns)   --->   "%input_addr_2 = getelementptr [25 x i32]* %input_r, i64 0, i64 %tmp_5_cast" [Convolution2D/convolution2D.c:13]   --->   Operation 52 'getelementptr' 'input_addr_2' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_3 : Operation 53 [1/2] (2.32ns)   --->   "%input_load = load i32* %input_addr, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 53 'load' 'input_load' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_3 : Operation 54 [1/2] (2.32ns)   --->   "%kernel_load = load i32* %kernel_addr, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 54 'load' 'kernel_load' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_3 : Operation 55 [1/2] (2.32ns)   --->   "%input_load_1 = load i32* %input_addr_1, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 55 'load' 'input_load_1' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_3 : Operation 56 [1/2] (2.32ns)   --->   "%kernel_load_1 = load i32* %kernel_addr_1, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 56 'load' 'kernel_load_1' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_3 : Operation 57 [2/2] (2.32ns)   --->   "%input_load_2 = load i32* %input_addr_2, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 57 'load' 'input_load_2' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_3 : Operation 58 [2/2] (2.32ns)   --->   "%kernel_load_2 = load i32* %kernel_addr_2, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 58 'load' 'kernel_load_2' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_3 : Operation 59 [1/1] (0.00ns)   --->   "%tmp_5_0_1_cast = zext i2 %i_1 to i5" [Convolution2D/convolution2D.c:13]   --->   Operation 59 'zext' 'tmp_5_0_1_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_3 : Operation 60 [1/1] (0.00ns)   --->   "%tmp_11 = call i4 @_ssdm_op_BitConcatenate.i4.i2.i2(i2 %i_1, i2 0)" [Convolution2D/convolution2D.c:13]   --->   Operation 60 'bitconcatenate' 'tmp_11' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_3 : Operation 61 [1/1] (0.00ns)   --->   "%p_shl1_cast = zext i4 %tmp_11 to i5" [Convolution2D/convolution2D.c:13]   --->   Operation 61 'zext' 'p_shl1_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_3 : Operation 62 [1/1] (1.73ns)   --->   "%tmp_12 = add i5 %tmp_5_0_1_cast, %p_shl1_cast" [Convolution2D/convolution2D.c:13]   --->   Operation 62 'add' 'tmp_12' <Predicate = (!exitcond3)> <Delay = 1.73> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_3 : Operation 63 [1/1] (0.00ns)   --->   "%tmp_14_cast = zext i5 %tmp_12 to i64" [Convolution2D/convolution2D.c:13]   --->   Operation 63 'zext' 'tmp_14_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_3 : Operation 64 [1/1] (0.00ns)   --->   "%input_addr_3 = getelementptr [25 x i32]* %input_r, i64 0, i64 %tmp_14_cast" [Convolution2D/convolution2D.c:13]   --->   Operation 64 'getelementptr' 'input_addr_3' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_3 : Operation 65 [2/2] (2.32ns)   --->   "%input_load_3 = load i32* %input_addr_3, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 65 'load' 'input_load_3' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_3 : Operation 66 [2/2] (2.32ns)   --->   "%kernel_load_3 = load i32* %kernel_addr_3, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 66 'load' 'kernel_load_3' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+State 3 <SV = 2> <Delay = 3.30>
+ST_3 : Operation 39 [1/1] (0.00ns)   --->   "%j = phi i2 [ %j_1, %.preheader.0_ifconv ], [ 0, %.preheader4.preheader ]"   --->   Operation 39 'phi' 'j' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 40 [1/1] (0.00ns)   --->   "%j_cast = zext i2 %j to i3" [Convolution2D/convolution2D.c:9]   --->   Operation 40 'zext' 'j_cast' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 41 [1/1] (0.95ns)   --->   "%exitcond2 = icmp eq i2 %j, -1" [Convolution2D/convolution2D.c:9]   --->   Operation 41 'icmp' 'exitcond2' <Predicate = true> <Delay = 0.95> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.13> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 42 [1/1] (0.00ns)   --->   "%empty_4 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 3, i64 3, i64 3) nounwind"   --->   Operation 42 'speclooptripcount' 'empty_4' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 43 [1/1] (1.56ns)   --->   "%j_1 = add i2 %j, 1" [Convolution2D/convolution2D.c:15]   --->   Operation 43 'add' 'j_1' <Predicate = true> <Delay = 1.56> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 44 [1/1] (0.00ns)   --->   "br i1 %exitcond2, label %.loopexit.loopexit, label %.preheader.0_ifconv" [Convolution2D/convolution2D.c:9]   --->   Operation 44 'br' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 45 [1/1] (0.00ns)   --->   "%tmp_9_cast = zext i2 %j to i5" [Convolution2D/convolution2D.c:18]   --->   Operation 45 'zext' 'tmp_9_cast' <Predicate = (!exitcond2)> <Delay = 0.00>
+ST_3 : Operation 46 [1/1] (1.78ns)   --->   "%tmp_4 = add i5 %tmp_9_cast, %tmp_3" [Convolution2D/convolution2D.c:18]   --->   Operation 46 'add' 'tmp_4' <Predicate = (!exitcond2)> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 47 [1/1] (0.00ns)   --->   "%tmp = trunc i2 %j to i1" [Convolution2D/convolution2D.c:15]   --->   Operation 47 'trunc' 'tmp' <Predicate = (!exitcond2)> <Delay = 0.00>
+ST_3 : Operation 48 [1/1] (0.00ns)   --->   "%tmp_5 = call i3 @_ssdm_op_BitConcatenate.i3.i2.i1(i2 %i, i1 %tmp)" [Convolution2D/convolution2D.c:15]   --->   Operation 48 'bitconcatenate' 'tmp_5' <Predicate = (!exitcond2)> <Delay = 0.00>
+ST_3 : Operation 49 [1/1] (0.00ns)   --->   "%tmp_6 = zext i3 %tmp_5 to i64" [Convolution2D/convolution2D.c:15]   --->   Operation 49 'zext' 'tmp_6' <Predicate = (!exitcond2)> <Delay = 0.00>
+ST_3 : Operation 50 [1/1] (0.00ns)   --->   "%input_0_addr = getelementptr [10 x i32]* %input_0, i64 0, i64 %tmp_6" [Convolution2D/convolution2D.c:15]   --->   Operation 50 'getelementptr' 'input_0_addr' <Predicate = (!exitcond2)> <Delay = 0.00>
+ST_3 : Operation 51 [1/1] (0.00ns)   --->   "%input_1_addr = getelementptr [10 x i32]* %input_1, i64 0, i64 %tmp_6" [Convolution2D/convolution2D.c:15]   --->   Operation 51 'getelementptr' 'input_1_addr' <Predicate = (!exitcond2)> <Delay = 0.00>
+ST_3 : Operation 52 [1/1] (0.00ns)   --->   "%tmp_13 = call i1 @_ssdm_op_BitSelect.i1.i2.i32(i2 %j, i32 1)" [Convolution2D/convolution2D.c:15]   --->   Operation 52 'bitselect' 'tmp_13' <Predicate = (!exitcond2)> <Delay = 0.00>
+ST_3 : Operation 53 [2/2] (2.32ns)   --->   "%input_0_load = load i32* %input_0_addr, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 53 'load' 'input_0_load' <Predicate = (!exitcond2)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_3 : Operation 54 [2/2] (2.32ns)   --->   "%input_1_load = load i32* %input_1_addr, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 54 'load' 'input_1_load' <Predicate = (!exitcond2)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_3 : Operation 55 [1/1] (0.97ns)   --->   "%newIndex_trunc1 = xor i1 %tmp, true" [Convolution2D/convolution2D.c:15]   --->   Operation 55 'xor' 'newIndex_trunc1' <Predicate = (!exitcond2)> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 56 [1/1] (0.00ns)   --->   "%tmp_14 = call i3 @_ssdm_op_BitConcatenate.i3.i2.i1(i2 %i, i1 %newIndex_trunc1)" [Convolution2D/convolution2D.c:15]   --->   Operation 56 'bitconcatenate' 'tmp_14' <Predicate = (!exitcond2)> <Delay = 0.00>
+ST_3 : Operation 57 [1/1] (0.00ns)   --->   "%tmp_15 = zext i3 %tmp_14 to i64" [Convolution2D/convolution2D.c:15]   --->   Operation 57 'zext' 'tmp_15' <Predicate = (!exitcond2)> <Delay = 0.00>
+ST_3 : Operation 58 [1/1] (0.00ns)   --->   "%input_0_addr_1 = getelementptr [10 x i32]* %input_0, i64 0, i64 %tmp_15" [Convolution2D/convolution2D.c:15]   --->   Operation 58 'getelementptr' 'input_0_addr_1' <Predicate = (!exitcond2)> <Delay = 0.00>
+ST_3 : Operation 59 [1/1] (0.00ns)   --->   "%input_1_addr_1 = getelementptr [10 x i32]* %input_1, i64 0, i64 %tmp_15" [Convolution2D/convolution2D.c:15]   --->   Operation 59 'getelementptr' 'input_1_addr_1' <Predicate = (!exitcond2)> <Delay = 0.00>
+ST_3 : Operation 60 [1/1] (0.00ns)   --->   "%tmp_20 = call i1 @_ssdm_op_BitSelect.i1.i2.i32(i2 %j_1, i32 1)" [Convolution2D/convolution2D.c:15]   --->   Operation 60 'bitselect' 'tmp_20' <Predicate = (!exitcond2)> <Delay = 0.00>
+ST_3 : Operation 61 [2/2] (2.32ns)   --->   "%input_0_load_1 = load i32* %input_0_addr_1, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 61 'load' 'input_0_load_1' <Predicate = (!exitcond2)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_3 : Operation 62 [2/2] (2.32ns)   --->   "%input_1_load_1 = load i32* %input_1_addr_1, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 62 'load' 'input_1_load_1' <Predicate = (!exitcond2)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_3 : Operation 63 [1/1] (1.65ns)   --->   "%tmp_8_0_2 = add i3 2, %j_cast" [Convolution2D/convolution2D.c:15]   --->   Operation 63 'add' 'tmp_8_0_2' <Predicate = (!exitcond2)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 64 [1/1] (0.00ns)   --->   "%tmp_21 = call i2 @_ssdm_op_PartSelect.i2.i3.i32.i32(i3 %tmp_8_0_2, i32 1, i32 2)" [Convolution2D/convolution2D.c:15]   --->   Operation 64 'partselect' 'tmp_21' <Predicate = (!exitcond2)> <Delay = 0.00>
+ST_3 : Operation 65 [1/1] (0.00ns)   --->   "%arrayNo63_mask = call i3 @_ssdm_op_BitConcatenate.i3.i2.i1(i2 %tmp_21, i1 false)" [Convolution2D/convolution2D.c:15]   --->   Operation 65 'bitconcatenate' 'arrayNo63_mask' <Predicate = (!exitcond2)> <Delay = 0.00>
+ST_3 : Operation 66 [1/1] (1.13ns)   --->   "%cond2 = icmp eq i3 %arrayNo63_mask, 2" [Convolution2D/convolution2D.c:15]   --->   Operation 66 'icmp' 'cond2' <Predicate = (!exitcond2)> <Delay = 1.13> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.13> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 67 [1/1] (0.00ns)   --->   "br label %.loopexit"   --->   Operation 67 'br' <Predicate = (exitcond2)> <Delay = 0.00>
 
-State 4 <SV = 3> <Delay = 8.51>
-ST_4 : Operation 67 [1/1] (8.51ns)   --->   "%tmp_s = mul nsw i32 %kernel_load, %input_load" [Convolution2D/convolution2D.c:13]   --->   Operation 67 'mul' 'tmp_s' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_4 : Operation 68 [1/1] (8.51ns)   --->   "%tmp_1_0_0_1 = mul nsw i32 %kernel_load_1, %input_load_1" [Convolution2D/convolution2D.c:13]   --->   Operation 68 'mul' 'tmp_1_0_0_1' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_4 : Operation 69 [1/2] (2.32ns)   --->   "%input_load_2 = load i32* %input_addr_2, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 69 'load' 'input_load_2' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_4 : Operation 70 [1/2] (2.32ns)   --->   "%kernel_load_2 = load i32* %kernel_addr_2, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 70 'load' 'kernel_load_2' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_4 : Operation 71 [1/1] (1.78ns)   --->   "%tmp_13 = add i5 %tmp_12, 1" [Convolution2D/convolution2D.c:13]   --->   Operation 71 'add' 'tmp_13' <Predicate = (!exitcond3)> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_4 : Operation 72 [1/1] (0.00ns)   --->   "%tmp_15_cast = zext i5 %tmp_13 to i64" [Convolution2D/convolution2D.c:13]   --->   Operation 72 'zext' 'tmp_15_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_4 : Operation 73 [1/1] (0.00ns)   --->   "%input_addr_4 = getelementptr [25 x i32]* %input_r, i64 0, i64 %tmp_15_cast" [Convolution2D/convolution2D.c:13]   --->   Operation 73 'getelementptr' 'input_addr_4' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_4 : Operation 74 [1/1] (1.78ns)   --->   "%tmp_14 = add i5 %tmp_12, 2" [Convolution2D/convolution2D.c:13]   --->   Operation 74 'add' 'tmp_14' <Predicate = (!exitcond3)> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_4 : Operation 75 [1/1] (0.00ns)   --->   "%tmp_16_cast = zext i5 %tmp_14 to i64" [Convolution2D/convolution2D.c:13]   --->   Operation 75 'zext' 'tmp_16_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_4 : Operation 76 [1/1] (0.00ns)   --->   "%input_addr_5 = getelementptr [25 x i32]* %input_r, i64 0, i64 %tmp_16_cast" [Convolution2D/convolution2D.c:13]   --->   Operation 76 'getelementptr' 'input_addr_5' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_4 : Operation 77 [1/2] (2.32ns)   --->   "%input_load_3 = load i32* %input_addr_3, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 77 'load' 'input_load_3' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_4 : Operation 78 [1/2] (2.32ns)   --->   "%kernel_load_3 = load i32* %kernel_addr_3, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 78 'load' 'kernel_load_3' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_4 : Operation 79 [2/2] (2.32ns)   --->   "%input_load_4 = load i32* %input_addr_4, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 79 'load' 'input_load_4' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_4 : Operation 80 [2/2] (2.32ns)   --->   "%kernel_load_4 = load i32* %kernel_addr_4, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 80 'load' 'kernel_load_4' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_4 : Operation 81 [2/2] (2.32ns)   --->   "%input_load_5 = load i32* %input_addr_5, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 81 'load' 'input_load_5' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_4 : Operation 82 [2/2] (2.32ns)   --->   "%kernel_load_5 = load i32* %kernel_addr_5, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 82 'load' 'kernel_load_5' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_4 : Operation 83 [1/1] (8.51ns)   --->   "%tmp_1_1 = mul nsw i32 %kernel_load, %input_load_1" [Convolution2D/convolution2D.c:13]   --->   Operation 83 'mul' 'tmp_1_1' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+State 4 <SV = 3> <Delay = 3.88>
+ST_4 : Operation 68 [1/1] (0.00ns)   --->   "%newIndex_cast = zext i1 %tmp to i3" [Convolution2D/convolution2D.c:15]   --->   Operation 68 'zext' 'newIndex_cast' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 69 [1/1] (0.00ns)   --->   "%tmp_7 = call i3 @_ssdm_op_BitConcatenate.i3.i2.i1(i2 %i_1, i1 %tmp)" [Convolution2D/convolution2D.c:15]   --->   Operation 69 'bitconcatenate' 'tmp_7' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 70 [1/1] (0.00ns)   --->   "%tmp_8 = zext i3 %tmp_7 to i64" [Convolution2D/convolution2D.c:15]   --->   Operation 70 'zext' 'tmp_8' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 71 [1/1] (0.00ns)   --->   "%input_0_addr_2 = getelementptr [10 x i32]* %input_0, i64 0, i64 %tmp_8" [Convolution2D/convolution2D.c:15]   --->   Operation 71 'getelementptr' 'input_0_addr_2' <Predicate = (!tmp_13)> <Delay = 0.00>
+ST_4 : Operation 72 [1/1] (0.00ns)   --->   "%input_1_addr_2 = getelementptr [10 x i32]* %input_1, i64 0, i64 %tmp_8" [Convolution2D/convolution2D.c:15]   --->   Operation 72 'getelementptr' 'input_1_addr_2' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 73 [1/1] (1.56ns)   --->   "%tmp_10 = add i3 %newIndex_cast, %i_cast" [Convolution2D/convolution2D.c:15]   --->   Operation 73 'add' 'tmp_10' <Predicate = (!cond2)> <Delay = 1.56> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 74 [1/1] (0.00ns)   --->   "%tmp_12_cast = zext i3 %tmp_10 to i64" [Convolution2D/convolution2D.c:15]   --->   Operation 74 'zext' 'tmp_12_cast' <Predicate = (!cond2)> <Delay = 0.00>
+ST_4 : Operation 75 [1/1] (0.00ns)   --->   "%input_2_addr = getelementptr [5 x i32]* %input_2, i64 0, i64 %tmp_12_cast" [Convolution2D/convolution2D.c:15]   --->   Operation 75 'getelementptr' 'input_2_addr' <Predicate = (!cond2)> <Delay = 0.00>
+ST_4 : Operation 76 [1/1] (1.56ns)   --->   "%tmp_11 = add i3 %newIndex_cast, %tmp_5_1_cast" [Convolution2D/convolution2D.c:15]   --->   Operation 76 'add' 'tmp_11' <Predicate = (!cond2)> <Delay = 1.56> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 77 [1/1] (0.00ns)   --->   "%tmp_13_cast = zext i3 %tmp_11 to i64" [Convolution2D/convolution2D.c:15]   --->   Operation 77 'zext' 'tmp_13_cast' <Predicate = (!cond2)> <Delay = 0.00>
+ST_4 : Operation 78 [1/1] (0.00ns)   --->   "%input_2_addr_1 = getelementptr [5 x i32]* %input_2, i64 0, i64 %tmp_13_cast" [Convolution2D/convolution2D.c:15]   --->   Operation 78 'getelementptr' 'input_2_addr_1' <Predicate = (!cond2)> <Delay = 0.00>
+ST_4 : Operation 79 [1/2] (2.32ns)   --->   "%input_0_load = load i32* %input_0_addr, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 79 'load' 'input_0_load' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_4 : Operation 80 [1/2] (2.32ns)   --->   "%input_1_load = load i32* %input_1_addr, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 80 'load' 'input_1_load' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_4 : Operation 81 [1/1] (0.69ns)   --->   "%input_load_0_0_phi = select i1 %tmp_13, i32 %input_1_load, i32 %input_0_load" [Convolution2D/convolution2D.c:15]   --->   Operation 81 'select' 'input_load_0_0_phi' <Predicate = true> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_4 : Operation 82 [1/1] (0.00ns)   --->   "%tmp_16 = call i3 @_ssdm_op_BitConcatenate.i3.i2.i1(i2 %i_1, i1 %newIndex_trunc1)" [Convolution2D/convolution2D.c:15]   --->   Operation 82 'bitconcatenate' 'tmp_16' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 83 [1/1] (0.00ns)   --->   "%tmp_17 = zext i3 %tmp_16 to i64" [Convolution2D/convolution2D.c:15]   --->   Operation 83 'zext' 'tmp_17' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 84 [1/1] (0.00ns)   --->   "%input_0_addr_3 = getelementptr [10 x i32]* %input_0, i64 0, i64 %tmp_17" [Convolution2D/convolution2D.c:15]   --->   Operation 84 'getelementptr' 'input_0_addr_3' <Predicate = (!tmp_20)> <Delay = 0.00>
+ST_4 : Operation 85 [1/1] (0.00ns)   --->   "%input_1_addr_3 = getelementptr [10 x i32]* %input_1, i64 0, i64 %tmp_17" [Convolution2D/convolution2D.c:15]   --->   Operation 85 'getelementptr' 'input_1_addr_3' <Predicate = (tmp_20)> <Delay = 0.00>
+ST_4 : Operation 86 [1/2] (2.32ns)   --->   "%input_0_load_1 = load i32* %input_0_addr_1, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 86 'load' 'input_0_load_1' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_4 : Operation 87 [1/2] (2.32ns)   --->   "%input_1_load_1 = load i32* %input_1_addr_1, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 87 'load' 'input_1_load_1' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_4 : Operation 88 [1/1] (0.69ns)   --->   "%input_load_0_1_phi = select i1 %tmp_20, i32 %input_1_load_1, i32 %input_0_load_1" [Convolution2D/convolution2D.c:15]   --->   Operation 88 'select' 'input_load_0_1_phi' <Predicate = true> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_4 : Operation 89 [2/2] (2.32ns)   --->   "%input_2_load = load i32* %input_2_addr, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 89 'load' 'input_2_load' <Predicate = (!cond2)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_4 : Operation 90 [2/2] (2.32ns)   --->   "%input_0_load_2 = load i32* %input_0_addr_2, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 90 'load' 'input_0_load_2' <Predicate = (!tmp_13)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_4 : Operation 91 [2/2] (2.32ns)   --->   "%input_1_load_2 = load i32* %input_1_addr_2, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 91 'load' 'input_1_load_2' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_4 : Operation 92 [2/2] (2.32ns)   --->   "%input_0_load_3 = load i32* %input_0_addr_3, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 92 'load' 'input_0_load_3' <Predicate = (!tmp_20)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_4 : Operation 93 [2/2] (2.32ns)   --->   "%input_1_load_3 = load i32* %input_1_addr_3, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 93 'load' 'input_1_load_3' <Predicate = (tmp_20)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_4 : Operation 94 [2/2] (2.32ns)   --->   "%input_2_load_1 = load i32* %input_2_addr_1, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 94 'load' 'input_2_load_1' <Predicate = (!cond2)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
 
 State 5 <SV = 4> <Delay = 8.51>
-ST_5 : Operation 84 [1/1] (8.51ns)   --->   "%tmp_1_0_0_2 = mul nsw i32 %kernel_load_2, %input_load_2" [Convolution2D/convolution2D.c:13]   --->   Operation 84 'mul' 'tmp_1_0_0_2' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_5 : Operation 85 [1/1] (8.51ns)   --->   "%tmp_1_0_1 = mul nsw i32 %kernel_load_3, %input_load_3" [Convolution2D/convolution2D.c:13]   --->   Operation 85 'mul' 'tmp_1_0_1' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_5 : Operation 86 [1/2] (2.32ns)   --->   "%input_load_4 = load i32* %input_addr_4, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 86 'load' 'input_load_4' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_5 : Operation 87 [1/2] (2.32ns)   --->   "%kernel_load_4 = load i32* %kernel_addr_4, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 87 'load' 'kernel_load_4' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_5 : Operation 88 [1/2] (2.32ns)   --->   "%input_load_5 = load i32* %input_addr_5, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 88 'load' 'input_load_5' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_5 : Operation 89 [1/2] (2.32ns)   --->   "%kernel_load_5 = load i32* %kernel_addr_5, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 89 'load' 'kernel_load_5' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_5 : Operation 90 [1/1] (0.00ns)   --->   "%tmp_5_0_2_cast = zext i3 %tmp_4_0_2 to i6" [Convolution2D/convolution2D.c:13]   --->   Operation 90 'zext' 'tmp_5_0_2_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_5 : Operation 91 [1/1] (0.00ns)   --->   "%tmp_17 = call i5 @_ssdm_op_BitConcatenate.i5.i3.i2(i3 %tmp_4_0_2, i2 0)" [Convolution2D/convolution2D.c:13]   --->   Operation 91 'bitconcatenate' 'tmp_17' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_5 : Operation 92 [1/1] (0.00ns)   --->   "%p_shl_cast = zext i5 %tmp_17 to i6" [Convolution2D/convolution2D.c:13]   --->   Operation 92 'zext' 'p_shl_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_5 : Operation 93 [1/1] (1.78ns)   --->   "%tmp_18 = add i6 %tmp_5_0_2_cast, %p_shl_cast" [Convolution2D/convolution2D.c:13]   --->   Operation 93 'add' 'tmp_18' <Predicate = (!exitcond3)> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_5 : Operation 94 [1/1] (0.00ns)   --->   "%tmp_20_cast = zext i6 %tmp_18 to i64" [Convolution2D/convolution2D.c:13]   --->   Operation 94 'zext' 'tmp_20_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_5 : Operation 95 [1/1] (0.00ns)   --->   "%input_addr_6 = getelementptr [25 x i32]* %input_r, i64 0, i64 %tmp_20_cast" [Convolution2D/convolution2D.c:13]   --->   Operation 95 'getelementptr' 'input_addr_6' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_5 : Operation 96 [1/1] (1.82ns)   --->   "%tmp_19 = add i6 %tmp_18, 1" [Convolution2D/convolution2D.c:13]   --->   Operation 96 'add' 'tmp_19' <Predicate = (!exitcond3)> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_5 : Operation 97 [1/1] (0.00ns)   --->   "%tmp_21_cast = zext i6 %tmp_19 to i64" [Convolution2D/convolution2D.c:13]   --->   Operation 97 'zext' 'tmp_21_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_5 : Operation 98 [1/1] (0.00ns)   --->   "%input_addr_7 = getelementptr [25 x i32]* %input_r, i64 0, i64 %tmp_21_cast" [Convolution2D/convolution2D.c:13]   --->   Operation 98 'getelementptr' 'input_addr_7' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_5 : Operation 99 [2/2] (2.32ns)   --->   "%input_load_6 = load i32* %input_addr_6, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 99 'load' 'input_load_6' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_5 : Operation 100 [2/2] (2.32ns)   --->   "%kernel_load_6 = load i32* %kernel_addr_6, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 100 'load' 'kernel_load_6' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_5 : Operation 101 [2/2] (2.32ns)   --->   "%input_load_7 = load i32* %input_addr_7, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 101 'load' 'input_load_7' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_5 : Operation 102 [2/2] (2.32ns)   --->   "%kernel_load_7 = load i32* %kernel_addr_7, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 102 'load' 'kernel_load_7' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_5 : Operation 103 [1/1] (2.55ns)   --->   "%tmp2 = add i32 %tmp_1_0_0_1, %tmp_s" [Convolution2D/convolution2D.c:13]   --->   Operation 103 'add' 'tmp2' <Predicate = (!exitcond3)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_5 : Operation 104 [1/1] (8.51ns)   --->   "%tmp_1_1_0_1 = mul nsw i32 %kernel_load_1, %input_load_2" [Convolution2D/convolution2D.c:13]   --->   Operation 104 'mul' 'tmp_1_1_0_1' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_5 : Operation 105 [1/1] (8.51ns)   --->   "%tmp_1_2 = mul nsw i32 %kernel_load, %input_load_2" [Convolution2D/convolution2D.c:13]   --->   Operation 105 'mul' 'tmp_1_2' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 95 [1/1] (0.00ns)   --->   "%tmp_s = call i4 @_ssdm_op_BitConcatenate.i4.i3.i1(i3 %tmp_4_2, i1 %tmp)" [Convolution2D/convolution2D.c:15]   --->   Operation 95 'bitconcatenate' 'tmp_s' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 96 [1/1] (0.00ns)   --->   "%tmp_9 = zext i4 %tmp_s to i64" [Convolution2D/convolution2D.c:15]   --->   Operation 96 'zext' 'tmp_9' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 97 [1/1] (0.00ns)   --->   "%input_0_addr_4 = getelementptr [10 x i32]* %input_0, i64 0, i64 %tmp_9" [Convolution2D/convolution2D.c:15]   --->   Operation 97 'getelementptr' 'input_0_addr_4' <Predicate = (!tmp_13)> <Delay = 0.00>
+ST_5 : Operation 98 [1/1] (0.00ns)   --->   "%input_1_addr_4 = getelementptr [10 x i32]* %input_1, i64 0, i64 %tmp_9" [Convolution2D/convolution2D.c:15]   --->   Operation 98 'getelementptr' 'input_1_addr_4' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 99 [1/1] (1.65ns)   --->   "%tmp_12 = add i3 %newIndex_cast, %tmp_4_2" [Convolution2D/convolution2D.c:15]   --->   Operation 99 'add' 'tmp_12' <Predicate = (!cond2)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 100 [1/1] (0.00ns)   --->   "%tmp_14_cast = zext i3 %tmp_12 to i64" [Convolution2D/convolution2D.c:15]   --->   Operation 100 'zext' 'tmp_14_cast' <Predicate = (!cond2)> <Delay = 0.00>
+ST_5 : Operation 101 [1/1] (0.00ns)   --->   "%input_2_addr_2 = getelementptr [5 x i32]* %input_2, i64 0, i64 %tmp_14_cast" [Convolution2D/convolution2D.c:15]   --->   Operation 101 'getelementptr' 'input_2_addr_2' <Predicate = (!cond2)> <Delay = 0.00>
+ST_5 : Operation 102 [1/1] (0.00ns)   --->   "%kernel_0_0_read = call i32 @_ssdm_op_Read.ap_auto.i32P(i32* %kernel_0_0)" [Convolution2D/convolution2D.c:15]   --->   Operation 102 'read' 'kernel_0_0_read' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 103 [1/1] (8.51ns)   --->   "%tmp_1 = mul nsw i32 %kernel_0_0_read, %input_load_0_0_phi" [Convolution2D/convolution2D.c:15]   --->   Operation 103 'mul' 'tmp_1' <Predicate = true> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 104 [1/1] (0.00ns)   --->   "%tmp_18 = call i4 @_ssdm_op_BitConcatenate.i4.i3.i1(i3 %tmp_4_2, i1 %newIndex_trunc1)" [Convolution2D/convolution2D.c:15]   --->   Operation 104 'bitconcatenate' 'tmp_18' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 105 [1/1] (0.00ns)   --->   "%tmp_19 = zext i4 %tmp_18 to i64" [Convolution2D/convolution2D.c:15]   --->   Operation 105 'zext' 'tmp_19' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 106 [1/1] (0.00ns)   --->   "%input_0_addr_5 = getelementptr [10 x i32]* %input_0, i64 0, i64 %tmp_19" [Convolution2D/convolution2D.c:15]   --->   Operation 106 'getelementptr' 'input_0_addr_5' <Predicate = (!tmp_20)> <Delay = 0.00>
+ST_5 : Operation 107 [1/1] (0.00ns)   --->   "%input_1_addr_5 = getelementptr [10 x i32]* %input_1, i64 0, i64 %tmp_19" [Convolution2D/convolution2D.c:15]   --->   Operation 107 'getelementptr' 'input_1_addr_5' <Predicate = (tmp_20)> <Delay = 0.00>
+ST_5 : Operation 108 [1/1] (0.00ns)   --->   "%kernel_0_1_read = call i32 @_ssdm_op_Read.ap_auto.i32P(i32* %kernel_0_1)" [Convolution2D/convolution2D.c:15]   --->   Operation 108 'read' 'kernel_0_1_read' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 109 [1/1] (8.51ns)   --->   "%tmp_1_0_1 = mul nsw i32 %kernel_0_1_read, %input_load_0_1_phi" [Convolution2D/convolution2D.c:15]   --->   Operation 109 'mul' 'tmp_1_0_1' <Predicate = true> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 110 [1/2] (2.32ns)   --->   "%input_2_load = load i32* %input_2_addr, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 110 'load' 'input_2_load' <Predicate = (!cond2)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_5 : Operation 111 [1/1] (0.69ns)   --->   "%input_load_0_2_phi = select i1 %cond2, i32 %input_1_load, i32 %input_2_load" [Convolution2D/convolution2D.c:15]   --->   Operation 111 'select' 'input_load_0_2_phi' <Predicate = true> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_5 : Operation 112 [1/2] (2.32ns)   --->   "%input_0_load_2 = load i32* %input_0_addr_2, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 112 'load' 'input_0_load_2' <Predicate = (!tmp_13)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_5 : Operation 113 [1/2] (2.32ns)   --->   "%input_1_load_2 = load i32* %input_1_addr_2, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 113 'load' 'input_1_load_2' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_5 : Operation 114 [1/1] (0.69ns)   --->   "%input_load_1_0_phi = select i1 %tmp_13, i32 %input_1_load_2, i32 %input_0_load_2" [Convolution2D/convolution2D.c:15]   --->   Operation 114 'select' 'input_load_1_0_phi' <Predicate = true> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_5 : Operation 115 [1/2] (2.32ns)   --->   "%input_0_load_3 = load i32* %input_0_addr_3, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 115 'load' 'input_0_load_3' <Predicate = (!tmp_20)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_5 : Operation 116 [1/2] (2.32ns)   --->   "%input_1_load_3 = load i32* %input_1_addr_3, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 116 'load' 'input_1_load_3' <Predicate = (tmp_20)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_5 : Operation 117 [1/1] (0.69ns)   --->   "%input_load_1_1_phi = select i1 %tmp_20, i32 %input_1_load_3, i32 %input_0_load_3" [Convolution2D/convolution2D.c:15]   --->   Operation 117 'select' 'input_load_1_1_phi' <Predicate = true> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_5 : Operation 118 [1/2] (2.32ns)   --->   "%input_2_load_1 = load i32* %input_2_addr_1, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 118 'load' 'input_2_load_1' <Predicate = (!cond2)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_5 : Operation 119 [1/1] (0.69ns)   --->   "%input_load_1_2_phi = select i1 %cond2, i32 %input_1_load_2, i32 %input_2_load_1" [Convolution2D/convolution2D.c:15]   --->   Operation 119 'select' 'input_load_1_2_phi' <Predicate = true> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_5 : Operation 120 [2/2] (2.32ns)   --->   "%input_0_load_4 = load i32* %input_0_addr_4, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 120 'load' 'input_0_load_4' <Predicate = (!tmp_13)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_5 : Operation 121 [2/2] (2.32ns)   --->   "%input_1_load_4 = load i32* %input_1_addr_4, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 121 'load' 'input_1_load_4' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_5 : Operation 122 [2/2] (2.32ns)   --->   "%input_0_load_5 = load i32* %input_0_addr_5, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 122 'load' 'input_0_load_5' <Predicate = (!tmp_20)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_5 : Operation 123 [2/2] (2.32ns)   --->   "%input_1_load_5 = load i32* %input_1_addr_5, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 123 'load' 'input_1_load_5' <Predicate = (tmp_20)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_5 : Operation 124 [2/2] (2.32ns)   --->   "%input_2_load_2 = load i32* %input_2_addr_2, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 124 'load' 'input_2_load_2' <Predicate = (!cond2)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
 
 State 6 <SV = 5> <Delay = 8.51>
-ST_6 : Operation 106 [1/1] (1.78ns)   --->   "%tmp_6 = add i5 %tmp_3, 3" [Convolution2D/convolution2D.c:13]   --->   Operation 106 'add' 'tmp_6' <Predicate = (!exitcond3)> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_6 : Operation 107 [1/1] (0.00ns)   --->   "%tmp_6_cast = zext i5 %tmp_6 to i64" [Convolution2D/convolution2D.c:13]   --->   Operation 107 'zext' 'tmp_6_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_6 : Operation 108 [1/1] (0.00ns)   --->   "%input_addr_9 = getelementptr [25 x i32]* %input_r, i64 0, i64 %tmp_6_cast" [Convolution2D/convolution2D.c:13]   --->   Operation 108 'getelementptr' 'input_addr_9' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_6 : Operation 109 [1/1] (8.51ns)   --->   "%tmp_1_0_1_1 = mul nsw i32 %kernel_load_4, %input_load_4" [Convolution2D/convolution2D.c:13]   --->   Operation 109 'mul' 'tmp_1_0_1_1' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_6 : Operation 110 [1/1] (8.51ns)   --->   "%tmp_1_0_1_2 = mul nsw i32 %kernel_load_5, %input_load_5" [Convolution2D/convolution2D.c:13]   --->   Operation 110 'mul' 'tmp_1_0_1_2' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_6 : Operation 111 [1/1] (1.82ns)   --->   "%tmp_20 = add i6 %tmp_18, 2" [Convolution2D/convolution2D.c:13]   --->   Operation 111 'add' 'tmp_20' <Predicate = (!exitcond3)> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_6 : Operation 112 [1/1] (0.00ns)   --->   "%tmp_22_cast = sext i6 %tmp_20 to i64" [Convolution2D/convolution2D.c:13]   --->   Operation 112 'sext' 'tmp_22_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_6 : Operation 113 [1/1] (0.00ns)   --->   "%input_addr_8 = getelementptr [25 x i32]* %input_r, i64 0, i64 %tmp_22_cast" [Convolution2D/convolution2D.c:13]   --->   Operation 113 'getelementptr' 'input_addr_8' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_6 : Operation 114 [1/2] (2.32ns)   --->   "%input_load_6 = load i32* %input_addr_6, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 114 'load' 'input_load_6' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_6 : Operation 115 [1/2] (2.32ns)   --->   "%kernel_load_6 = load i32* %kernel_addr_6, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 115 'load' 'kernel_load_6' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_6 : Operation 116 [1/2] (2.32ns)   --->   "%input_load_7 = load i32* %input_addr_7, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 116 'load' 'input_load_7' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_6 : Operation 117 [1/2] (2.32ns)   --->   "%kernel_load_7 = load i32* %kernel_addr_7, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 117 'load' 'kernel_load_7' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_6 : Operation 118 [2/2] (2.32ns)   --->   "%input_load_8 = load i32* %input_addr_8, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 118 'load' 'input_load_8' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_6 : Operation 119 [2/2] (2.32ns)   --->   "%kernel_load_8 = load i32* %kernel_addr_8, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 119 'load' 'kernel_load_8' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_6 : Operation 120 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp3 = add i32 %tmp_1_0_1, %tmp_1_0_0_2" [Convolution2D/convolution2D.c:13]   --->   Operation 120 'add' 'tmp3' <Predicate = (!exitcond3)> <Delay = 0.00> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
-ST_6 : Operation 121 [1/1] (4.37ns) (root node of TernaryAdder)   --->   "%tmp1 = add i32 %tmp2, %tmp3" [Convolution2D/convolution2D.c:13]   --->   Operation 121 'add' 'tmp1' <Predicate = (!exitcond3)> <Delay = 4.37> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
-ST_6 : Operation 122 [2/2] (2.32ns)   --->   "%input_load_9 = load i32* %input_addr_9, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 122 'load' 'input_load_9' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_6 : Operation 123 [1/1] (8.51ns)   --->   "%tmp_1_1_1 = mul nsw i32 %kernel_load_3, %input_load_4" [Convolution2D/convolution2D.c:13]   --->   Operation 123 'mul' 'tmp_1_1_1' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_6 : Operation 124 [1/1] (8.51ns)   --->   "%tmp_1_1_1_1 = mul nsw i32 %kernel_load_4, %input_load_5" [Convolution2D/convolution2D.c:13]   --->   Operation 124 'mul' 'tmp_1_1_1_1' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_6 : Operation 125 [1/1] (2.55ns)   --->   "%tmp9 = add i32 %tmp_1_1_0_1, %tmp_1_1" [Convolution2D/convolution2D.c:13]   --->   Operation 125 'add' 'tmp9' <Predicate = (!exitcond3)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 125 [1/1] (0.00ns)   --->   "%kernel_0_2_read = call i32 @_ssdm_op_Read.ap_auto.i32P(i32* %kernel_0_2)" [Convolution2D/convolution2D.c:15]   --->   Operation 125 'read' 'kernel_0_2_read' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 126 [1/1] (8.51ns)   --->   "%tmp_1_0_2 = mul nsw i32 %kernel_0_2_read, %input_load_0_2_phi" [Convolution2D/convolution2D.c:15]   --->   Operation 126 'mul' 'tmp_1_0_2' <Predicate = true> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 127 [1/1] (0.00ns)   --->   "%kernel_1_0_read = call i32 @_ssdm_op_Read.ap_auto.i32P(i32* %kernel_1_0)" [Convolution2D/convolution2D.c:15]   --->   Operation 127 'read' 'kernel_1_0_read' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 128 [1/1] (8.51ns)   --->   "%tmp_1_1 = mul nsw i32 %kernel_1_0_read, %input_load_1_0_phi" [Convolution2D/convolution2D.c:15]   --->   Operation 128 'mul' 'tmp_1_1' <Predicate = true> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 129 [1/2] (2.32ns)   --->   "%input_0_load_4 = load i32* %input_0_addr_4, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 129 'load' 'input_0_load_4' <Predicate = (!tmp_13)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_6 : Operation 130 [1/2] (2.32ns)   --->   "%input_1_load_4 = load i32* %input_1_addr_4, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 130 'load' 'input_1_load_4' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_6 : Operation 131 [1/1] (0.69ns)   --->   "%input_load_2_0_phi = select i1 %tmp_13, i32 %input_1_load_4, i32 %input_0_load_4" [Convolution2D/convolution2D.c:15]   --->   Operation 131 'select' 'input_load_2_0_phi' <Predicate = true> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_6 : Operation 132 [1/2] (2.32ns)   --->   "%input_0_load_5 = load i32* %input_0_addr_5, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 132 'load' 'input_0_load_5' <Predicate = (!tmp_20)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_6 : Operation 133 [1/2] (2.32ns)   --->   "%input_1_load_5 = load i32* %input_1_addr_5, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 133 'load' 'input_1_load_5' <Predicate = (tmp_20)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_6 : Operation 134 [1/1] (0.69ns)   --->   "%input_load_2_1_phi = select i1 %tmp_20, i32 %input_1_load_5, i32 %input_0_load_5" [Convolution2D/convolution2D.c:15]   --->   Operation 134 'select' 'input_load_2_1_phi' <Predicate = true> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_6 : Operation 135 [1/2] (2.32ns)   --->   "%input_2_load_2 = load i32* %input_2_addr_2, align 4" [Convolution2D/convolution2D.c:15]   --->   Operation 135 'load' 'input_2_load_2' <Predicate = (!cond2)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_6 : Operation 136 [1/1] (0.69ns)   --->   "%input_load_2_2_phi = select i1 %cond2, i32 %input_1_load_4, i32 %input_2_load_2" [Convolution2D/convolution2D.c:15]   --->   Operation 136 'select' 'input_load_2_2_phi' <Predicate = true> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_6 : Operation 137 [1/1] (2.55ns)   --->   "%tmp2 = add i32 %tmp_1_0_1, %tmp_1" [Convolution2D/convolution2D.c:15]   --->   Operation 137 'add' 'tmp2' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
 
 State 7 <SV = 6> <Delay = 8.51>
-ST_7 : Operation 126 [1/1] (1.78ns)   --->   "%tmp_15 = add i5 %tmp_12, 3" [Convolution2D/convolution2D.c:13]   --->   Operation 126 'add' 'tmp_15' <Predicate = (!exitcond3)> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_7 : Operation 127 [1/1] (0.00ns)   --->   "%tmp_17_cast = zext i5 %tmp_15 to i64" [Convolution2D/convolution2D.c:13]   --->   Operation 127 'zext' 'tmp_17_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_7 : Operation 128 [1/1] (0.00ns)   --->   "%input_addr_10 = getelementptr [25 x i32]* %input_r, i64 0, i64 %tmp_17_cast" [Convolution2D/convolution2D.c:13]   --->   Operation 128 'getelementptr' 'input_addr_10' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_7 : Operation 129 [1/1] (1.82ns)   --->   "%tmp_21 = add i6 %tmp_18, 3" [Convolution2D/convolution2D.c:13]   --->   Operation 129 'add' 'tmp_21' <Predicate = (!exitcond3)> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_7 : Operation 130 [1/1] (0.00ns)   --->   "%tmp_23_cast = sext i6 %tmp_21 to i64" [Convolution2D/convolution2D.c:13]   --->   Operation 130 'sext' 'tmp_23_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_7 : Operation 131 [1/1] (0.00ns)   --->   "%input_addr_11 = getelementptr [25 x i32]* %input_r, i64 0, i64 %tmp_23_cast" [Convolution2D/convolution2D.c:13]   --->   Operation 131 'getelementptr' 'input_addr_11' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_7 : Operation 132 [1/1] (8.51ns)   --->   "%tmp_1_0_2 = mul nsw i32 %kernel_load_6, %input_load_6" [Convolution2D/convolution2D.c:13]   --->   Operation 132 'mul' 'tmp_1_0_2' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_7 : Operation 133 [1/1] (8.51ns)   --->   "%tmp_1_0_2_1 = mul nsw i32 %kernel_load_7, %input_load_7" [Convolution2D/convolution2D.c:13]   --->   Operation 133 'mul' 'tmp_1_0_2_1' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_7 : Operation 134 [1/2] (2.32ns)   --->   "%input_load_8 = load i32* %input_addr_8, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 134 'load' 'input_load_8' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_7 : Operation 135 [1/2] (2.32ns)   --->   "%kernel_load_8 = load i32* %kernel_addr_8, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 135 'load' 'kernel_load_8' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_7 : Operation 136 [1/1] (2.55ns)   --->   "%tmp5 = add i32 %tmp_1_0_1_2, %tmp_1_0_1_1" [Convolution2D/convolution2D.c:13]   --->   Operation 136 'add' 'tmp5' <Predicate = (!exitcond3)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_7 : Operation 137 [1/2] (2.32ns)   --->   "%input_load_9 = load i32* %input_addr_9, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 137 'load' 'input_load_9' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_7 : Operation 138 [2/2] (2.32ns)   --->   "%input_load_10 = load i32* %input_addr_10, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 138 'load' 'input_load_10' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_7 : Operation 139 [1/1] (8.51ns)   --->   "%tmp_1_1_2 = mul nsw i32 %kernel_load_6, %input_load_7" [Convolution2D/convolution2D.c:13]   --->   Operation 139 'mul' 'tmp_1_1_2' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_7 : Operation 140 [2/2] (2.32ns)   --->   "%input_load_11 = load i32* %input_addr_11, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 140 'load' 'input_load_11' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_7 : Operation 141 [1/1] (8.51ns)   --->   "%tmp_1_2_1 = mul nsw i32 %kernel_load_3, %input_load_5" [Convolution2D/convolution2D.c:13]   --->   Operation 141 'mul' 'tmp_1_2_1' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 138 [1/1] (0.00ns)   --->   "%kernel_1_1_read = call i32 @_ssdm_op_Read.ap_auto.i32P(i32* %kernel_1_1)" [Convolution2D/convolution2D.c:15]   --->   Operation 138 'read' 'kernel_1_1_read' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 139 [1/1] (8.51ns)   --->   "%tmp_1_1_1 = mul nsw i32 %kernel_1_1_read, %input_load_1_1_phi" [Convolution2D/convolution2D.c:15]   --->   Operation 139 'mul' 'tmp_1_1_1' <Predicate = true> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 140 [1/1] (0.00ns)   --->   "%kernel_1_2_read = call i32 @_ssdm_op_Read.ap_auto.i32P(i32* %kernel_1_2)" [Convolution2D/convolution2D.c:15]   --->   Operation 140 'read' 'kernel_1_2_read' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 141 [1/1] (8.51ns)   --->   "%tmp_1_1_2 = mul nsw i32 %kernel_1_2_read, %input_load_1_2_phi" [Convolution2D/convolution2D.c:15]   --->   Operation 141 'mul' 'tmp_1_1_2' <Predicate = true> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 142 [1/1] (0.00ns)   --->   "%kernel_2_0_read = call i32 @_ssdm_op_Read.ap_auto.i32P(i32* %kernel_2_0)" [Convolution2D/convolution2D.c:15]   --->   Operation 142 'read' 'kernel_2_0_read' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 143 [1/1] (8.51ns)   --->   "%tmp_1_2 = mul nsw i32 %kernel_2_0_read, %input_load_2_0_phi" [Convolution2D/convolution2D.c:15]   --->   Operation 143 'mul' 'tmp_1_2' <Predicate = true> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 144 [1/1] (0.00ns)   --->   "%kernel_2_1_read = call i32 @_ssdm_op_Read.ap_auto.i32P(i32* %kernel_2_1)" [Convolution2D/convolution2D.c:15]   --->   Operation 144 'read' 'kernel_2_1_read' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 145 [1/1] (8.51ns)   --->   "%tmp_1_2_1 = mul nsw i32 %kernel_2_1_read, %input_load_2_1_phi" [Convolution2D/convolution2D.c:15]   --->   Operation 145 'mul' 'tmp_1_2_1' <Predicate = true> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 146 [1/1] (0.00ns)   --->   "%kernel_2_2_read = call i32 @_ssdm_op_Read.ap_auto.i32P(i32* %kernel_2_2)" [Convolution2D/convolution2D.c:15]   --->   Operation 146 'read' 'kernel_2_2_read' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 147 [1/1] (8.51ns)   --->   "%tmp_1_2_2 = mul nsw i32 %kernel_2_2_read, %input_load_2_2_phi" [Convolution2D/convolution2D.c:15]   --->   Operation 147 'mul' 'tmp_1_2_2' <Predicate = true> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 148 [1/1] (2.55ns)   --->   "%tmp3 = add i32 %tmp_1_0_2, %tmp_1_1" [Convolution2D/convolution2D.c:15]   --->   Operation 148 'add' 'tmp3' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
 
-State 8 <SV = 7> <Delay = 8.51>
-ST_8 : Operation 142 [1/1] (1.78ns)   --->   "%tmp_7 = add i5 %tmp_3, 4" [Convolution2D/convolution2D.c:13]   --->   Operation 142 'add' 'tmp_7' <Predicate = (!exitcond3)> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_8 : Operation 143 [1/1] (0.00ns)   --->   "%tmp_7_cast = zext i5 %tmp_7 to i64" [Convolution2D/convolution2D.c:13]   --->   Operation 143 'zext' 'tmp_7_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_8 : Operation 144 [1/1] (0.00ns)   --->   "%input_addr_12 = getelementptr [25 x i32]* %input_r, i64 0, i64 %tmp_7_cast" [Convolution2D/convolution2D.c:13]   --->   Operation 144 'getelementptr' 'input_addr_12' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_8 : Operation 145 [1/1] (1.78ns)   --->   "%tmp_16 = add i5 %tmp_12, 4" [Convolution2D/convolution2D.c:13]   --->   Operation 145 'add' 'tmp_16' <Predicate = (!exitcond3)> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_8 : Operation 146 [1/1] (0.00ns)   --->   "%tmp_18_cast = zext i5 %tmp_16 to i64" [Convolution2D/convolution2D.c:13]   --->   Operation 146 'zext' 'tmp_18_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_8 : Operation 147 [1/1] (0.00ns)   --->   "%input_addr_13 = getelementptr [25 x i32]* %input_r, i64 0, i64 %tmp_18_cast" [Convolution2D/convolution2D.c:13]   --->   Operation 147 'getelementptr' 'input_addr_13' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_8 : Operation 148 [1/1] (8.51ns)   --->   "%tmp_1_0_2_2 = mul nsw i32 %kernel_load_8, %input_load_8" [Convolution2D/convolution2D.c:13]   --->   Operation 148 'mul' 'tmp_1_0_2_2' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_8 : Operation 149 [1/1] (8.51ns)   --->   "%tmp_1_1_0_2 = mul nsw i32 %kernel_load_2, %input_load_9" [Convolution2D/convolution2D.c:13]   --->   Operation 149 'mul' 'tmp_1_1_0_2' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_8 : Operation 150 [1/2] (2.32ns)   --->   "%input_load_10 = load i32* %input_addr_10, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 150 'load' 'input_load_10' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_8 : Operation 151 [1/1] (8.51ns)   --->   "%tmp_1_1_2_1 = mul nsw i32 %kernel_load_7, %input_load_8" [Convolution2D/convolution2D.c:13]   --->   Operation 151 'mul' 'tmp_1_1_2_1' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_8 : Operation 152 [1/2] (2.32ns)   --->   "%input_load_11 = load i32* %input_addr_11, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 152 'load' 'input_load_11' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_8 : Operation 153 [1/1] (8.51ns)   --->   "%tmp_1_2_0_1 = mul nsw i32 %kernel_load_1, %input_load_9" [Convolution2D/convolution2D.c:13]   --->   Operation 153 'mul' 'tmp_1_2_0_1' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_8 : Operation 154 [2/2] (2.32ns)   --->   "%input_load_12 = load i32* %input_addr_12, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 154 'load' 'input_load_12' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_8 : Operation 155 [2/2] (2.32ns)   --->   "%input_load_13 = load i32* %input_addr_13, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 155 'load' 'input_load_13' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+State 8 <SV = 7> <Delay = 8.74>
+ST_8 : Operation 149 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp5 = add i32 %tmp_1_1_1, %tmp_1_1_2" [Convolution2D/convolution2D.c:15]   --->   Operation 149 'add' 'tmp5' <Predicate = true> <Delay = 0.00> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_8 : Operation 150 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp7 = add i32 %tmp_1_2_1, %tmp_1_2_2" [Convolution2D/convolution2D.c:15]   --->   Operation 150 'add' 'tmp7' <Predicate = true> <Delay = 0.00> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_8 : Operation 151 [1/1] (4.37ns) (root node of TernaryAdder)   --->   "%tmp6 = add i32 %tmp7, %tmp_1_2" [Convolution2D/convolution2D.c:15]   --->   Operation 151 'add' 'tmp6' <Predicate = true> <Delay = 4.37> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_8 : Operation 152 [1/1] (4.37ns) (root node of TernaryAdder)   --->   "%tmp4 = add i32 %tmp6, %tmp5" [Convolution2D/convolution2D.c:15]   --->   Operation 152 'add' 'tmp4' <Predicate = true> <Delay = 4.37> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
 
-State 9 <SV = 8> <Delay = 8.74>
-ST_9 : Operation 156 [1/1] (1.82ns)   --->   "%tmp_22 = add i6 %tmp_18, 4" [Convolution2D/convolution2D.c:13]   --->   Operation 156 'add' 'tmp_22' <Predicate = (!exitcond3)> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_9 : Operation 157 [1/1] (0.00ns)   --->   "%tmp_24_cast = sext i6 %tmp_22 to i64" [Convolution2D/convolution2D.c:13]   --->   Operation 157 'sext' 'tmp_24_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_9 : Operation 158 [1/1] (0.00ns)   --->   "%input_addr_14 = getelementptr [25 x i32]* %input_r, i64 0, i64 %tmp_24_cast" [Convolution2D/convolution2D.c:13]   --->   Operation 158 'getelementptr' 'input_addr_14' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_9 : Operation 159 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp7 = add i32 %tmp_1_0_2_2, %tmp_1_0_2_1" [Convolution2D/convolution2D.c:13]   --->   Operation 159 'add' 'tmp7' <Predicate = (!exitcond3)> <Delay = 0.00> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
-ST_9 : Operation 160 [1/1] (4.37ns) (root node of TernaryAdder)   --->   "%tmp6 = add i32 %tmp_1_0_2, %tmp7" [Convolution2D/convolution2D.c:13]   --->   Operation 160 'add' 'tmp6' <Predicate = (!exitcond3)> <Delay = 4.37> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
-ST_9 : Operation 161 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp4 = add i32 %tmp5, %tmp6" [Convolution2D/convolution2D.c:13]   --->   Operation 161 'add' 'tmp4' <Predicate = (!exitcond3)> <Delay = 0.00> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
-ST_9 : Operation 162 [1/1] (4.37ns) (root node of TernaryAdder)   --->   "%sum_2_0_2_2 = add nsw i32 %tmp1, %tmp4" [Convolution2D/convolution2D.c:13]   --->   Operation 162 'add' 'sum_2_0_2_2' <Predicate = (!exitcond3)> <Delay = 4.37> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
-ST_9 : Operation 163 [1/1] (8.51ns)   --->   "%tmp_1_1_1_2 = mul nsw i32 %kernel_load_5, %input_load_10" [Convolution2D/convolution2D.c:13]   --->   Operation 163 'mul' 'tmp_1_1_1_2' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_9 : Operation 164 [1/1] (8.51ns)   --->   "%tmp_1_1_2_2 = mul nsw i32 %kernel_load_8, %input_load_11" [Convolution2D/convolution2D.c:13]   --->   Operation 164 'mul' 'tmp_1_1_2_2' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_9 : Operation 165 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp = add i32 %tmp_1_1_1, %tmp_1_1_0_2" [Convolution2D/convolution2D.c:13]   --->   Operation 165 'add' 'tmp' <Predicate = (!exitcond3)> <Delay = 0.00> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
-ST_9 : Operation 166 [1/1] (4.37ns) (root node of TernaryAdder)   --->   "%tmp8 = add i32 %tmp9, %tmp" [Convolution2D/convolution2D.c:13]   --->   Operation 166 'add' 'tmp8' <Predicate = (!exitcond3)> <Delay = 4.37> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
-ST_9 : Operation 167 [1/2] (2.32ns)   --->   "%input_load_12 = load i32* %input_addr_12, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 167 'load' 'input_load_12' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_9 : Operation 168 [1/1] (8.51ns)   --->   "%tmp_1_2_1_1 = mul nsw i32 %kernel_load_4, %input_load_10" [Convolution2D/convolution2D.c:13]   --->   Operation 168 'mul' 'tmp_1_2_1_1' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_9 : Operation 169 [1/2] (2.32ns)   --->   "%input_load_13 = load i32* %input_addr_13, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 169 'load' 'input_load_13' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_9 : Operation 170 [1/1] (8.51ns)   --->   "%tmp_1_2_2 = mul nsw i32 %kernel_load_6, %input_load_8" [Convolution2D/convolution2D.c:13]   --->   Operation 170 'mul' 'tmp_1_2_2' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_9 : Operation 171 [2/2] (2.32ns)   --->   "%input_load_14 = load i32* %input_addr_14, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 171 'load' 'input_load_14' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_9 : Operation 172 [1/1] (2.55ns)   --->   "%tmp14 = add i32 %tmp_1_2_0_1, %tmp_1_2" [Convolution2D/convolution2D.c:13]   --->   Operation 172 'add' 'tmp14' <Predicate = (!exitcond3)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-
-State 10 <SV = 9> <Delay = 8.74>
-ST_10 : Operation 173 [1/1] (0.00ns)   --->   "%tmp_9_cast = sext i5 %tmp_9 to i64" [Convolution2D/convolution2D.c:16]   --->   Operation 173 'sext' 'tmp_9_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_10 : Operation 174 [1/1] (0.00ns)   --->   "%output_addr = getelementptr [9 x i32]* %output_r, i64 0, i64 %tmp_9_cast" [Convolution2D/convolution2D.c:16]   --->   Operation 174 'getelementptr' 'output_addr' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_10 : Operation 175 [1/1] (2.32ns)   --->   "store i32 %sum_2_0_2_2, i32* %output_addr, align 4" [Convolution2D/convolution2D.c:16]   --->   Operation 175 'store' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_10 : Operation 176 [1/1] (2.55ns)   --->   "%tmp10 = add i32 %tmp_1_1_1_2, %tmp_1_1_1_1" [Convolution2D/convolution2D.c:13]   --->   Operation 176 'add' 'tmp10' <Predicate = (!exitcond3)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_10 : Operation 177 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp12 = add i32 %tmp_1_1_2_2, %tmp_1_1_2_1" [Convolution2D/convolution2D.c:13]   --->   Operation 177 'add' 'tmp12' <Predicate = (!exitcond3)> <Delay = 0.00> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
-ST_10 : Operation 178 [1/1] (4.37ns) (root node of TernaryAdder)   --->   "%tmp13 = add i32 %tmp_1_1_2, %tmp12" [Convolution2D/convolution2D.c:13]   --->   Operation 178 'add' 'tmp13' <Predicate = (!exitcond3)> <Delay = 4.37> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
-ST_10 : Operation 179 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp11 = add i32 %tmp10, %tmp13" [Convolution2D/convolution2D.c:13]   --->   Operation 179 'add' 'tmp11' <Predicate = (!exitcond3)> <Delay = 0.00> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
-ST_10 : Operation 180 [1/1] (4.37ns) (root node of TernaryAdder)   --->   "%sum_2_1_2_2 = add nsw i32 %tmp8, %tmp11" [Convolution2D/convolution2D.c:13]   --->   Operation 180 'add' 'sum_2_1_2_2' <Predicate = (!exitcond3)> <Delay = 4.37> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
-ST_10 : Operation 181 [1/1] (8.51ns)   --->   "%tmp_1_2_0_2 = mul nsw i32 %kernel_load_2, %input_load_12" [Convolution2D/convolution2D.c:13]   --->   Operation 181 'mul' 'tmp_1_2_0_2' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_10 : Operation 182 [1/1] (8.51ns)   --->   "%tmp_1_2_1_2 = mul nsw i32 %kernel_load_5, %input_load_13" [Convolution2D/convolution2D.c:13]   --->   Operation 182 'mul' 'tmp_1_2_1_2' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_10 : Operation 183 [1/1] (8.51ns)   --->   "%tmp_1_2_2_1 = mul nsw i32 %kernel_load_7, %input_load_11" [Convolution2D/convolution2D.c:13]   --->   Operation 183 'mul' 'tmp_1_2_2_1' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_10 : Operation 184 [1/2] (2.32ns)   --->   "%input_load_14 = load i32* %input_addr_14, align 4" [Convolution2D/convolution2D.c:13]   --->   Operation 184 'load' 'input_load_14' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-
-State 11 <SV = 10> <Delay = 8.51>
-ST_11 : Operation 185 [1/1] (1.78ns)   --->   "%tmp_8 = add i5 %tmp_9, 1" [Convolution2D/convolution2D.c:16]   --->   Operation 185 'add' 'tmp_8' <Predicate = (!exitcond3)> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_11 : Operation 186 [1/1] (0.00ns)   --->   "%tmp_10_cast = sext i5 %tmp_8 to i64" [Convolution2D/convolution2D.c:16]   --->   Operation 186 'sext' 'tmp_10_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_11 : Operation 187 [1/1] (0.00ns)   --->   "%output_addr_1 = getelementptr [9 x i32]* %output_r, i64 0, i64 %tmp_10_cast" [Convolution2D/convolution2D.c:16]   --->   Operation 187 'getelementptr' 'output_addr_1' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_11 : Operation 188 [1/1] (2.32ns)   --->   "store i32 %sum_2_1_2_2, i32* %output_addr_1, align 4" [Convolution2D/convolution2D.c:16]   --->   Operation 188 'store' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_11 : Operation 189 [1/1] (8.51ns)   --->   "%tmp_1_2_2_2 = mul nsw i32 %kernel_load_8, %input_load_14" [Convolution2D/convolution2D.c:13]   --->   Operation 189 'mul' 'tmp_1_2_2_2' <Predicate = (!exitcond3)> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
-ST_11 : Operation 190 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp16 = add i32 %tmp_1_2_1, %tmp_1_2_0_2" [Convolution2D/convolution2D.c:13]   --->   Operation 190 'add' 'tmp16' <Predicate = (!exitcond3)> <Delay = 0.00> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
-ST_11 : Operation 191 [1/1] (4.37ns) (root node of TernaryAdder)   --->   "%tmp15 = add i32 %tmp14, %tmp16" [Convolution2D/convolution2D.c:13]   --->   Operation 191 'add' 'tmp15' <Predicate = (!exitcond3)> <Delay = 4.37> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
-ST_11 : Operation 192 [1/1] (2.55ns)   --->   "%tmp17 = add i32 %tmp_1_2_1_2, %tmp_1_2_1_1" [Convolution2D/convolution2D.c:13]   --->   Operation 192 'add' 'tmp17' <Predicate = (!exitcond3)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-
-State 12 <SV = 11> <Delay = 8.74>
-ST_12 : Operation 193 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp19 = add i32 %tmp_1_2_2_2, %tmp_1_2_2_1" [Convolution2D/convolution2D.c:13]   --->   Operation 193 'add' 'tmp19' <Predicate = (!exitcond3)> <Delay = 0.00> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
-ST_12 : Operation 194 [1/1] (4.37ns) (root node of TernaryAdder)   --->   "%tmp20 = add i32 %tmp_1_2_2, %tmp19" [Convolution2D/convolution2D.c:13]   --->   Operation 194 'add' 'tmp20' <Predicate = (!exitcond3)> <Delay = 4.37> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
-ST_12 : Operation 195 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp18 = add i32 %tmp17, %tmp20" [Convolution2D/convolution2D.c:13]   --->   Operation 195 'add' 'tmp18' <Predicate = (!exitcond3)> <Delay = 0.00> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
-ST_12 : Operation 196 [1/1] (4.37ns) (root node of TernaryAdder)   --->   "%sum_2_2_2_2 = add nsw i32 %tmp15, %tmp18" [Convolution2D/convolution2D.c:13]   --->   Operation 196 'add' 'sum_2_2_2_2' <Predicate = (!exitcond3)> <Delay = 4.37> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
-
-State 13 <SV = 12> <Delay = 4.10>
-ST_13 : Operation 197 [1/1] (0.00ns)   --->   "%tmp_1 = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str) nounwind" [Convolution2D/convolution2D.c:5]   --->   Operation 197 'specregionbegin' 'tmp_1' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_13 : Operation 198 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str1) nounwind" [Convolution2D/convolution2D.c:6]   --->   Operation 198 'specpipeline' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_13 : Operation 199 [1/1] (1.78ns)   --->   "%tmp_10 = add i5 %tmp_9, 2" [Convolution2D/convolution2D.c:16]   --->   Operation 199 'add' 'tmp_10' <Predicate = (!exitcond3)> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
-ST_13 : Operation 200 [1/1] (0.00ns)   --->   "%tmp_12_cast = sext i5 %tmp_10 to i64" [Convolution2D/convolution2D.c:16]   --->   Operation 200 'sext' 'tmp_12_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_13 : Operation 201 [1/1] (0.00ns)   --->   "%output_addr_2 = getelementptr [9 x i32]* %output_r, i64 0, i64 %tmp_12_cast" [Convolution2D/convolution2D.c:16]   --->   Operation 201 'getelementptr' 'output_addr_2' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_13 : Operation 202 [1/1] (2.32ns)   --->   "store i32 %sum_2_2_2_2, i32* %output_addr_2, align 4" [Convolution2D/convolution2D.c:16]   --->   Operation 202 'store' <Predicate = (!exitcond3)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
-ST_13 : Operation 203 [1/1] (0.00ns)   --->   "%empty_2 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str, i32 %tmp_1) nounwind" [Convolution2D/convolution2D.c:18]   --->   Operation 203 'specregionend' 'empty_2' <Predicate = (!exitcond3)> <Delay = 0.00>
-ST_13 : Operation 204 [1/1] (0.00ns)   --->   "br label %1" [Convolution2D/convolution2D.c:5]   --->   Operation 204 'br' <Predicate = (!exitcond3)> <Delay = 0.00>
-
-State 14 <SV = 2> <Delay = 0.00>
-ST_14 : Operation 205 [1/1] (0.00ns)   --->   "ret void" [Convolution2D/convolution2D.c:19]   --->   Operation 205 'ret' <Predicate = true> <Delay = 0.00>
+State 9 <SV = 8> <Delay = 6.69>
+ST_9 : Operation 153 [1/1] (0.00ns)   --->   "%tmp_4_cast = sext i5 %tmp_4 to i64" [Convolution2D/convolution2D.c:18]   --->   Operation 153 'sext' 'tmp_4_cast' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 154 [1/1] (0.00ns)   --->   "%output_addr = getelementptr [9 x i32]* %output_r, i64 0, i64 %tmp_4_cast" [Convolution2D/convolution2D.c:18]   --->   Operation 154 'getelementptr' 'output_addr' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 155 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp1 = add i32 %tmp3, %tmp2" [Convolution2D/convolution2D.c:15]   --->   Operation 155 'add' 'tmp1' <Predicate = true> <Delay = 0.00> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_9 : Operation 156 [1/1] (4.37ns) (root node of TernaryAdder)   --->   "%sum_2_2_2 = add nsw i32 %tmp4, %tmp1" [Convolution2D/convolution2D.c:15]   --->   Operation 156 'add' 'sum_2_2_2' <Predicate = true> <Delay = 4.37> <Core = "TAddSub">   --->   Core 84 'TAddSub' <Latency = 0> <II = 1> <Delay = 2.18> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_9 : Operation 157 [1/1] (2.32ns)   --->   "store i32 %sum_2_2_2, i32* %output_addr, align 4" [Convolution2D/convolution2D.c:18]   --->   Operation 157 'store' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 9> <RAM>
+ST_9 : Operation 158 [1/1] (0.00ns)   --->   "br label %.preheader4" [Convolution2D/convolution2D.c:9]   --->   Operation 158 'br' <Predicate = true> <Delay = 0.00>
 
 
 ============================================================
@@ -337,75 +273,51 @@ Target clock period: 10ns, clock uncertainty: 1.25ns.
 
  <State 1>: 1.77ns
 The critical path consists of the following:
-	multiplexor before 'phi' operation ('i') with incoming values : ('i', Convolution2D/convolution2D.c:13) [19]  (1.77 ns)
+	multiplexor before 'phi' operation ('i') with incoming values : ('i', Convolution2D/convolution2D.c:15) [30]  (1.77 ns)
 
- <State 2>: 5.84ns
+ <State 2>: 1.77ns
 The critical path consists of the following:
-	'phi' operation ('i') with incoming values : ('i', Convolution2D/convolution2D.c:13) [19]  (0 ns)
-	'add' operation ('tmp_3', Convolution2D/convolution2D.c:13) [31]  (1.74 ns)
-	'add' operation ('tmp_4', Convolution2D/convolution2D.c:13) [34]  (1.78 ns)
-	'getelementptr' operation ('input_addr_1', Convolution2D/convolution2D.c:13) [36]  (0 ns)
-	'load' operation ('input_load_1', Convolution2D/convolution2D.c:13) on array 'input_r' [58]  (2.32 ns)
+	multiplexor before 'phi' operation ('j') with incoming values : ('j', Convolution2D/convolution2D.c:15) [45]  (1.77 ns)
 
- <State 3>: 4.1ns
+ <State 3>: 3.3ns
 The critical path consists of the following:
-	'add' operation ('tmp_5', Convolution2D/convolution2D.c:13) [37]  (1.78 ns)
-	'getelementptr' operation ('input_addr_2', Convolution2D/convolution2D.c:13) [39]  (0 ns)
-	'load' operation ('input_load_2', Convolution2D/convolution2D.c:13) on array 'input_r' [61]  (2.32 ns)
+	'phi' operation ('j') with incoming values : ('j', Convolution2D/convolution2D.c:15) [45]  (0 ns)
+	'xor' operation ('newIndex_trunc1', Convolution2D/convolution2D.c:15) [85]  (0.978 ns)
+	'getelementptr' operation ('input_0_addr_1', Convolution2D/convolution2D.c:15) [88]  (0 ns)
+	'load' operation ('input_0_load_1', Convolution2D/convolution2D.c:15) on array 'input_0' [99]  (2.32 ns)
 
- <State 4>: 8.51ns
+ <State 4>: 3.89ns
 The critical path consists of the following:
-	'mul' operation ('tmp_s', Convolution2D/convolution2D.c:13) [57]  (8.51 ns)
+	'add' operation ('tmp_10', Convolution2D/convolution2D.c:15) [70]  (1.56 ns)
+	'getelementptr' operation ('input_2_addr', Convolution2D/convolution2D.c:15) [72]  (0 ns)
+	'load' operation ('input_2_load', Convolution2D/convolution2D.c:15) on array 'input_2' [108]  (2.32 ns)
 
  <State 5>: 8.51ns
 The critical path consists of the following:
-	'mul' operation ('tmp_1_0_0_2', Convolution2D/convolution2D.c:13) [63]  (8.51 ns)
+	wire read on port 'kernel_0_0' (Convolution2D/convolution2D.c:15) [83]  (0 ns)
+	'mul' operation ('tmp_1', Convolution2D/convolution2D.c:15) [84]  (8.51 ns)
 
  <State 6>: 8.51ns
 The critical path consists of the following:
-	'mul' operation ('tmp_1_0_1_1', Convolution2D/convolution2D.c:13) [87]  (8.51 ns)
+	wire read on port 'kernel_0_2' (Convolution2D/convolution2D.c:15) [110]  (0 ns)
+	'mul' operation ('tmp_1_0_2', Convolution2D/convolution2D.c:15) [111]  (8.51 ns)
 
  <State 7>: 8.51ns
 The critical path consists of the following:
-	'mul' operation ('tmp_1_0_2', Convolution2D/convolution2D.c:13) [112]  (8.51 ns)
+	wire read on port 'kernel_1_1' (Convolution2D/convolution2D.c:15) [120]  (0 ns)
+	'mul' operation ('tmp_1_1_1', Convolution2D/convolution2D.c:15) [121]  (8.51 ns)
 
- <State 8>: 8.51ns
+ <State 8>: 8.74ns
 The critical path consists of the following:
-	'mul' operation ('tmp_1_0_2_2', Convolution2D/convolution2D.c:13) [118]  (8.51 ns)
+	'add' operation ('tmp7', Convolution2D/convolution2D.c:15) [144]  (0 ns)
+	'add' operation ('tmp6', Convolution2D/convolution2D.c:15) [145]  (4.37 ns)
+	'add' operation ('tmp4', Convolution2D/convolution2D.c:15) [146]  (4.37 ns)
 
- <State 9>: 8.74ns
+ <State 9>: 6.69ns
 The critical path consists of the following:
-	'add' operation ('tmp7', Convolution2D/convolution2D.c:13) [123]  (0 ns)
-	'add' operation ('tmp6', Convolution2D/convolution2D.c:13) [124]  (4.37 ns)
-	'add' operation ('tmp4', Convolution2D/convolution2D.c:13) [125]  (0 ns)
-	'add' operation ('sum_2_0_2_2', Convolution2D/convolution2D.c:13) [126]  (4.37 ns)
-
- <State 10>: 8.74ns
-The critical path consists of the following:
-	'add' operation ('tmp12', Convolution2D/convolution2D.c:13) [144]  (0 ns)
-	'add' operation ('tmp13', Convolution2D/convolution2D.c:13) [145]  (4.37 ns)
-	'add' operation ('tmp11', Convolution2D/convolution2D.c:13) [146]  (0 ns)
-	'add' operation ('sum_2_1_2_2', Convolution2D/convolution2D.c:13) [147]  (4.37 ns)
-
- <State 11>: 8.51ns
-The critical path consists of the following:
-	'mul' operation ('tmp_1_2_2_2', Convolution2D/convolution2D.c:13) [160]  (8.51 ns)
-
- <State 12>: 8.74ns
-The critical path consists of the following:
-	'add' operation ('tmp19', Convolution2D/convolution2D.c:13) [165]  (0 ns)
-	'add' operation ('tmp20', Convolution2D/convolution2D.c:13) [166]  (4.37 ns)
-	'add' operation ('tmp18', Convolution2D/convolution2D.c:13) [167]  (0 ns)
-	'add' operation ('sum_2_2_2_2', Convolution2D/convolution2D.c:13) [168]  (4.37 ns)
-
- <State 13>: 4.1ns
-The critical path consists of the following:
-	'add' operation ('tmp_10', Convolution2D/convolution2D.c:16) [52]  (1.78 ns)
-	'getelementptr' operation ('output_addr_2', Convolution2D/convolution2D.c:16) [54]  (0 ns)
-	'store' operation (Convolution2D/convolution2D.c:16) of variable 'sum_2_2_2_2', Convolution2D/convolution2D.c:13 on array 'output_r' [169]  (2.32 ns)
-
- <State 14>: 0ns
-The critical path consists of the following:
+	'add' operation ('tmp1', Convolution2D/convolution2D.c:15) [142]  (0 ns)
+	'add' operation ('sum_2_2_2', Convolution2D/convolution2D.c:15) [147]  (4.37 ns)
+	'store' operation (Convolution2D/convolution2D.c:18) of variable 'sum_2_2_2', Convolution2D/convolution2D.c:15 on array 'output_r' [148]  (2.32 ns)
 
 
 ============================================================
@@ -425,11 +337,6 @@ N/A
 	State 7
 	State 8
 	State 9
-	State 10
-	State 11
-	State 12
-	State 13
-	State 14
 
 
 ============================================================

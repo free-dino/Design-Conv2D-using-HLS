@@ -143,25 +143,25 @@ signed int main(void);
 
 
 /* Global Variable Definitions and Initialization */
-static signed int aesl_internal_test_case_3_OC_kernel[3][3] = { { 1u, 1u, 1u }, { 1u, 1u, 1u }, { 1u, 1u, 1u } };
-static signed int aesl_internal_test_case_3_OC_expected_output[3][3] = { { 63u, 72u, 81u }, { 108u, 117u, 126u }, { 153u, 162u, 171u } };
-static signed int aesl_internal_test_case_4_OC_input[5][5] = { { 1u, 2u, 3u, 4u, 5u }, { 6u, 7u, 8u, 9u, 10u }, { 11u, 12u, 13u, 14u, 15u }, { 16u, 17u, 18u, 19u, 20u }, { 21u, 22u, 23u, 24u, 25u } };
 static signed int aesl_internal_test_case_1_OC_expected_output[3][3] = { { 41u, 46u, 51u }, { 66u, 71u, 76u }, { 91u, 96u, 101u } };
+static signed int aesl_internal_test_case_4_OC_input[5][5] = { { 1u, 2u, 3u, 4u, 5u }, { 6u, 7u, 8u, 9u, 10u }, { 11u, 12u, 13u, 14u, 15u }, { 16u, 17u, 18u, 19u, 20u }, { 21u, 22u, 23u, 24u, 25u } };
 static signed int aesl_internal_test_case_4_OC_kernel[3][3] = { { 1u, 4294967295u, 1u }, { 4294967295u, 4u, 4294967295u }, { 1u, 4294967295u, 1u } };
 static  char aesl_internal_str1[18] = "Test Case 1: FAIL";
 static signed int aesl_internal_test_case_4_OC_expected_output[3][3] = { { 28u, 32u, 36u }, { 48u, 52u, 56u }, { 68u, 72u, 76u } };
 static signed int aesl_internal_test_case_5_OC_input[5][5] = { { 4294967295u, 4294967294u, 4294967293u, 4294967292u, 4294967291u }, { 4294967290u, 4294967289u, 4294967288u, 4294967287u, 4294967286u }, { 4294967285u, 4294967284u, 4294967283u, 4294967282u, 4294967281u }, { 4294967280u, 4294967279u, 4294967278u, 4294967277u, 4294967276u }, { 4294967275u, 4294967274u, 4294967273u, 4294967272u, 4294967271u } };
+static signed int aesl_internal_test_case_3_OC_kernel[3][3] = { { 1u, 1u, 1u }, { 1u, 1u, 1u }, { 1u, 1u, 1u } };
+static signed int aesl_internal_test_case_3_OC_expected_output[3][3] = { { 63u, 72u, 81u }, { 108u, 117u, 126u }, { 153u, 162u, 171u } };
 static signed int aesl_internal_test_case_5_OC_kernel[3][3] = { { 1u, 1u, 1u }, { 1u, 4294967292u, 1u }, { 1u, 1u, 2u } };
 static signed int aesl_internal_test_case_5_OC_expected_output[3][3] = { { 4294967255u, 4294967250u, 4294967245u }, { 4294967230u, 4294967225u, 4294967220u }, { 4294967205u, 4294967200u, 4294967195u } };
 static  char aesl_internal_str[18] = "Test Case 1: PASS";
 static  char aesl_internal_str2[18] = "Test Case 2: PASS";
 static  char aesl_internal_str3[18] = "Test Case 2: FAIL";
-static  char aesl_internal_str9[18] = "Test Case 5: FAIL";
-static  char aesl_internal_str7[18] = "Test Case 4: FAIL";
 static  char aesl_internal_str5[18] = "Test Case 3: FAIL";
-static  char aesl_internal_str6[18] = "Test Case 4: PASS";
 static  char aesl_internal_str8[18] = "Test Case 5: PASS";
+static  char aesl_internal_str6[18] = "Test Case 4: PASS";
+static  char aesl_internal_str9[18] = "Test Case 5: FAIL";
 static  char aesl_internal_str4[18] = "Test Case 3: PASS";
+static  char aesl_internal_str7[18] = "Test Case 4: FAIL";
 
 
 /* Function Bodies */

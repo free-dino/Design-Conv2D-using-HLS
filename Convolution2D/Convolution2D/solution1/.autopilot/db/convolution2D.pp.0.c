@@ -641,9 +641,11 @@ const char *__mingw_get_crt_info (void);
 # 3 "Convolution2D/convolution2D.c" 2
 
 void convolution2D(int input[5][5], int kernel[3][3], int output[3][3]) {_ssdm_SpecArrayDimSize(input, 5);_ssdm_SpecArrayDimSize(kernel, 3);_ssdm_SpecArrayDimSize(output, 3);
-    for (int i = 0; i < 3; i++) {
-#pragma HLS PIPELINE II=1
- for (int j = 0; j < 3; j++) {
+#pragma HLS ARRAY_PARTITION variable=&input block dim=2 factor=3
+#pragma HLS ARRAY_PARTITION variable=&kernel complete dim=0
+
+ for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
             int sum = 0;
             for (int ki = 0; ki < 3; ki++) {
 #pragma HLS UNROLL

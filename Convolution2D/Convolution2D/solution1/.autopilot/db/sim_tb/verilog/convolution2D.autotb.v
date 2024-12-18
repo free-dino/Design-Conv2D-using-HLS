@@ -1,5 +1,5 @@
 // ==============================================================
-// File generated on Wed Dec 04 15:50:55 +0700 2024
+// File generated on Wed Dec 18 17:07:46 +0700 2024
 // Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 // SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 // IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -17,17 +17,48 @@
 `define AUTOTB_MAX_ALLOW_LATENCY  15000000
 `define AUTOTB_CLOCK_PERIOD_DIV2 5.00
 
-`define AESL_MEM_input_r AESL_automem_input_r
-`define AESL_MEM_INST_input_r mem_inst_input_r
-`define AESL_MEM_kernel AESL_automem_kernel
-`define AESL_MEM_INST_kernel mem_inst_kernel
+`define AESL_MEM_input_0 AESL_automem_input_0
+`define AESL_MEM_INST_input_0 mem_inst_input_0
+`define AESL_MEM_input_1 AESL_automem_input_1
+`define AESL_MEM_INST_input_1 mem_inst_input_1
+`define AESL_MEM_input_2 AESL_automem_input_2
+`define AESL_MEM_INST_input_2 mem_inst_input_2
+`define AESL_DEPTH_kernel_0_0 1
+`define AESL_DEPTH_kernel_0_1 1
+`define AESL_DEPTH_kernel_0_2 1
+`define AESL_DEPTH_kernel_1_0 1
+`define AESL_DEPTH_kernel_1_1 1
+`define AESL_DEPTH_kernel_1_2 1
+`define AESL_DEPTH_kernel_2_0 1
+`define AESL_DEPTH_kernel_2_1 1
+`define AESL_DEPTH_kernel_2_2 1
 `define AESL_MEM_output_r AESL_automem_output_r
 `define AESL_MEM_INST_output_r mem_inst_output_r
-`define AUTOTB_TVIN_input_r  "./c.convolution2D.autotvin_input_r.dat"
-`define AUTOTB_TVIN_kernel  "./c.convolution2D.autotvin_kernel.dat"
+`define AUTOTB_TVIN_input_0  "./c.convolution2D.autotvin_input_0.dat"
+`define AUTOTB_TVIN_input_1  "./c.convolution2D.autotvin_input_1.dat"
+`define AUTOTB_TVIN_input_2  "./c.convolution2D.autotvin_input_2.dat"
+`define AUTOTB_TVIN_kernel_0_0  "./c.convolution2D.autotvin_kernel_0_0.dat"
+`define AUTOTB_TVIN_kernel_0_1  "./c.convolution2D.autotvin_kernel_0_1.dat"
+`define AUTOTB_TVIN_kernel_0_2  "./c.convolution2D.autotvin_kernel_0_2.dat"
+`define AUTOTB_TVIN_kernel_1_0  "./c.convolution2D.autotvin_kernel_1_0.dat"
+`define AUTOTB_TVIN_kernel_1_1  "./c.convolution2D.autotvin_kernel_1_1.dat"
+`define AUTOTB_TVIN_kernel_1_2  "./c.convolution2D.autotvin_kernel_1_2.dat"
+`define AUTOTB_TVIN_kernel_2_0  "./c.convolution2D.autotvin_kernel_2_0.dat"
+`define AUTOTB_TVIN_kernel_2_1  "./c.convolution2D.autotvin_kernel_2_1.dat"
+`define AUTOTB_TVIN_kernel_2_2  "./c.convolution2D.autotvin_kernel_2_2.dat"
 `define AUTOTB_TVIN_output_r  "./c.convolution2D.autotvin_output_r.dat"
-`define AUTOTB_TVIN_input_r_out_wrapc  "./rtl.convolution2D.autotvin_input_r.dat"
-`define AUTOTB_TVIN_kernel_out_wrapc  "./rtl.convolution2D.autotvin_kernel.dat"
+`define AUTOTB_TVIN_input_0_out_wrapc  "./rtl.convolution2D.autotvin_input_0.dat"
+`define AUTOTB_TVIN_input_1_out_wrapc  "./rtl.convolution2D.autotvin_input_1.dat"
+`define AUTOTB_TVIN_input_2_out_wrapc  "./rtl.convolution2D.autotvin_input_2.dat"
+`define AUTOTB_TVIN_kernel_0_0_out_wrapc  "./rtl.convolution2D.autotvin_kernel_0_0.dat"
+`define AUTOTB_TVIN_kernel_0_1_out_wrapc  "./rtl.convolution2D.autotvin_kernel_0_1.dat"
+`define AUTOTB_TVIN_kernel_0_2_out_wrapc  "./rtl.convolution2D.autotvin_kernel_0_2.dat"
+`define AUTOTB_TVIN_kernel_1_0_out_wrapc  "./rtl.convolution2D.autotvin_kernel_1_0.dat"
+`define AUTOTB_TVIN_kernel_1_1_out_wrapc  "./rtl.convolution2D.autotvin_kernel_1_1.dat"
+`define AUTOTB_TVIN_kernel_1_2_out_wrapc  "./rtl.convolution2D.autotvin_kernel_1_2.dat"
+`define AUTOTB_TVIN_kernel_2_0_out_wrapc  "./rtl.convolution2D.autotvin_kernel_2_0.dat"
+`define AUTOTB_TVIN_kernel_2_1_out_wrapc  "./rtl.convolution2D.autotvin_kernel_2_1.dat"
+`define AUTOTB_TVIN_kernel_2_2_out_wrapc  "./rtl.convolution2D.autotvin_kernel_2_2.dat"
 `define AUTOTB_TVIN_output_r_out_wrapc  "./rtl.convolution2D.autotvin_output_r.dat"
 `define AUTOTB_TVOUT_output_r  "./c.convolution2D.autotvout_output_r.dat"
 `define AUTOTB_TVOUT_output_r_out_wrapc  "./impl_rtl.convolution2D.autotvout_output_r.dat"
@@ -35,9 +66,19 @@ module `AUTOTB_TOP;
 
 parameter AUTOTB_TRANSACTION_NUM = 5;
 parameter PROGRESS_TIMEOUT = 10000000;
-parameter LATENCY_ESTIMATION = 29;
-parameter LENGTH_input_r = 25;
-parameter LENGTH_kernel = 9;
+parameter LATENCY_ESTIMATION = 70;
+parameter LENGTH_input_0 = 10;
+parameter LENGTH_input_1 = 10;
+parameter LENGTH_input_2 = 5;
+parameter LENGTH_kernel_0_0 = 1;
+parameter LENGTH_kernel_0_1 = 1;
+parameter LENGTH_kernel_0_2 = 1;
+parameter LENGTH_kernel_1_0 = 1;
+parameter LENGTH_kernel_1_1 = 1;
+parameter LENGTH_kernel_1_2 = 1;
+parameter LENGTH_kernel_2_0 = 1;
+parameter LENGTH_kernel_2_1 = 1;
+parameter LENGTH_kernel_2_2 = 1;
 parameter LENGTH_output_r = 9;
 
 task read_token;
@@ -125,18 +166,33 @@ wire ap_start;
 wire ap_done;
 wire ap_idle;
 wire ap_ready;
-wire [4 : 0] input_r_address0;
-wire  input_r_ce0;
-wire [31 : 0] input_r_q0;
-wire [4 : 0] input_r_address1;
-wire  input_r_ce1;
-wire [31 : 0] input_r_q1;
-wire [3 : 0] kernel_address0;
-wire  kernel_ce0;
-wire [31 : 0] kernel_q0;
-wire [3 : 0] kernel_address1;
-wire  kernel_ce1;
-wire [31 : 0] kernel_q1;
+wire [3 : 0] input_0_address0;
+wire  input_0_ce0;
+wire [31 : 0] input_0_q0;
+wire [3 : 0] input_0_address1;
+wire  input_0_ce1;
+wire [31 : 0] input_0_q1;
+wire [3 : 0] input_1_address0;
+wire  input_1_ce0;
+wire [31 : 0] input_1_q0;
+wire [3 : 0] input_1_address1;
+wire  input_1_ce1;
+wire [31 : 0] input_1_q1;
+wire [2 : 0] input_2_address0;
+wire  input_2_ce0;
+wire [31 : 0] input_2_q0;
+wire [2 : 0] input_2_address1;
+wire  input_2_ce1;
+wire [31 : 0] input_2_q1;
+wire [31 : 0] kernel_0_0;
+wire [31 : 0] kernel_0_1;
+wire [31 : 0] kernel_0_2;
+wire [31 : 0] kernel_1_0;
+wire [31 : 0] kernel_1_1;
+wire [31 : 0] kernel_1_2;
+wire [31 : 0] kernel_2_0;
+wire [31 : 0] kernel_2_1;
+wire [31 : 0] kernel_2_2;
 wire [3 : 0] output_r_address0;
 wire  output_r_ce0;
 wire  output_r_we0;
@@ -162,18 +218,33 @@ wire ap_rst_n;
     .ap_done(ap_done),
     .ap_idle(ap_idle),
     .ap_ready(ap_ready),
-    .input_r_address0(input_r_address0),
-    .input_r_ce0(input_r_ce0),
-    .input_r_q0(input_r_q0),
-    .input_r_address1(input_r_address1),
-    .input_r_ce1(input_r_ce1),
-    .input_r_q1(input_r_q1),
-    .kernel_address0(kernel_address0),
-    .kernel_ce0(kernel_ce0),
-    .kernel_q0(kernel_q0),
-    .kernel_address1(kernel_address1),
-    .kernel_ce1(kernel_ce1),
-    .kernel_q1(kernel_q1),
+    .input_0_address0(input_0_address0),
+    .input_0_ce0(input_0_ce0),
+    .input_0_q0(input_0_q0),
+    .input_0_address1(input_0_address1),
+    .input_0_ce1(input_0_ce1),
+    .input_0_q1(input_0_q1),
+    .input_1_address0(input_1_address0),
+    .input_1_ce0(input_1_ce0),
+    .input_1_q0(input_1_q0),
+    .input_1_address1(input_1_address1),
+    .input_1_ce1(input_1_ce1),
+    .input_1_q1(input_1_q1),
+    .input_2_address0(input_2_address0),
+    .input_2_ce0(input_2_ce0),
+    .input_2_q0(input_2_q0),
+    .input_2_address1(input_2_address1),
+    .input_2_ce1(input_2_ce1),
+    .input_2_q1(input_2_q1),
+    .kernel_0_0(kernel_0_0),
+    .kernel_0_1(kernel_0_1),
+    .kernel_0_2(kernel_0_2),
+    .kernel_1_0(kernel_1_0),
+    .kernel_1_1(kernel_1_1),
+    .kernel_1_2(kernel_1_2),
+    .kernel_2_0(kernel_2_0),
+    .kernel_2_1(kernel_2_1),
+    .kernel_2_2(kernel_2_2),
     .output_r_address0(output_r_address0),
     .output_r_ce0(output_r_ce0),
     .output_r_we0(output_r_we0),
@@ -209,90 +280,619 @@ assign AESL_continue = tb_continue;
             end
         end
     end
-//------------------------arrayinput_r Instantiation--------------
+//------------------------arrayinput_0 Instantiation--------------
 
-// The input and output of arrayinput_r
-wire    arrayinput_r_ce0, arrayinput_r_ce1;
-wire    arrayinput_r_we0, arrayinput_r_we1;
-wire    [4 : 0]    arrayinput_r_address0, arrayinput_r_address1;
-wire    [31 : 0]    arrayinput_r_din0, arrayinput_r_din1;
-wire    [31 : 0]    arrayinput_r_dout0, arrayinput_r_dout1;
-wire    arrayinput_r_ready;
-wire    arrayinput_r_done;
+// The input and output of arrayinput_0
+wire    arrayinput_0_ce0, arrayinput_0_ce1;
+wire    arrayinput_0_we0, arrayinput_0_we1;
+wire    [3 : 0]    arrayinput_0_address0, arrayinput_0_address1;
+wire    [31 : 0]    arrayinput_0_din0, arrayinput_0_din1;
+wire    [31 : 0]    arrayinput_0_dout0, arrayinput_0_dout1;
+wire    arrayinput_0_ready;
+wire    arrayinput_0_done;
 
-`AESL_MEM_input_r `AESL_MEM_INST_input_r(
+`AESL_MEM_input_0 `AESL_MEM_INST_input_0(
     .clk        (AESL_clock),
     .rst        (AESL_reset),
-    .ce0        (arrayinput_r_ce0),
-    .we0        (arrayinput_r_we0),
-    .address0   (arrayinput_r_address0),
-    .din0       (arrayinput_r_din0),
-    .dout0      (arrayinput_r_dout0),
-    .ce1        (arrayinput_r_ce1),
-    .we1        (arrayinput_r_we1),
-    .address1   (arrayinput_r_address1),
-    .din1       (arrayinput_r_din1),
-    .dout1      (arrayinput_r_dout1),
-    .ready      (arrayinput_r_ready),
-    .done    (arrayinput_r_done)
+    .ce0        (arrayinput_0_ce0),
+    .we0        (arrayinput_0_we0),
+    .address0   (arrayinput_0_address0),
+    .din0       (arrayinput_0_din0),
+    .dout0      (arrayinput_0_dout0),
+    .ce1        (arrayinput_0_ce1),
+    .we1        (arrayinput_0_we1),
+    .address1   (arrayinput_0_address1),
+    .din1       (arrayinput_0_din1),
+    .dout1      (arrayinput_0_dout1),
+    .ready      (arrayinput_0_ready),
+    .done    (arrayinput_0_done)
 );
 
-// Assignment between dut and arrayinput_r
-assign arrayinput_r_address0 = input_r_address0;
-assign arrayinput_r_ce0 = input_r_ce0;
-assign input_r_q0 = arrayinput_r_dout0;
-assign arrayinput_r_we0 = 0;
-assign arrayinput_r_din0 = 0;
-assign arrayinput_r_address1 = input_r_address1;
-assign arrayinput_r_ce1 = input_r_ce1;
-assign input_r_q1 = arrayinput_r_dout1;
-assign arrayinput_r_we1 = 0;
-assign arrayinput_r_din1 = 0;
-assign arrayinput_r_ready=    ready;
-assign arrayinput_r_done = 0;
+// Assignment between dut and arrayinput_0
+assign arrayinput_0_address0 = input_0_address0;
+assign arrayinput_0_ce0 = input_0_ce0;
+assign input_0_q0 = arrayinput_0_dout0;
+assign arrayinput_0_we0 = 0;
+assign arrayinput_0_din0 = 0;
+assign arrayinput_0_address1 = input_0_address1;
+assign arrayinput_0_ce1 = input_0_ce1;
+assign input_0_q1 = arrayinput_0_dout1;
+assign arrayinput_0_we1 = 0;
+assign arrayinput_0_din1 = 0;
+assign arrayinput_0_ready=    ready;
+assign arrayinput_0_done = 0;
 
 
-//------------------------arraykernel Instantiation--------------
+//------------------------arrayinput_1 Instantiation--------------
 
-// The input and output of arraykernel
-wire    arraykernel_ce0, arraykernel_ce1;
-wire    arraykernel_we0, arraykernel_we1;
-wire    [3 : 0]    arraykernel_address0, arraykernel_address1;
-wire    [31 : 0]    arraykernel_din0, arraykernel_din1;
-wire    [31 : 0]    arraykernel_dout0, arraykernel_dout1;
-wire    arraykernel_ready;
-wire    arraykernel_done;
+// The input and output of arrayinput_1
+wire    arrayinput_1_ce0, arrayinput_1_ce1;
+wire    arrayinput_1_we0, arrayinput_1_we1;
+wire    [3 : 0]    arrayinput_1_address0, arrayinput_1_address1;
+wire    [31 : 0]    arrayinput_1_din0, arrayinput_1_din1;
+wire    [31 : 0]    arrayinput_1_dout0, arrayinput_1_dout1;
+wire    arrayinput_1_ready;
+wire    arrayinput_1_done;
 
-`AESL_MEM_kernel `AESL_MEM_INST_kernel(
+`AESL_MEM_input_1 `AESL_MEM_INST_input_1(
     .clk        (AESL_clock),
     .rst        (AESL_reset),
-    .ce0        (arraykernel_ce0),
-    .we0        (arraykernel_we0),
-    .address0   (arraykernel_address0),
-    .din0       (arraykernel_din0),
-    .dout0      (arraykernel_dout0),
-    .ce1        (arraykernel_ce1),
-    .we1        (arraykernel_we1),
-    .address1   (arraykernel_address1),
-    .din1       (arraykernel_din1),
-    .dout1      (arraykernel_dout1),
-    .ready      (arraykernel_ready),
-    .done    (arraykernel_done)
+    .ce0        (arrayinput_1_ce0),
+    .we0        (arrayinput_1_we0),
+    .address0   (arrayinput_1_address0),
+    .din0       (arrayinput_1_din0),
+    .dout0      (arrayinput_1_dout0),
+    .ce1        (arrayinput_1_ce1),
+    .we1        (arrayinput_1_we1),
+    .address1   (arrayinput_1_address1),
+    .din1       (arrayinput_1_din1),
+    .dout1      (arrayinput_1_dout1),
+    .ready      (arrayinput_1_ready),
+    .done    (arrayinput_1_done)
 );
 
-// Assignment between dut and arraykernel
-assign arraykernel_address0 = kernel_address0;
-assign arraykernel_ce0 = kernel_ce0;
-assign kernel_q0 = arraykernel_dout0;
-assign arraykernel_we0 = 0;
-assign arraykernel_din0 = 0;
-assign arraykernel_address1 = kernel_address1;
-assign arraykernel_ce1 = kernel_ce1;
-assign kernel_q1 = arraykernel_dout1;
-assign arraykernel_we1 = 0;
-assign arraykernel_din1 = 0;
-assign arraykernel_ready=    ready;
-assign arraykernel_done = 0;
+// Assignment between dut and arrayinput_1
+assign arrayinput_1_address0 = input_1_address0;
+assign arrayinput_1_ce0 = input_1_ce0;
+assign input_1_q0 = arrayinput_1_dout0;
+assign arrayinput_1_we0 = 0;
+assign arrayinput_1_din0 = 0;
+assign arrayinput_1_address1 = input_1_address1;
+assign arrayinput_1_ce1 = input_1_ce1;
+assign input_1_q1 = arrayinput_1_dout1;
+assign arrayinput_1_we1 = 0;
+assign arrayinput_1_din1 = 0;
+assign arrayinput_1_ready=    ready;
+assign arrayinput_1_done = 0;
+
+
+//------------------------arrayinput_2 Instantiation--------------
+
+// The input and output of arrayinput_2
+wire    arrayinput_2_ce0, arrayinput_2_ce1;
+wire    arrayinput_2_we0, arrayinput_2_we1;
+wire    [2 : 0]    arrayinput_2_address0, arrayinput_2_address1;
+wire    [31 : 0]    arrayinput_2_din0, arrayinput_2_din1;
+wire    [31 : 0]    arrayinput_2_dout0, arrayinput_2_dout1;
+wire    arrayinput_2_ready;
+wire    arrayinput_2_done;
+
+`AESL_MEM_input_2 `AESL_MEM_INST_input_2(
+    .clk        (AESL_clock),
+    .rst        (AESL_reset),
+    .ce0        (arrayinput_2_ce0),
+    .we0        (arrayinput_2_we0),
+    .address0   (arrayinput_2_address0),
+    .din0       (arrayinput_2_din0),
+    .dout0      (arrayinput_2_dout0),
+    .ce1        (arrayinput_2_ce1),
+    .we1        (arrayinput_2_we1),
+    .address1   (arrayinput_2_address1),
+    .din1       (arrayinput_2_din1),
+    .dout1      (arrayinput_2_dout1),
+    .ready      (arrayinput_2_ready),
+    .done    (arrayinput_2_done)
+);
+
+// Assignment between dut and arrayinput_2
+assign arrayinput_2_address0 = input_2_address0;
+assign arrayinput_2_ce0 = input_2_ce0;
+assign input_2_q0 = arrayinput_2_dout0;
+assign arrayinput_2_we0 = 0;
+assign arrayinput_2_din0 = 0;
+assign arrayinput_2_address1 = input_2_address1;
+assign arrayinput_2_ce1 = input_2_ce1;
+assign input_2_q1 = arrayinput_2_dout1;
+assign arrayinput_2_we1 = 0;
+assign arrayinput_2_din1 = 0;
+assign arrayinput_2_ready=    ready;
+assign arrayinput_2_done = 0;
+
+
+// The signal of port kernel_0_0
+reg [31: 0] AESL_REG_kernel_0_0 = 0;
+assign kernel_0_0 = AESL_REG_kernel_0_0;
+initial begin : read_file_process_kernel_0_0
+    integer fp;
+    integer err;
+    integer ret;
+    integer proc_rand;
+    reg [159  : 0] token;
+    integer i;
+    reg transaction_finish;
+    integer transaction_idx;
+    transaction_idx = 0;
+    wait(AESL_reset === 0);
+    fp = $fopen(`AUTOTB_TVIN_kernel_0_0,"r");
+    if(fp == 0) begin       // Failed to open file
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_kernel_0_0);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    read_token(fp, token);
+    if (token != "[[[runtime]]]") begin
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    read_token(fp, token);
+    while (token != "[[[/runtime]]]") begin
+        if (token != "[[transaction]]") begin
+            $display("ERROR: Simulation using HLS TB failed.");
+              $finish;
+        end
+        read_token(fp, token);  // skip transaction number
+          read_token(fp, token);
+            # 0.2;
+            while(ready_wire !== 1) begin
+                @(posedge AESL_clock);
+                # 0.2;
+            end
+        if(token != "[[/transaction]]") begin
+            ret = $sscanf(token, "0x%x", AESL_REG_kernel_0_0);
+              if (ret != 1) begin
+                  $display("Failed to parse token!");
+                $display("ERROR: Simulation using HLS TB failed.");
+                  $finish;
+              end
+            @(posedge AESL_clock);
+              read_token(fp, token);
+        end
+          read_token(fp, token);
+    end
+    $fclose(fp);
+end
+
+
+// The signal of port kernel_0_1
+reg [31: 0] AESL_REG_kernel_0_1 = 0;
+assign kernel_0_1 = AESL_REG_kernel_0_1;
+initial begin : read_file_process_kernel_0_1
+    integer fp;
+    integer err;
+    integer ret;
+    integer proc_rand;
+    reg [159  : 0] token;
+    integer i;
+    reg transaction_finish;
+    integer transaction_idx;
+    transaction_idx = 0;
+    wait(AESL_reset === 0);
+    fp = $fopen(`AUTOTB_TVIN_kernel_0_1,"r");
+    if(fp == 0) begin       // Failed to open file
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_kernel_0_1);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    read_token(fp, token);
+    if (token != "[[[runtime]]]") begin
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    read_token(fp, token);
+    while (token != "[[[/runtime]]]") begin
+        if (token != "[[transaction]]") begin
+            $display("ERROR: Simulation using HLS TB failed.");
+              $finish;
+        end
+        read_token(fp, token);  // skip transaction number
+          read_token(fp, token);
+            # 0.2;
+            while(ready_wire !== 1) begin
+                @(posedge AESL_clock);
+                # 0.2;
+            end
+        if(token != "[[/transaction]]") begin
+            ret = $sscanf(token, "0x%x", AESL_REG_kernel_0_1);
+              if (ret != 1) begin
+                  $display("Failed to parse token!");
+                $display("ERROR: Simulation using HLS TB failed.");
+                  $finish;
+              end
+            @(posedge AESL_clock);
+              read_token(fp, token);
+        end
+          read_token(fp, token);
+    end
+    $fclose(fp);
+end
+
+
+// The signal of port kernel_0_2
+reg [31: 0] AESL_REG_kernel_0_2 = 0;
+assign kernel_0_2 = AESL_REG_kernel_0_2;
+initial begin : read_file_process_kernel_0_2
+    integer fp;
+    integer err;
+    integer ret;
+    integer proc_rand;
+    reg [159  : 0] token;
+    integer i;
+    reg transaction_finish;
+    integer transaction_idx;
+    transaction_idx = 0;
+    wait(AESL_reset === 0);
+    fp = $fopen(`AUTOTB_TVIN_kernel_0_2,"r");
+    if(fp == 0) begin       // Failed to open file
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_kernel_0_2);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    read_token(fp, token);
+    if (token != "[[[runtime]]]") begin
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    read_token(fp, token);
+    while (token != "[[[/runtime]]]") begin
+        if (token != "[[transaction]]") begin
+            $display("ERROR: Simulation using HLS TB failed.");
+              $finish;
+        end
+        read_token(fp, token);  // skip transaction number
+          read_token(fp, token);
+            # 0.2;
+            while(ready_wire !== 1) begin
+                @(posedge AESL_clock);
+                # 0.2;
+            end
+        if(token != "[[/transaction]]") begin
+            ret = $sscanf(token, "0x%x", AESL_REG_kernel_0_2);
+              if (ret != 1) begin
+                  $display("Failed to parse token!");
+                $display("ERROR: Simulation using HLS TB failed.");
+                  $finish;
+              end
+            @(posedge AESL_clock);
+              read_token(fp, token);
+        end
+          read_token(fp, token);
+    end
+    $fclose(fp);
+end
+
+
+// The signal of port kernel_1_0
+reg [31: 0] AESL_REG_kernel_1_0 = 0;
+assign kernel_1_0 = AESL_REG_kernel_1_0;
+initial begin : read_file_process_kernel_1_0
+    integer fp;
+    integer err;
+    integer ret;
+    integer proc_rand;
+    reg [159  : 0] token;
+    integer i;
+    reg transaction_finish;
+    integer transaction_idx;
+    transaction_idx = 0;
+    wait(AESL_reset === 0);
+    fp = $fopen(`AUTOTB_TVIN_kernel_1_0,"r");
+    if(fp == 0) begin       // Failed to open file
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_kernel_1_0);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    read_token(fp, token);
+    if (token != "[[[runtime]]]") begin
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    read_token(fp, token);
+    while (token != "[[[/runtime]]]") begin
+        if (token != "[[transaction]]") begin
+            $display("ERROR: Simulation using HLS TB failed.");
+              $finish;
+        end
+        read_token(fp, token);  // skip transaction number
+          read_token(fp, token);
+            # 0.2;
+            while(ready_wire !== 1) begin
+                @(posedge AESL_clock);
+                # 0.2;
+            end
+        if(token != "[[/transaction]]") begin
+            ret = $sscanf(token, "0x%x", AESL_REG_kernel_1_0);
+              if (ret != 1) begin
+                  $display("Failed to parse token!");
+                $display("ERROR: Simulation using HLS TB failed.");
+                  $finish;
+              end
+            @(posedge AESL_clock);
+              read_token(fp, token);
+        end
+          read_token(fp, token);
+    end
+    $fclose(fp);
+end
+
+
+// The signal of port kernel_1_1
+reg [31: 0] AESL_REG_kernel_1_1 = 0;
+assign kernel_1_1 = AESL_REG_kernel_1_1;
+initial begin : read_file_process_kernel_1_1
+    integer fp;
+    integer err;
+    integer ret;
+    integer proc_rand;
+    reg [159  : 0] token;
+    integer i;
+    reg transaction_finish;
+    integer transaction_idx;
+    transaction_idx = 0;
+    wait(AESL_reset === 0);
+    fp = $fopen(`AUTOTB_TVIN_kernel_1_1,"r");
+    if(fp == 0) begin       // Failed to open file
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_kernel_1_1);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    read_token(fp, token);
+    if (token != "[[[runtime]]]") begin
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    read_token(fp, token);
+    while (token != "[[[/runtime]]]") begin
+        if (token != "[[transaction]]") begin
+            $display("ERROR: Simulation using HLS TB failed.");
+              $finish;
+        end
+        read_token(fp, token);  // skip transaction number
+          read_token(fp, token);
+            # 0.2;
+            while(ready_wire !== 1) begin
+                @(posedge AESL_clock);
+                # 0.2;
+            end
+        if(token != "[[/transaction]]") begin
+            ret = $sscanf(token, "0x%x", AESL_REG_kernel_1_1);
+              if (ret != 1) begin
+                  $display("Failed to parse token!");
+                $display("ERROR: Simulation using HLS TB failed.");
+                  $finish;
+              end
+            @(posedge AESL_clock);
+              read_token(fp, token);
+        end
+          read_token(fp, token);
+    end
+    $fclose(fp);
+end
+
+
+// The signal of port kernel_1_2
+reg [31: 0] AESL_REG_kernel_1_2 = 0;
+assign kernel_1_2 = AESL_REG_kernel_1_2;
+initial begin : read_file_process_kernel_1_2
+    integer fp;
+    integer err;
+    integer ret;
+    integer proc_rand;
+    reg [159  : 0] token;
+    integer i;
+    reg transaction_finish;
+    integer transaction_idx;
+    transaction_idx = 0;
+    wait(AESL_reset === 0);
+    fp = $fopen(`AUTOTB_TVIN_kernel_1_2,"r");
+    if(fp == 0) begin       // Failed to open file
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_kernel_1_2);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    read_token(fp, token);
+    if (token != "[[[runtime]]]") begin
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    read_token(fp, token);
+    while (token != "[[[/runtime]]]") begin
+        if (token != "[[transaction]]") begin
+            $display("ERROR: Simulation using HLS TB failed.");
+              $finish;
+        end
+        read_token(fp, token);  // skip transaction number
+          read_token(fp, token);
+            # 0.2;
+            while(ready_wire !== 1) begin
+                @(posedge AESL_clock);
+                # 0.2;
+            end
+        if(token != "[[/transaction]]") begin
+            ret = $sscanf(token, "0x%x", AESL_REG_kernel_1_2);
+              if (ret != 1) begin
+                  $display("Failed to parse token!");
+                $display("ERROR: Simulation using HLS TB failed.");
+                  $finish;
+              end
+            @(posedge AESL_clock);
+              read_token(fp, token);
+        end
+          read_token(fp, token);
+    end
+    $fclose(fp);
+end
+
+
+// The signal of port kernel_2_0
+reg [31: 0] AESL_REG_kernel_2_0 = 0;
+assign kernel_2_0 = AESL_REG_kernel_2_0;
+initial begin : read_file_process_kernel_2_0
+    integer fp;
+    integer err;
+    integer ret;
+    integer proc_rand;
+    reg [159  : 0] token;
+    integer i;
+    reg transaction_finish;
+    integer transaction_idx;
+    transaction_idx = 0;
+    wait(AESL_reset === 0);
+    fp = $fopen(`AUTOTB_TVIN_kernel_2_0,"r");
+    if(fp == 0) begin       // Failed to open file
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_kernel_2_0);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    read_token(fp, token);
+    if (token != "[[[runtime]]]") begin
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    read_token(fp, token);
+    while (token != "[[[/runtime]]]") begin
+        if (token != "[[transaction]]") begin
+            $display("ERROR: Simulation using HLS TB failed.");
+              $finish;
+        end
+        read_token(fp, token);  // skip transaction number
+          read_token(fp, token);
+            # 0.2;
+            while(ready_wire !== 1) begin
+                @(posedge AESL_clock);
+                # 0.2;
+            end
+        if(token != "[[/transaction]]") begin
+            ret = $sscanf(token, "0x%x", AESL_REG_kernel_2_0);
+              if (ret != 1) begin
+                  $display("Failed to parse token!");
+                $display("ERROR: Simulation using HLS TB failed.");
+                  $finish;
+              end
+            @(posedge AESL_clock);
+              read_token(fp, token);
+        end
+          read_token(fp, token);
+    end
+    $fclose(fp);
+end
+
+
+// The signal of port kernel_2_1
+reg [31: 0] AESL_REG_kernel_2_1 = 0;
+assign kernel_2_1 = AESL_REG_kernel_2_1;
+initial begin : read_file_process_kernel_2_1
+    integer fp;
+    integer err;
+    integer ret;
+    integer proc_rand;
+    reg [159  : 0] token;
+    integer i;
+    reg transaction_finish;
+    integer transaction_idx;
+    transaction_idx = 0;
+    wait(AESL_reset === 0);
+    fp = $fopen(`AUTOTB_TVIN_kernel_2_1,"r");
+    if(fp == 0) begin       // Failed to open file
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_kernel_2_1);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    read_token(fp, token);
+    if (token != "[[[runtime]]]") begin
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    read_token(fp, token);
+    while (token != "[[[/runtime]]]") begin
+        if (token != "[[transaction]]") begin
+            $display("ERROR: Simulation using HLS TB failed.");
+              $finish;
+        end
+        read_token(fp, token);  // skip transaction number
+          read_token(fp, token);
+            # 0.2;
+            while(ready_wire !== 1) begin
+                @(posedge AESL_clock);
+                # 0.2;
+            end
+        if(token != "[[/transaction]]") begin
+            ret = $sscanf(token, "0x%x", AESL_REG_kernel_2_1);
+              if (ret != 1) begin
+                  $display("Failed to parse token!");
+                $display("ERROR: Simulation using HLS TB failed.");
+                  $finish;
+              end
+            @(posedge AESL_clock);
+              read_token(fp, token);
+        end
+          read_token(fp, token);
+    end
+    $fclose(fp);
+end
+
+
+// The signal of port kernel_2_2
+reg [31: 0] AESL_REG_kernel_2_2 = 0;
+assign kernel_2_2 = AESL_REG_kernel_2_2;
+initial begin : read_file_process_kernel_2_2
+    integer fp;
+    integer err;
+    integer ret;
+    integer proc_rand;
+    reg [159  : 0] token;
+    integer i;
+    reg transaction_finish;
+    integer transaction_idx;
+    transaction_idx = 0;
+    wait(AESL_reset === 0);
+    fp = $fopen(`AUTOTB_TVIN_kernel_2_2,"r");
+    if(fp == 0) begin       // Failed to open file
+        $display("Failed to open file \"%s\"!", `AUTOTB_TVIN_kernel_2_2);
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    read_token(fp, token);
+    if (token != "[[[runtime]]]") begin
+        $display("ERROR: Simulation using HLS TB failed.");
+        $finish;
+    end
+    read_token(fp, token);
+    while (token != "[[[/runtime]]]") begin
+        if (token != "[[transaction]]") begin
+            $display("ERROR: Simulation using HLS TB failed.");
+              $finish;
+        end
+        read_token(fp, token);  // skip transaction number
+          read_token(fp, token);
+            # 0.2;
+            while(ready_wire !== 1) begin
+                @(posedge AESL_clock);
+                # 0.2;
+            end
+        if(token != "[[/transaction]]") begin
+            ret = $sscanf(token, "0x%x", AESL_REG_kernel_2_2);
+              if (ret != 1) begin
+                  $display("Failed to parse token!");
+                $display("ERROR: Simulation using HLS TB failed.");
+                  $finish;
+              end
+            @(posedge AESL_clock);
+              read_token(fp, token);
+        end
+          read_token(fp, token);
+    end
+    $fclose(fp);
+end
 
 
 //------------------------arrayoutput_r Instantiation--------------
@@ -411,12 +1011,42 @@ initial begin
 end
 
 
-reg end_input_r;
-reg [31:0] size_input_r;
-reg [31:0] size_input_r_backup;
-reg end_kernel;
-reg [31:0] size_kernel;
-reg [31:0] size_kernel_backup;
+reg end_input_0;
+reg [31:0] size_input_0;
+reg [31:0] size_input_0_backup;
+reg end_input_1;
+reg [31:0] size_input_1;
+reg [31:0] size_input_1_backup;
+reg end_input_2;
+reg [31:0] size_input_2;
+reg [31:0] size_input_2_backup;
+reg end_kernel_0_0;
+reg [31:0] size_kernel_0_0;
+reg [31:0] size_kernel_0_0_backup;
+reg end_kernel_0_1;
+reg [31:0] size_kernel_0_1;
+reg [31:0] size_kernel_0_1_backup;
+reg end_kernel_0_2;
+reg [31:0] size_kernel_0_2;
+reg [31:0] size_kernel_0_2_backup;
+reg end_kernel_1_0;
+reg [31:0] size_kernel_1_0;
+reg [31:0] size_kernel_1_0_backup;
+reg end_kernel_1_1;
+reg [31:0] size_kernel_1_1;
+reg [31:0] size_kernel_1_1_backup;
+reg end_kernel_1_2;
+reg [31:0] size_kernel_1_2;
+reg [31:0] size_kernel_1_2_backup;
+reg end_kernel_2_0;
+reg [31:0] size_kernel_2_0;
+reg [31:0] size_kernel_2_0_backup;
+reg end_kernel_2_1;
+reg [31:0] size_kernel_2_1;
+reg [31:0] size_kernel_2_1_backup;
+reg end_kernel_2_2;
+reg [31:0] size_kernel_2_2;
+reg [31:0] size_kernel_2_2_backup;
 reg end_output_r;
 reg [31:0] size_output_r;
 reg [31:0] size_output_r_backup;

@@ -2,7 +2,7 @@
    Compiling apatb_convolution2D.cpp
    Compiling (apcc) testbench.c_pre.c.tb.c
 INFO: [HLS 200-10] Running 'F:/Vivado/Vivado/2018.3/bin/unwrapped/win64.o/apcc.exe'
-INFO: [HLS 200-10] For user 'TGDD' on host 'laptop-f7v13plb' (Windows NT_amd64 version 6.2) on Wed Dec 04 15:50:45 +0700 2024
+INFO: [HLS 200-10] For user 'TGDD' on host 'laptop-f7v13plb' (Windows NT_amd64 version 6.2) on Wed Dec 18 17:07:41 +0700 2024
 INFO: [HLS 200-10] In directory 'F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/wrapc'
 clang: warning: argument unused during compilation: '-fno-builtin-isinf'
 clang: warning: argument unused during compilation: '-fno-builtin-isnan'
@@ -10,7 +10,7 @@ INFO: [APCC 202-3] Tmp directory is apcc_db
 INFO: [APCC 202-1] APCC is done.
    Compiling (apcc) convolution2D.c_pre.c.tb.c
 INFO: [HLS 200-10] Running 'F:/Vivado/Vivado/2018.3/bin/unwrapped/win64.o/apcc.exe'
-INFO: [HLS 200-10] For user 'TGDD' on host 'laptop-f7v13plb' (Windows NT_amd64 version 6.2) on Wed Dec 04 15:50:50 +0700 2024
+INFO: [HLS 200-10] For user 'TGDD' on host 'laptop-f7v13plb' (Windows NT_amd64 version 6.2) on Wed Dec 18 17:07:44 +0700 2024
 INFO: [HLS 200-10] In directory 'F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/wrapc'
 clang: warning: argument unused during compilation: '-fno-builtin-isinf'
 clang: warning: argument unused during compilation: '-fno-builtin-isnan'
