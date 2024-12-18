@@ -15,5 +15,5 @@ config_export -display_name convolution2D -format ip_catalog -rtl vhdl -version 
 #source "./Convolution2D/solution1/directives.tcl"
 csim_design
 csynth_design
-cosim_design -trace_level all
+cosim_design -trace_level all -rtl vhdl
 export_design -rtl vhdl -format ip_catalog -version "0.0.0" -display_name "convolution2D"

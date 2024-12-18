@@ -24,7 +24,7 @@ set C_modelArgList {
 	{ kernel_2_0 int 32 regular {pointer 0}  }
 	{ kernel_2_1 int 32 regular {pointer 0}  }
 	{ kernel_2_2 int 32 regular {pointer 0}  }
-	{ output_r int 32 regular {array 9 { 0 3 } 0 1 }  }
+	{ output_r int 32 regular {array 9 { 0 0 } 0 1 }  }
 }
 set C_modelArgMapList {[ 
 	{ "Name" : "input_0", "interface" : "memory", "bitwidth" : 32, "direction" : "READONLY", "bitSlice":[{"low":0,"up":31,"cElement": [{"cName": "input","cData": "int","bit_use": { "low": 0,"up": 31},"cArray": [{"low" : 0,"up" : 4,"step" : 1},{"low" : 0,"up" : 1,"step" : 1}]}]}]} , 
@@ -41,7 +41,7 @@ set C_modelArgMapList {[
  	{ "Name" : "kernel_2_2", "interface" : "wire", "bitwidth" : 32, "direction" : "READONLY", "bitSlice":[{"low":0,"up":31,"cElement": [{"cName": "kernel","cData": "int","bit_use": { "low": 0,"up": 31},"cArray": [{"low" : 2,"up" : 2,"step" : 2},{"low" : 2,"up" : 2,"step" : 2}]}]}]} , 
  	{ "Name" : "output_r", "interface" : "memory", "bitwidth" : 32, "direction" : "WRITEONLY", "bitSlice":[{"low":0,"up":31,"cElement": [{"cName": "output","cData": "int","bit_use": { "low": 0,"up": 31},"cArray": [{"low" : 0,"up" : 2,"step" : 1},{"low" : 0,"up" : 2,"step" : 1}]}]}]} ]}
 # RTL Port declarations: 
-set portNum 37
+set portNum 41
 set portList { 
 	{ ap_clk sc_in sc_logic 1 clock -1 } 
 	{ ap_rst sc_in sc_logic 1 reset -1 active_high_sync } 
@@ -80,6 +80,10 @@ set portList {
 	{ output_r_ce0 sc_out sc_logic 1 signal 12 } 
 	{ output_r_we0 sc_out sc_logic 1 signal 12 } 
 	{ output_r_d0 sc_out sc_lv 32 signal 12 } 
+	{ output_r_address1 sc_out sc_lv 4 signal 12 } 
+	{ output_r_ce1 sc_out sc_logic 1 signal 12 } 
+	{ output_r_we1 sc_out sc_logic 1 signal 12 } 
+	{ output_r_d1 sc_out sc_lv 32 signal 12 } 
 }
 set NewPortList {[ 
 	{ "name": "ap_clk", "direction": "in", "datatype": "sc_logic", "bitwidth":1, "type": "clock", "bundle":{"name": "ap_clk", "role": "default" }} , 
@@ -118,7 +122,11 @@ set NewPortList {[
  	{ "name": "output_r_address0", "direction": "out", "datatype": "sc_lv", "bitwidth":4, "type": "signal", "bundle":{"name": "output_r", "role": "address0" }} , 
  	{ "name": "output_r_ce0", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "output_r", "role": "ce0" }} , 
  	{ "name": "output_r_we0", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "output_r", "role": "we0" }} , 
- 	{ "name": "output_r_d0", "direction": "out", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "output_r", "role": "d0" }}  ]}
+ 	{ "name": "output_r_d0", "direction": "out", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "output_r", "role": "d0" }} , 
+ 	{ "name": "output_r_address1", "direction": "out", "datatype": "sc_lv", "bitwidth":4, "type": "signal", "bundle":{"name": "output_r", "role": "address1" }} , 
+ 	{ "name": "output_r_ce1", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "output_r", "role": "ce1" }} , 
+ 	{ "name": "output_r_we1", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "output_r", "role": "we1" }} , 
+ 	{ "name": "output_r_d1", "direction": "out", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "output_r", "role": "d1" }}  ]}
 
 set RtlHierarchyInfo {[
 	{"ID" : "0", "Level" : "0", "Path" : "`AUTOTB_DUT_INST", "Parent" : "",
@@ -127,7 +135,7 @@ set RtlHierarchyInfo {[
 		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "0", "ap_idle" : "1",
 		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
 		"II" : "0",
-		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "70", "EstimateLatencyMax" : "70",
+		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "15", "EstimateLatencyMax" : "15",
 		"Combinational" : "0",
 		"Datapath" : "0",
 		"ClockEnable" : "0",
@@ -152,28 +160,29 @@ set RtlHierarchyInfo {[
 
 set ArgLastReadFirstWriteLatency {
 	convolution2D {
-		input_0 {Type I LastRead 5 FirstWrite -1}
-		input_1 {Type I LastRead 5 FirstWrite -1}
-		input_2 {Type I LastRead 5 FirstWrite -1}
-		kernel_0_0 {Type I LastRead 4 FirstWrite -1}
-		kernel_0_1 {Type I LastRead 4 FirstWrite -1}
-		kernel_0_2 {Type I LastRead 5 FirstWrite -1}
-		kernel_1_0 {Type I LastRead 5 FirstWrite -1}
-		kernel_1_1 {Type I LastRead 6 FirstWrite -1}
-		kernel_1_2 {Type I LastRead 6 FirstWrite -1}
-		kernel_2_0 {Type I LastRead 6 FirstWrite -1}
-		kernel_2_1 {Type I LastRead 6 FirstWrite -1}
-		kernel_2_2 {Type I LastRead 6 FirstWrite -1}
-		output_r {Type O LastRead -1 FirstWrite 8}}}
+		input_0 {Type I LastRead 4 FirstWrite -1}
+		input_1 {Type I LastRead 4 FirstWrite -1}
+		input_2 {Type I LastRead 3 FirstWrite -1}
+		kernel_0_0 {Type I LastRead 3 FirstWrite -1}
+		kernel_0_1 {Type I LastRead 3 FirstWrite -1}
+		kernel_0_2 {Type I LastRead 3 FirstWrite -1}
+		kernel_1_0 {Type I LastRead 3 FirstWrite -1}
+		kernel_1_1 {Type I LastRead 3 FirstWrite -1}
+		kernel_1_2 {Type I LastRead 3 FirstWrite -1}
+		kernel_2_0 {Type I LastRead 3 FirstWrite -1}
+		kernel_2_1 {Type I LastRead 3 FirstWrite -1}
+		kernel_2_2 {Type I LastRead 3 FirstWrite -1}
+		output_r {Type O LastRead -1 FirstWrite 7}}}
 
 set hasDtUnsupportedChannel 0
 
 set PerformanceInfo {[
-	{"Name" : "Latency", "Min" : "70", "Max" : "70"}
-	, {"Name" : "Interval", "Min" : "71", "Max" : "71"}
+	{"Name" : "Latency", "Min" : "15", "Max" : "15"}
+	, {"Name" : "Interval", "Min" : "16", "Max" : "16"}
 ]}
 
 set PipelineEnableSignalInfo {[
+	{"Pipeline" : "0", "EnableSignal" : "ap_enable_pp0"}
 ]}
 
 set Spec2ImplPortList { 
@@ -189,7 +198,7 @@ set Spec2ImplPortList {
 	kernel_2_0 { ap_none {  { kernel_2_0 in_data 0 32 } } }
 	kernel_2_1 { ap_none {  { kernel_2_1 in_data 0 32 } } }
 	kernel_2_2 { ap_none {  { kernel_2_2 in_data 0 32 } } }
-	output_r { ap_memory {  { output_r_address0 mem_address 1 4 }  { output_r_ce0 mem_ce 1 1 }  { output_r_we0 mem_we 1 1 }  { output_r_d0 mem_din 1 32 } } }
+	output_r { ap_memory {  { output_r_address0 mem_address 1 4 }  { output_r_ce0 mem_ce 1 1 }  { output_r_we0 mem_we 1 1 }  { output_r_d0 mem_din 1 32 }  { output_r_address1 MemPortADDR2 1 4 }  { output_r_ce1 MemPortCE2 1 1 }  { output_r_we1 MemPortWE2 1 1 }  { output_r_d1 MemPortDIN2 1 32 } } }
 }
 
 set busDeadlockParameterList { 

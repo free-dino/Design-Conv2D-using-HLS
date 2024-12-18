@@ -2,8 +2,8 @@
 # xsim v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Wed Dec 18 16:59:16 2024
-# Process ID: 12112
+# Start of session at: Wed Dec 18 18:09:35 2024
+# Process ID: 12952
 # Current directory: F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/vhdl
 # Command line: xsim.exe -mode tcl -source {xsim.dir/convolution2D/xsim_script.tcl}
 # Log file: F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/vhdl/xsim.log
@@ -19,6 +19,10 @@ WARNING: [Simtcl 6-197] One or more HDL objects could not be logged because of o
 ## set designtopgroup [add_wave_group "Design Top Signals"]
 ## set coutputgroup [add_wave_group "C Outputs" -into $designtopgroup]
 ## set output_group [add_wave_group output(memory) -into $coutputgroup]
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_d1 -into $output_group -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_we1 -into $output_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_ce1 -into $output_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_address1 -into $output_group -radix hex
 ## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_d0 -into $output_group -radix hex
 ## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_we0 -into $output_group -color #ffff00 -radix hex
 ## add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_ce0 -into $output_group -color #ffff00 -radix hex
@@ -84,6 +88,10 @@ WARNING: [Simtcl 6-197] One or more HDL objects could not be logged because of o
 ## add_wave /apatb_convolution2D_top/LENGTH_output_r -into $tb_portdepth_group -radix hex
 ## set tbcoutputgroup [add_wave_group "C Outputs" -into $testbenchgroup]
 ## set tb_output_group [add_wave_group output(memory) -into $tbcoutputgroup]
+## add_wave /apatb_convolution2D_top/output_r_d1 -into $tb_output_group -radix hex
+## add_wave /apatb_convolution2D_top/output_r_we1 -into $tb_output_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/output_r_ce1 -into $tb_output_group -color #ffff00 -radix hex
+## add_wave /apatb_convolution2D_top/output_r_address1 -into $tb_output_group -radix hex
 ## add_wave /apatb_convolution2D_top/output_r_d0 -into $tb_output_group -radix hex
 ## add_wave /apatb_convolution2D_top/output_r_we0 -into $tb_output_group -color #ffff00 -radix hex
 ## add_wave /apatb_convolution2D_top/output_r_ce0 -into $tb_output_group -color #ffff00 -radix hex
@@ -121,9 +129,9 @@ WARNING: [Simtcl 6-197] One or more HDL objects could not be logged because of o
 ## save_wave_config convolution2D.wcfg
 ## run all
 Note: simulation done!
-Time: 3725 ns  Iteration: 1  Process: /apatb_convolution2D_top/generate_sim_done_proc  File: F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/vhdl/convolution2D.autotb.vhd
+Time: 975 ns  Iteration: 1  Process: /apatb_convolution2D_top/generate_sim_done_proc  File: F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/vhdl/convolution2D.autotb.vhd
 Failure: NORMAL EXIT (note: failure is to force the simulator to stop)
-Time: 3725 ns  Iteration: 1  Process: /apatb_convolution2D_top/generate_sim_done_proc  File: F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/vhdl/convolution2D.autotb.vhd
-$finish called at time : 3725 ns
+Time: 975 ns  Iteration: 1  Process: /apatb_convolution2D_top/generate_sim_done_proc  File: F:/Workspace/Design-Conv2D-using-HLS/Convolution2D/Convolution2D/solution1/sim/vhdl/convolution2D.autotb.vhd
+$finish called at time : 975 ns
 ## quit
-INFO: [Common 17-206] Exiting xsim at Wed Dec 18 16:59:20 2024...
+INFO: [Common 17-206] Exiting xsim at Wed Dec 18 18:09:43 2024...

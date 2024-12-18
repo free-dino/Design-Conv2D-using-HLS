@@ -1,5 +1,5 @@
 # ==============================================================
-# File generated on Wed Dec 18 16:55:58 +0700 2024
+# File generated on Wed Dec 18 18:11:02 +0700 2024
 # Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -445,6 +445,54 @@ set Interfaces {
         ctype {
             DATA {
                 Type "integer signed"
+                Width "32"
+                Bits "32"
+            }
+        }
+    }
+    output_r_address1 {
+        type "data"
+        dir "out"
+        width "4"
+        ctype {
+            DATA {
+                Type "null"
+                Width "4"
+                Bits "4"
+            }
+        }
+    }
+    output_r_ce1 {
+        type "data"
+        dir "out"
+        width "1"
+        ctype {
+            DATA {
+                Type "null"
+                Width "1"
+                Bits "1"
+            }
+        }
+    }
+    output_r_we1 {
+        type "data"
+        dir "out"
+        width "1"
+        ctype {
+            DATA {
+                Type "null"
+                Width "1"
+                Bits "1"
+            }
+        }
+    }
+    output_r_d1 {
+        type "data"
+        dir "out"
+        width "32"
+        ctype {
+            DATA {
+                Type "null"
                 Width "32"
                 Bits "32"
             }
@@ -1918,7 +1966,7 @@ if {![regexp -nocase {2014\.3.*} $vivado_ver match]} {
 ipx::create_xgui_files -logo_file misc/logo.png $core
 
 ## System Info
-set user_parameters_list {clk_period 10 machine 64 combinational 0 latency 70 II x}
+set user_parameters_list {clk_period 10 machine 64 combinational 0 latency 15 II x}
 foreach {user_para value} $user_parameters_list {
     incr user_parameter_order
     set user_para_value [ipx::add_user_parameter $user_para $core]

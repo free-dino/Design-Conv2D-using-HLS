@@ -3,8 +3,8 @@ set sim_status(bc_needed)     0
 set sim_status(sc_needed)     0
 set sim_status(pc_needed)     1
 set sim_status(no_tb_pc_needed) 0
-set sim_status(vhdl_needed)   0
-set sim_status(vlog_needed)   1
+set sim_status(vhdl_needed)   1
+set sim_status(vlog_needed)   0
 set sim_status(bc_tb_needed)  0
 set sim_status(cas_needed)    0
 set sim_DirAutoSimRoot        "sim"

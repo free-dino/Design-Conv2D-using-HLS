@@ -3,6 +3,10 @@ log_wave -r /
 set designtopgroup [add_wave_group "Design Top Signals"]
 set coutputgroup [add_wave_group "C Outputs" -into $designtopgroup]
 set output_group [add_wave_group output(memory) -into $coutputgroup]
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_d1 -into $output_group -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_we1 -into $output_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_ce1 -into $output_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_address1 -into $output_group -radix hex
 add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_d0 -into $output_group -radix hex
 add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_we0 -into $output_group -color #ffff00 -radix hex
 add_wave /apatb_convolution2D_top/AESL_inst_convolution2D/output_r_ce0 -into $output_group -color #ffff00 -radix hex
@@ -68,6 +72,10 @@ add_wave /apatb_convolution2D_top/LENGTH_kernel_2_2 -into $tb_portdepth_group -r
 add_wave /apatb_convolution2D_top/LENGTH_output_r -into $tb_portdepth_group -radix hex
 set tbcoutputgroup [add_wave_group "C Outputs" -into $testbenchgroup]
 set tb_output_group [add_wave_group output(memory) -into $tbcoutputgroup]
+add_wave /apatb_convolution2D_top/output_r_d1 -into $tb_output_group -radix hex
+add_wave /apatb_convolution2D_top/output_r_we1 -into $tb_output_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/output_r_ce1 -into $tb_output_group -color #ffff00 -radix hex
+add_wave /apatb_convolution2D_top/output_r_address1 -into $tb_output_group -radix hex
 add_wave /apatb_convolution2D_top/output_r_d0 -into $tb_output_group -radix hex
 add_wave /apatb_convolution2D_top/output_r_we0 -into $tb_output_group -color #ffff00 -radix hex
 add_wave /apatb_convolution2D_top/output_r_ce0 -into $tb_output_group -color #ffff00 -radix hex

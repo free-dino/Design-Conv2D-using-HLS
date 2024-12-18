@@ -1,5 +1,5 @@
 -- ==============================================================
--- File generated on Wed Dec 18 16:59:10 +0700 2024
+-- File generated on Wed Dec 18 18:09:24 +0700 2024
 -- Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 -- SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 -- IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -121,6 +121,10 @@ architecture behav of apatb_convolution2D_top is
   signal output_r_ce0 :  STD_LOGIC;
   signal output_r_we0 :  STD_LOGIC;
   signal output_r_d0 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
+  signal output_r_address1 :  STD_LOGIC_VECTOR (3 DOWNTO 0);
+  signal output_r_ce1 :  STD_LOGIC;
+  signal output_r_we1 :  STD_LOGIC;
+  signal output_r_d1 :  STD_LOGIC_VECTOR (31 DOWNTO 0);
 
   signal ready_cnt : STD_LOGIC_VECTOR(31 DOWNTO 0);
   signal done_cnt	: STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -180,7 +184,11 @@ port (
     output_r_address0 :  OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
     output_r_ce0 :  OUT STD_LOGIC;
     output_r_we0 :  OUT STD_LOGIC;
-    output_r_d0 :  OUT STD_LOGIC_VECTOR (31 DOWNTO 0));
+    output_r_d0 :  OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+    output_r_address1 :  OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+    output_r_ce1 :  OUT STD_LOGIC;
+    output_r_we1 :  OUT STD_LOGIC;
+    output_r_d1 :  OUT STD_LOGIC_VECTOR (31 DOWNTO 0));
 end component;
 
 signal arrayinput_0_ce0, arrayinput_0_ce1 : STD_LOGIC;
@@ -659,7 +667,11 @@ AESL_inst_convolution2D    :   convolution2D port map (
    output_r_address0  =>  output_r_address0,
    output_r_ce0  =>  output_r_ce0,
    output_r_we0  =>  output_r_we0,
-   output_r_d0  =>  output_r_d0
+   output_r_d0  =>  output_r_d0,
+   output_r_address1  =>  output_r_address1,
+   output_r_ce1  =>  output_r_ce1,
+   output_r_we1  =>  output_r_we1,
+   output_r_d1  =>  output_r_d1
 );
 
 -- Assignment for control signal
@@ -1262,8 +1274,10 @@ arrayoutput_r_address0 <= output_r_address0;
 arrayoutput_r_ce0 <= output_r_ce0;
 arrayoutput_r_we0 <= output_r_we0;
 arrayoutput_r_din0 <= output_r_d0;
-arrayoutput_r_we1 <= '0';
-arrayoutput_r_din1 <= (others => '0');
+arrayoutput_r_address1 <= output_r_address1;
+arrayoutput_r_ce1 <= output_r_ce1;
+arrayoutput_r_we1 <= output_r_we1;
+arrayoutput_r_din1 <= output_r_d1;
 arrayoutput_r_ready <= ready_initial or arrayoutput_r_done;
 arrayoutput_r_done <=	AESL_done_delay;
 
@@ -1483,7 +1497,7 @@ begin
               reported_stuck <= '0';
           elsif (reported_stuck = '0' and reported_stuck_cnt < 4) then
               if ( AESL_mLatCnterIn_addr > AESL_mLatCnterOut_addr ) then
-                  -- if ( AESL_clk_counter - AESL_mLatCnterIn(AESL_mLatCnterOut_addr) > 10000 and AESL_clk_counter - AESL_mLatCnterIn(AESL_mLatCnterOut_addr) > 10 * 70 ) then
+                  -- if ( AESL_clk_counter - AESL_mLatCnterIn(AESL_mLatCnterOut_addr) > 10000 and AESL_clk_counter - AESL_mLatCnterIn(AESL_mLatCnterOut_addr) > 10 * 15 ) then
                   if ( AESL_clk_counter - AESL_mLatCnterIn(AESL_mLatCnterOut_addr) > 10000 and AESL_clk_counter - AESL_mLatCnterIn(AESL_mLatCnterOut_addr) > 10000000 ) then
                       report "WARNING: The latency is much larger than expected. Simulation may be stuck.";
                       reported_stuck <= '1';
